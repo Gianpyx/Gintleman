@@ -1,0 +1,109 @@
+/*Questa prima parte è per lo stile in generale*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+    font-family: 'SF Pro', sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+#title{
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 3rem;    /* 1 × 16px = 16px */
+}
+
+
+/*inizia la sezione hero*/
+
+#hero{
+    min-height: 100vh;
+    display: flex; /**/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+
+
+    background-image: url("../img/hero_background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+}
+
+/*zona con le scritte*/
+
+#zona_centrale {
+    display: inline-flex; /**/
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    gap: 0.5rem;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+}
+
+#zona_centrale h1, #zona_centrale p {
+    margin: 0;
+}
+
+#zona_centrale h1{
+    font-size: 6rem;
+    font-weight: 600;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #000000
+}
+
+#zona_centrale p{
+    font-size: 4rem;
+    font-weight: 400;
+    color: #000000;
+}
+
+
+/*pulsante scopri di più*/
+
+.scopri_di_piu{
+    display: inline-flex;
+    align-items: center;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 50px;            /* forma arrotondata */
+    padding: 0.75rem 2rem;          /* spazio verticale | orizzontale */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*testo del pulsante*/
+.scopri_di_piu .sdp_text {
+    font-family: 'SF Pro', sans-serif;
+    font-size: 1rem;                /* 16px */
+    font-weight: 400;               /* Regular */
+    color: #000;
+    margin-right: 0.5rem;
+}
+
+/*freccia del pulsante*/
+.scopri_di_piu .sdp_icon {
+    font-size: 1.5rem;              /* regola la dimensione della freccia */
+    line-height: 1;
+}
+
+/*stato hover*/
+.scopri_di_piu:hover {
+    background-color: #d4d4d4;
+}
+

@@ -9,21 +9,15 @@ html, body {
     font-size: 16px;
 }
 
-h1 {
-    font-size: 6rem;
-}
 
-#title{
-    font-size: 6rem;
-    text-transform: uppercase;
-}
+
 
 p {
     font-size: 3rem;    /* 1 × 16px = 16px */
 }
 
 
-/*inizia la sezione hero*/
+/* Prima sezione */
 
 #hero{
     min-height: 100vh;
@@ -41,6 +35,11 @@ p {
     background-repeat: no-repeat;
 
     position: relative;
+}
+
+#title{
+    font-size: 6rem;
+    text-transform: uppercase;
 }
 
 /*zona con le scritte*/
@@ -106,4 +105,126 @@ p {
 .scopri_di_piu:hover {
     background-color: #d4d4d4;
 }
+
+
+/* Seconda sezione */
+
+#title_2{
+    font-size: 5em;
+    margin-left: 0.75em;
+    margin-bottom: 1.25em;
+}
+
+/* Bottone rettangolo con immagine sovrapposta */
+.bottone {
+    position: relative;
+    display: inline-block;
+    width: 24em;
+    height: 40em;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.bottone .rettangolo_bt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33729E;
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+.bottone .bottiglie_gr {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#partner {                  /*spazio tra i rettangoli*/
+    display: flex;
+    justify-content: flex-start;
+    gap: 5.5em;
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-bottom: 10.25em;
+}
+
+
+/* Terza sezione */
+
+#general {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 3em;
+    margin-right: 3em;
+    gap: 1.3em;
+    margin-bottom: 4em;
+}
+
+
+#scopri_di_più{
+    position: relative;
+    display: inline-block;
+    width: 88em;
+    height: 60em;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#rettangolo_sdp{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33729E;
+    border-radius: 10px;
+}
+
+#go_shopping{
+    position: relative;
+    display: inline-block;
+    width: 42em;
+    height: 60em;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#testo_cerchio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 24em;
+    height: 40em;
+}
+
+#go_shopping_txt{
+    font-size: 3em;
+    font-weight: bold;
+}
+
+#rettangolo_gs{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33729E;
+    border-radius: 12px;
+}
+
 

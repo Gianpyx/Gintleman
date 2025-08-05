@@ -27,6 +27,58 @@
         </button>
     </section>
 </div>
+<div id = "second_section">
+    <h1 id="title_2">
+        Our Partnership
+    </h1>
+    <section id="partner">
+        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
+            <div class ="rettangolo_bt">
+                <img src="img/Bottiglia%20Gin%20Bombay.png" class="bottiglie_gr"/>
+            </div>
+        </button>
+
+        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
+            <div class ="rettangolo_bt">
+                <img src="img/Bottiglia%20Gin%20Mare.png" class="bottiglie_gr"/>
+            </div>
+        </button>
+
+        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
+            <div class ="rettangolo_bt">
+                <img src="img/Bottiglia%20Monkey%2047.png" class="bottiglie_gr"/>
+            </div>
+        </button>
+
+        <button class="bottone" type="button" onclick="window.location.href='login.jsp';" >
+            <div class="rettangolo_bt">
+                <img src="img/Bottiglia%20Gin%20Malfy.png" class="bottiglie_gr"/>
+            </div>
+        </button>
+    </section>
+
+
+</div>
+
+
+<div id="third_section">
+    <section id="general">
+        <button id="scopri_di_più">
+            <div id="rettangolo_sdp">
+                
+            </div>
+        </button>
+
+        <button id="go_shopping">
+            <div id="rettangolo_gs">
+                <div id="testo_cerchio">
+                    <p id="go_shopping_txt">Go shopping</p>
+                </div>
+            </div>
+            </button>
+    </section>
+</div>
+
 
 </body>
 </html>

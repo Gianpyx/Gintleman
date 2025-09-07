@@ -1,0 +1,131 @@
+/* =============================
+   Mobile (≤ 768px)
+   ============================= */
+@media (max-width: 767px) {
+    :root { --container: 92vw; }
+
+    html, body {
+        font-size: 15px;           /* base leggibile su mobile */
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Hero */
+    #hero {
+        min-height: 80vh;
+        padding: 1rem;
+        background-position: center top;
+    }
+
+    #zona_centrale {
+        width: min(700px, var(--container));
+        gap: 0.5em;
+        padding: 1.25em 1.25em;
+        border-radius: 0.75em;
+        backdrop-filter: blur(2px);
+    }
+
+    #zona_centrale h1 {
+        /* scala fluida: 28–42px circa */
+        font-size: clamp(1.75rem, 7vw, 2.625rem);
+        text-align: center;
+    }
+
+    #zona_centrale p {
+        /* scala fluida: 16–28px circa */
+        font-size: clamp(1rem, 4.5vw, 1.75rem);
+        text-align: center;
+    }
+
+    /* CTA “scopri di più” */
+    .scopri_di_piu {
+        padding: 0.9em 1.25em;
+        border-radius: 999px;
+    }
+    .scopri_di_piu .sdp_text { font-size: 1rem; }
+    .scopri_di_piu .sdp_icon { font-size: 1.25em; }
+
+    /* Titolo sezione 2 */
+    #title_2 {
+        font-size: clamp(1.5rem, 6vw, 2.25rem);
+        margin: 0 0 1em 0;
+        text-align: center;
+    }
+
+    /* Griglie -> colonna */
+    #partner,
+    #general {
+        width: var(--container);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2.5em;
+        gap: 1.25em;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* Card / bottoni verticali */
+    .bottone {
+        width: 100%;
+        max-width: 26rem;      /* limita la larghezza per estetica */
+        height: 28rem;
+    }
+
+    .bottone .rettangolo_bt { border-radius: 12px; }
+    .bottone .bottiglie_gr { max-width: 78%; }
+
+    /* Terza sezione: blocchi a tutta larghezza */
+    #scopri_di_più,
+    #go_shopping {
+        width: 100%;
+        height: auto;           /* lascia calcolare all'interno */
+    }
+
+    #rettangolo_sdp,
+    #rettangolo_gs {
+        border-radius: 12px;
+        height: 38rem;          /* altezza visiva comoda su mobile */
+    }
+
+    /* Testo+cerchio */
+    #testo_cerchio {
+        width: 100%;
+        max-width: 22rem;
+        height: 24rem;
+    }
+
+    #go_shopping_txt {
+        font-size: clamp(1.25rem, 5.5vw, 2rem);
+        text-align: center;
+    }
+
+    /* Spaziature globali più strette */
+    #partner { gap: 1.5em; }
+    #general { gap: 1em; }
+}
+
+/* =============================
+   Extra-small phones (≤ 480px)
+   ============================= */
+@media (max-width: 480px) {
+    html, body { font-size: 14px; }
+
+    #zona_centrale { padding: 1em; }
+    #zona_centrale h1 { font-size: clamp(1.5rem, 8vw, 2.25rem); }
+    #zona_centrale p  { font-size: clamp(0.95rem, 4.5vw, 1.35rem); }
+
+    .bottone {
+        max-width: 22rem;
+        height: 24rem;
+    }
+
+    #rettangolo_sdp,
+    #rettangolo_gs { height: 32rem; }
+
+    #testo_cerchio {
+        max-width: 18rem;
+        height: 20rem;
+    }
+}

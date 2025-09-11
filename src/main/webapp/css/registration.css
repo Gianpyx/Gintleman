@@ -1,0 +1,156 @@
+:root{
+    --container-max: 1200px;    /* larghezza massima del blocco registration */
+    --container-gutter: 4rem;   /* margini laterali minimi */
+    --gap: 2rem;
+}
+
+/* Reset utili */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+    min-height: 100dvh;
+    margin: 0;
+    display: grid;
+    place-items: center;   /* centra verticalmente e orizzontalmente il main.registration */
+    background: #191919;      /* opzionale */
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Contenitore principale (usa direttamente .registration che hai già in HTML) */
+.registration{
+    width: min(var(--container-max), 100% - 2*var(--container-gutter));
+    margin-inline: auto;
+    display: grid;
+    gap: var(--gap);
+    align-items: stretch;
+}
+
+/* Due colonne da 900px in su */
+@media (min-width: 900px){
+    .registration{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/*Colonna di sinistra*/
+
+.registration_sx{
+    background: #191919;
+    border-radius: 16px;
+    overflow: hidden;      /* arrotondamenti puliti sull'immagine */
+    /* aspect-ratio: 4 / 3;    impedisce che cresca in altezza su schermi piccoli */
+}
+
+@media (min-width: 900px){
+    .login_rx{ aspect-ratio: auto; }
+}
+
+.login_rx img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* riempie senza deformare */
+    display: block;
+}
+
+
+/*Colonna di destra*/
+
+.registration_rx{
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    background: #191919;
+    border-radius: 16px;
+}
+
+.registration_in{
+    width: min(500px, 100%);
+}
+
+.registration_title{
+    margin: 0 0 0.2em 0;
+    font-size: 50px;
+    text-align: center;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.registration_sub_title{
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    color: #ffffff;
+    text-align: center;
+
+}
+
+/* FORM */
+.registration_form{
+    display: grid;
+    gap: 18px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.registration_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* due colonne uguali */
+    gap: 1rem; /* spazio tra i due input */
+}
+
+.registration_row .registration_input {
+    width: 100%; /* lascia che occupino tutta la colonna */
+}
+
+.visually-hidden{
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0);
+    white-space: nowrap; border: 0;
+}
+
+.registration_input{
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.2;
+    padding: 16px 20px;
+    border: 5px solid #ffffff;
+    border-radius: 14px;
+    background: #ffffff;
+    outline: none;
+    display: block;
+}
+.registration_input::placeholder{ color: #8d8d8d; }
+.registration_input:focus{ outline: none; box-shadow: none; }
+
+.registration_submit{
+    display: inline-block;
+    margin: 2.5em auto 0 auto;
+    width: 10em;
+    font-size: 22px; font-weight: 700;
+    padding: 14px 24px;
+    border: 5px solid #ffffff;
+    border-radius: 14px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+}
+
+.registration_submit:hover{ background:#191919; color:#fff; }
+
+.registration_hint{
+    margin: 0 auto 0 auto;
+    font-size: 16px;
+    color: #000000;
+}
+
+.scritta_in_blu{
+    font-weight: bold;
+    color: #47a9ed;
+}
+.registration_hint a{ color: inherit; text-decoration: underline; }

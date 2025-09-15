@@ -50,19 +50,19 @@
             </div>
         </button>
 
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
+        <button class="bottone" type="button" onclick="window.location.href='gin_mare.jsp';">
             <div class ="rettangolo_bt">
                 <img src="img/Bottiglia%20Gin%20Mare.png" class="bottiglie_gr"/>
             </div>
         </button>
 
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
+        <button class="bottone" type="button" onclick="window.location.href='monkey_47.jsp';">
             <div class ="rettangolo_bt">
                 <img src="img/Bottiglia%20Monkey%2047.png" class="bottiglie_gr"/>
             </div>
         </button>
 
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';" >
+        <button class="bottone" type="button" onclick="window.location.href='malfy.jsp';" >
             <div class="rettangolo_bt">
                 <img src="img/Bottiglia%20Gin%20Malfy.png" class="bottiglie_gr"/>
             </div>

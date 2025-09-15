@@ -8,25 +8,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Gin Mare</title>
+    <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
+
+    <link rel="stylesheet" href="css/gin_mare.css"> <!-- Stili dell'homepage -->
 </head>
 <body>
+
+
 <div id="prima_sezione">
-    <img src="img/Logo_Bombay.png"/>
+        <img src="img/Gin_mare_logo.png"/>
 </div>
 
 
 
-
-
-
 <div class="seconda_sezione">
-    <!-- Colonna immagine -->
-    <section class="img_sinistra">
-        <img src="img/Bombay_foto.png">
-    </section>
+
     <!-- Colonna testo -->
-    <section class="info_testo_dx">
+    <section class="info_testo_sx">
         <div class="rettangolo_txt">
             <p>
                 Gin Mare è un gin ultra-premium nato sulla costa spagnola. Lontano dai classici schemi del London Dry,
@@ -38,6 +39,12 @@
             </p>
         </div>
     </section>
+
+    <!-- Colonna immagine -->
+    <section class="img_destra">
+        <img src="img/Gin_mare_foto.png">
+    </section>
+
 </div>
 
 
@@ -55,18 +62,6 @@
         <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
             <div class ="rettangolo_bt">
                 <%-- <img src="img/Bottiglia%20Gin%20Mare.png" class="bottiglie_gr"/> --%>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
-            <div class ="rettangolo_bt">
-                <%-- <img src="img/Bottiglia%20Monkey%2047.png" class="bottiglie_gr"/> --%>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';" >
-            <div class="rettangolo_bt">
-                <%-- <img src="img/Bottiglia%20Gin%20Malfy.png" class="bottiglie_gr"/> --%>
             </div>
         </button>
     </section>

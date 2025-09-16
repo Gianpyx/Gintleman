@@ -1,0 +1,169 @@
+/* === Global layout tokens (validi a tutte le larghezze) === */
+:root{
+    --container-max: 1200px;   /* larghezza fissa desiderata del contenuto */
+    --container-gutter: 4rem;  /* margini minimi laterali */
+}
+
+/* Assicura che le immagini non escano dal contenitore su schermi larghi */
+img{ max-width: 100%; height: auto; }
+
+@media (min-width: 1251px) {
+    /*Questa prima parte è per lo stile in generale*/
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'SF Pro', sans-serif;
+        font-size: 16px;
+    }
+
+
+    p {
+        font-size: 3rem; /* 1 × 16px = 16px */
+    }
+
+
+    /* ====================
+         Prima sezione
+    ==================== */
+    #hero {
+        min-height: 100vh;
+        display: flex; /**/
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        box-sizing: border-box;
+
+
+        background-image: url("../img/scopri_di_piu_sfondo.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        position: relative;
+    }
+
+
+    /* zona con le scritte */
+    #zona_centrale {
+        display: inline-flex; /**/
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+        padding: 2em 3em;
+        border-radius: 1em;
+        background-color: rgba(255, 255, 255, 0.4);
+        width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
+
+    }
+
+    #zona_centrale h1, #zona_centrale p {
+        margin: 0;
+    }
+
+    #zona_centrale h1 {
+        width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
+        margin: 1.25em auto 1.25em;
+        font-size: 5.5em;
+        font-weight: 600;
+        line-height: 1.1;
+        text-transform: uppercase;
+        text-align: center;
+        color: #000000
+    }
+
+    #zona_centrale p {
+        font-size: 4em;
+        font-weight: 400;
+        color: #000000;
+    }
+
+
+
+    /* ====================
+        Seconda sezione
+    ==================== */
+    #title_2 {
+        font-size: 2em;
+        width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
+        margin: 2em auto 0em;
+        text-align: center;
+    }
+    #sub_title2{
+        font-size: 5em;
+        width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
+        margin: 1em auto 1.25em;
+        text-align: center;
+    }
+
+    #partner { /*spazio tra i rettangoli*/
+        display: flex;
+        justify-content: flex-start;
+        gap: 5.5em;
+        width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
+        margin: 0 auto 10.25em;
+    }
+
+
+    /* Contenitore principale */
+    .rettangolo_bt_1 {
+        width: 70em;
+        height: 40em;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background-color: #E0B9D8; /* colore unico */
+    }
+    .rettangolo_bt_2 {
+        width: 75em;
+        height: 40em;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background-color: #CDDCAE; /* colore unico */
+    }
+
+    .rettangolo_bt_3 {
+         width: 70em;
+         height: 40em;
+         border-radius: 8px;
+         overflow: hidden;
+         display: flex;
+         flex-direction: column;
+         background-color: #D7EEFE; /* colore unico */
+     }
+
+    /* Parte superiore (2/3 con immagine piena) */
+    .rettangolo-top {
+        flex: 4;
+        width: 100%;
+        height: 100%;
+    }
+
+    .rettangolo-top img.rettangolo_gr {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   /* riempie tutta la sezione mantenendo proporzioni */
+        display: block;
+    }
+
+    /* Parte inferiore (1/3 con testo centrato) */
+    .rettangolo-bottom {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+    }
+
+    .rettangolo-bottom p {
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+        text-align: center;
+        color: #000;
+    }
+}

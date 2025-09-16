@@ -142,7 +142,7 @@
         <div id="cta_section">
             <div class="cta_card">
                 <p class="cta_title">Registrati su Gintleman<br>e scopri i tuoi vantaggi.</p>
-                <button type="button" class="cta_btn" onclick="window.location.href='login.jsp';">
+                <button type="button" class="cta_btn" onclick="window.location.href='scopri_di_piu.jsp';">
                     Scopri tutti i vantaggi
                 </button>
             </div>

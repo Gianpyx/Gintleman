@@ -1,0 +1,197 @@
+/* === Global layout tokens (validi a tutte le larghezze) === */
+:root{
+    --container-max: 1200px;   /* larghezza fissa desiderata del contenuto */
+    --container-gutter: 4rem;  /* margini minimi laterali */
+}
+
+/* Assicura che le immagini non escano dal contenitore su schermi larghi */
+img{ max-width: 100%; height: auto; }
+
+@media (min-width: 1251px) {
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+
+        font-family: 'SF Pro', sans-serif;
+        font-size: 16px;
+    }
+
+
+    p {
+        font-size: 3rem; /* 1 × 16px = 16px */
+    }
+
+    /* ====================
+         Prima sezione
+    ==================== */
+
+    #prima_sezione{
+        min-height: 100vh;
+        display: flex; /**/
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        box-sizing: border-box;
+
+        background: linear-gradient(0deg, rgba(21, 181, 232, 0.1), rgba(21, 181, 232, 0.1)), url("../img/malfy_sfondo.png"); /*fare l'immagine leggermente trasparente*/
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        position: relative;
+    }
+
+    #prima_sezione img{
+        width: 710px;
+        height: 568px;
+    }
+
+
+    /* ====================
+         Seconda sezione
+    ==================== */
+
+
+    .seconda_sezione {
+        display: flex;              /* disposizione orizzontale */
+        align-items: center;        /* centra verticalmente */
+        justify-content: center;    /* centra tutto in orizzontale */
+        gap: 5em;                  /* spazio tra immagine e rettangolo */
+        background-color: #FFC2C2;  /* blu scuro di sfondo */
+        padding: 5em;
+    }
+
+    /* Colonna immagine */
+    .img_sinistra img {
+        max-width: 40em;      /* ridimensiona senza deformare */
+        border-radius: 10px;    /* leggero arrotondamento */
+        display: block;
+    }
+
+    /* Colonna testo */
+    .info_testo_dx .rettangolo_txt_dx {
+        background-color: #FFE0E0;
+        color: #000000;
+        padding: 25px 30px;
+        border-radius: 6px;
+        max-width: 500px;      /* limite larghezza testo */
+        line-height: 1.6;
+    }
+
+    .info_testo_sx .rettangolo_txt_sx {
+        background-color: #FFE0E0;
+        color: #000000;
+        padding: 25px 30px;
+        border-radius: 6px;
+        max-width: 500px;      /* limite larghezza testo */
+        line-height: 1.6;
+    }
+
+    /* Testo */
+    .info_testo_dx p {
+        width: 420px;
+        height: 465px;
+        left: 1385px;
+        top: 1211px;
+
+        font-family: 'SF Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 40px;
+        text-align: center;
+
+        color: #000000;
+    }
+
+    .info_testo_sx p {
+        width: 420px;
+        height: 465px;
+        left: 1385px;
+        top: 1211px;
+
+        font-family: 'SF Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 40x;
+        text-align: center;
+
+        color: #000000;
+    }
+
+    /* Evidenziazioni */
+    .info_testo_dx strong,
+    .info_testo_dx b {
+        color: #000000;
+        font-weight: bold;
+    }
+
+    .info_testo_dx .highlight {
+        font-weight: bold;
+        color: #00d4ff;   /* blu più chiaro per dare risalto */
+    }
+
+
+
+
+
+
+    /* ====================
+          Terza sezione
+    ==================== */
+
+    #terza_sezione{
+        background-color: #212A63;
+    }
+
+
+
+    /* Bottone rettangolo con immagine sovrapposta */
+    .bottone {
+        position: relative;
+        display: inline-block;
+        width: 24em;
+        height: 35em;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+    .bottone .rettangolo_bt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #54C7DA;
+        border-radius: 10px;
+        margin-top: 6em;
+        margin-bottom: 1em;
+    }
+
+    .bottone .bottiglie_gr {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 80%;
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    #partner {
+        display: flex;
+        justify-content: flex-start;
+        gap: 5.5em;
+        width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
+        margin: 0 auto;
+        padding-bottom: 10.25em; /* usa padding così il colore di sfondo della sezione copre lo spazio */
+    }
+
+}

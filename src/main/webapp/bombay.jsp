@@ -1,32 +1,23 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Bombay</title>
     <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
-
     <link rel="stylesheet" href="css/bombay.css"> <!-- Stili dell'homepage -->
-
 </head>
 <body>
 
 
-
-
 <div id="prima_sezione">
-    <img src="img/Logo_Bombay.png"/>
+    <img src="img/Logo_Bombay.png" alt=""/>
 </div>
-
-
-
-
 
 
 <div class="seconda_sezione">
             <!-- Colonna immagine -->
     <section class="img_sinistra">
-        <img src="img/Bombay_foto.png">
+        <img src="img/Bombay_foto.png" alt="">
     </section>
             <!-- Colonna testo -->
     <section class="info_testo_dx">

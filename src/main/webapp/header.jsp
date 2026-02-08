@@ -3,31 +3,81 @@
     <title>Header</title>
   </head>
   <body>
-  <header class ="header">
-    <nav class="navbar">
-      <div id="navbar_sx">
-        <button id="logo_header" type="button">
+  <header class="testata">
+    <nav class="barra-navigazione">
+      <!-- Sezione Sinistra: Logo -->
+      <div class="sezione-sinistra">
+        <button id="logo-header" type="button">
           <a href="index.jsp">
             <img src="img/Logo_nero.png" sizes="32x32" alt="Home">
           </a>
         </button>
       </div>
-      <div id="navbar_c">
 
-      </div>
-      <div id="navbar_dx">
-        <div class="login_carrello">
-          <div class="login">
-            <a href="login.jsp" class="login_scritta">Log in</a>
-          </div>
-      <div id="carrello">
-        <button id="carrello_btn" type="button">
-          <img src="img/Logo_carrello.png"/>
-        </button>
-      </div>
+      <!-- Sezione Centrale: Barra di Ricerca (Solo Desktop) -->
+      <div class="sezione-centrale solo-desktop">
+        <div class="barra-ricerca">
+          <form action="#" method="get">
+            <label>
+              <input type="text" name="cerca" placeholder="Cerca">
+            </label>
+            <button type="submit" aria-label="Cerca">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
+
+      <!-- Sezione Destra: Area Utente (Desktop) o Burger (Mobile) -->
+      <div class="sezione-destra">
+        <!-- Desktop: Login e Carrello -->
+        <div class="area-utente solo-desktop">
+          <div class="login">
+            <a href="login.jsp" class="login-scritta">Log in</a>
+          </div>
+          <div class="carrello">
+            <button id="bottone-carrello" type="button">
+              <img src="img/Logo_carrello.png" alt="Carrello"/>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile: Burger Menu -->
+        <button id="menu-hamburger" class="solo-mobile" aria-label="Menu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </nav>
+
+    <!-- Cassetto Navigazione Mobile -->
+    <div id="cassetto-navigazione" class="cassetto-mobile solo-mobile">
+      <div class="contenuto-cassetto">
+        <!-- Ricerca Mobile -->
+        <div class="ricerca-mobile">
+           <form action="#" method="get">
+             <label>
+               <input type="text" name="cerca" placeholder="Cerca...">
+             </label>
+             <button type="submit">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </form>
+        </div>
+        <!-- Link Mobile -->
+        <a href="login.jsp" class="link-mobile">Log in</a>
+        <a href="#" class="link-mobile">Carrello</a>
+      </div>
+    </div>
   </header>
   </body>
 </html>

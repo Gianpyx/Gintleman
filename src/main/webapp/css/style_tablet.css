@@ -225,4 +225,86 @@
         background-color: #33729E;
         border-radius: 12px;
     }
+
+    /* =============================
+       Header Tablet Overrides
+       ============================= */
+    .header {
+        height: 9em;
+    }
+
+    #logo_header {
+        width: 7em;
+        height: 7em;
+    }
+
+    #carrello_btn {
+        width: 6em;
+        height: 6em;
+    }
+
+    .login_scritta {
+        font-size: 1.25rem;
+    }
+
+    /* =============================
+       Override Testata Tablet (Italiano)
+       ============================= */
+    .testata {
+        height: 5em;
+    }
+
+    .barra-navigazione {
+        padding: 0 2rem;
+    }
+
+    /* Su Tablet usiamo il burger menu come richiesto per iPad */
+    .solo-desktop {
+        display: none !important;
+    }
+
+    .solo-mobile {
+        display: flex !important;
+    }
+
+    /* Logo Tablet */
+    #logo-header {
+        width: 4em;
+        height: 4em;
+    }
+    
+    /* Cassetto */
+    .cassetto-mobile {
+        top: 5em;
+    }
+    
+    .cassetto-mobile.aperto {
+        height: calc(100vh - 5em);
+    }
+    
+    /* Stile Ricerca Tablet nel cassetto */
+    .ricerca-mobile form {
+        display: flex;
+        background-color: #1a1d1c;
+        border-radius: 999px;
+        padding: 1rem 1.5rem; /* Più grande su tablet */
+        align-items: center;
+    }
+
+    .ricerca-mobile input {
+        background: transparent;
+        border: none;
+        color: white;
+        flex-grow: 1;
+        font-size: 1.25rem;
+        outline: none;
+    }
+    
+    .ricerca-mobile button {
+        background: none;
+        border: none;
+        color: white;
+        padding: 0;
+        display: flex;
+    }
 }

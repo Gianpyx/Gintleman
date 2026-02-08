@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gintleman</title>
     <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
-
     <link rel="stylesheet" href="css/style.css"> <!-- Stili dell'homepage -->
-    <link rel="stylesheet" href="css/style_tablet.css"> <!-- Stili dell'homepage -->
-    <link rel="stylesheet" href="css/style_mobile.css"> <!-- Stili dell'homepage -->
     <link rel="stylesheet" href="css/header.css"> <!-- Stili dell’header -->
     <link rel="stylesheet" href="css/footer.css"> <!-- Stili del footer -->
+    <link rel="stylesheet" href="css/style_tablet.css"> <!-- Stili dell'homepage -->
+    <link rel="stylesheet" href="css/style_mobile.css"> <!-- Stili dell'homepage -->
     <link rel="stylesheet" href="font/stylesheet1.css"> <!-- Font -->
 
 </head>
@@ -46,7 +45,7 @@
     <section id="partner">
         <button class="bottone" type="button" onclick="window.location.href='bombay.jsp';">
             <div class ="rettangolo_bt">
-                <img src="img/Bottiglia%20Gin%20Bombay.png" class="bottiglie_gr"/>
+                <img src="img/Bottiglia%20Gin%20Bombay.png" class="bottiglie_gr" alt=""/>
             </div>
         </button>
 

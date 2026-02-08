@@ -36,7 +36,19 @@
         <!-- Desktop: Login e Carrello -->
         <div class="area-utente solo-desktop">
           <div class="login">
-            <a href="login.jsp" class="login-scritta">Log in</a>
+            <%@ page import="model.UserBean" %>
+            <%
+              UserBean user = (UserBean) session.getAttribute("user");
+              if (user != null) {
+            %>
+                <div class="user-icon" style="color: white; display: flex; align-items: center; gap: 10px;">
+                    <%-- Replace with an actual icon image if available --%>
+                    <span>Welcome, <b><%= user.getFirstName() %></b></span>
+                    <a href="logout" style="color: grey; font-size: 0.8em; text-decoration: none;">(Logout)</a>
+                </div>
+            <% } else { %>
+                <a href="login.jsp" class="login-scritta">Log in</a>
+            <% } %>
           </div>
           <div class="carrello">
             <button id="bottone-carrello" type="button">

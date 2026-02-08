@@ -19,6 +19,12 @@
                 <label for="password" class="visually-hidden">password</label>
                 <input id="password" name="password" type="password" placeholder="password" required class="login_input">
 
+                <% if (request.getAttribute("error") != null) { %>
+                    <div style="color: red; margin-bottom: 10px;">
+                        <%= request.getAttribute("error") %>
+                    </div>
+                <% } %>
+
                 <button class="login_submit" type="submit">Sign In</button>
 
                 <p class="login_hint">

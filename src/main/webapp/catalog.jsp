@@ -100,8 +100,22 @@
     }
 
     function addToCart(productId) {
-        // Placeholder for Add to Cart functionality (Phase 3 Part 2)
-        alert("Prodotto " + productId + " aggiunto al carrello (Simulazione)");
+        fetch('cart?action=add&productId=' + productId)
+            .then(response => {
+                if (!response.ok) throw new Error("Errore nell'aggiunta al carrello");
+                return response.json();
+            })
+            .then(data => {
+                if(data.status === "success") {
+                    // Visual feedback
+                    alert("Prodotto aggiunto! Articoli nel carrello: " + data.cartCount);
+                    // Update a cart counter in header if one exists
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Errore: impossibile aggiungere il prodotto.");
+            });
     }
 </script>
 

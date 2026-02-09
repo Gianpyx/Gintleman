@@ -111,4 +111,93 @@ public class ProductDAO {
         }
         return bean;
     }
+
+    public synchronized void doSave(ProductBean product) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertSQL = "INSERT INTO Product (name, description, price, stock, image_url, category, alcohol_content, nationality, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getDescription());
+            preparedStatement.setBigDecimal(3, product.getPrice());
+            preparedStatement.setInt(4, product.getStock());
+            preparedStatement.setString(5, product.getImageUrl());
+            preparedStatement.setString(6, product.getCategory());
+            preparedStatement.setBigDecimal(7, product.getAlcoholContent());
+            preparedStatement.setString(8, product.getNationality());
+            preparedStatement.setBoolean(9, product.isActive());
+
+            preparedStatement.executeUpdate();
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+    }
+
+    public synchronized void doUpdate(ProductBean product) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String updateSQL = "UPDATE Product SET name = ?, description = ?, price = ?, stock = ?, image_url = ?, category = ?, alcohol_content = ?, nationality = ?, is_active = ? WHERE id = ?";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            preparedStatement = connection.prepareStatement(updateSQL);
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getDescription());
+            preparedStatement.setBigDecimal(3, product.getPrice());
+            preparedStatement.setInt(4, product.getStock());
+            preparedStatement.setString(5, product.getImageUrl());
+            preparedStatement.setString(6, product.getCategory());
+            preparedStatement.setBigDecimal(7, product.getAlcoholContent());
+            preparedStatement.setString(8, product.getNationality());
+            preparedStatement.setBoolean(9, product.isActive());
+            preparedStatement.setInt(10, product.getId());
+
+            preparedStatement.executeUpdate();
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+    }
+
+    public synchronized void doDelete(int id) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String deleteSQL = "UPDATE Product SET is_active = FALSE WHERE id = ?";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            preparedStatement = connection.prepareStatement(deleteSQL);
+            preparedStatement.setInt(1, id);
+
+            preparedStatement.executeUpdate();
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+    }
 }

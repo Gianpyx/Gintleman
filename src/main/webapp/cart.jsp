@@ -7,7 +7,8 @@
 <html>
 <head>
     <title>Carrello - Gintleman</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Usa index.css come base comune per reset e variabili anche nel carrello -->
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <style>
@@ -99,8 +100,6 @@
         }
     %>
 </div>
-
-<%@ include file="footer.jsp" %>
 
 </body>
 </html>

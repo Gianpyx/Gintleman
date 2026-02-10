@@ -15,45 +15,27 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "AdminProductServlet", value = "/admin/products")
+@WebServlet(name = "AdminProductServlet", value = "/admin_products")
 public class AdminProductServlet extends HttpServlet {
-
-    private boolean isAdmin(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session == null)
-            return false;
-        UserBean user = (UserBean) session.getAttribute("user");
-        return user != null && user.isAdmin();
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Security Check
         if (!isAdmin(request)) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
+            response.sendRedirect("login.jsp");
             return;
         }
 
-        String action = request.getParameter("action");
-        if (action == null)
-            action = "list";
-
         ProductDAO productDAO = new ProductDAO();
-
         try {
-            switch (action) {
-                case "new":
-                    request.getRequestDispatcher("/product_form.jsp").forward(request, response);
-                    break;
-                case "edit":
-                    showEditForm(request, response, productDAO);
-                    break;
-                case "delete":
-                    deleteProduct(request, response, productDAO);
-                    break;
-                default:
-                    listProducts(request, response, productDAO);
-                    break;
-            }
+            // Retrieve all products (no filters)
+            List<ProductBean> products = productDAO.doRetrieveAll(null, null, null);
+            request.setAttribute("products", products);
+
+            // Forward to the single JSP handling List+Form+Details
+            request.getRequestDispatcher("admin_products.jsp").forward(request, response);
+
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database Error");
@@ -62,73 +44,81 @@ public class AdminProductServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Security Check
         if (!isAdmin(request)) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
+            response.sendRedirect("login.jsp");
             return;
         }
 
+        String action = request.getParameter("action");
+        ProductDAO productDAO = new ProductDAO();
+
+        try {
+            if ("save".equals(action)) {
+                saveProduct(request, productDAO);
+            } else if ("delete".equals(action)) {
+                deleteProduct(request, productDAO);
+            }
+
+            // Redirect back to list
+            response.sendRedirect("admin_products");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new ServletException("Database error", e);
+        }
+    }
+
+    private void saveProduct(HttpServletRequest request, ProductDAO productDAO) throws SQLException {
         String idStr = request.getParameter("id");
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         String priceStr = request.getParameter("price");
         String stockStr = request.getParameter("stock");
-        String imageUrl = request.getParameter("imageUrl");
         String category = request.getParameter("category");
         String alcoholStr = request.getParameter("alcoholContent");
         String nationality = request.getParameter("nationality");
+        String imageUrl = request.getParameter("imageUrl");
+
+        // Handle Image Placeholder
+        if (imageUrl == null || imageUrl.trim().isEmpty()) {
+            imageUrl = "img/default-bottle.png";
+        }
 
         ProductBean product = new ProductBean();
         product.setName(name);
         product.setDescription(description);
         product.setPrice(new BigDecimal(priceStr));
         product.setStock(Integer.parseInt(stockStr));
-        product.setImageUrl(imageUrl);
         product.setCategory(category);
-        product.setAlcoholContent(new BigDecimal(alcoholStr));
+        product.setAlcoholContent(alcoholStr != null && !alcoholStr.isEmpty() ? new BigDecimal(alcoholStr) : null);
         product.setNationality(nationality);
+        product.setImageUrl(imageUrl);
         product.setActive(true);
 
-        ProductDAO productDAO = new ProductDAO();
-
-        try {
-            if (idStr == null || idStr.isEmpty()) {
-                // Insert
-                productDAO.doSave(product);
-            } else {
-                // Update
-                product.setId(Integer.parseInt(idStr));
-                productDAO.doUpdate(product);
-            }
-            response.sendRedirect(request.getContextPath() + "/admin/products?action=list");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database Error");
+        if (idStr != null && !idStr.isEmpty()) {
+            // Update
+            product.setId(Integer.parseInt(idStr));
+            productDAO.doUpdate(product);
+        } else {
+            // New Insert
+            productDAO.doSave(product);
         }
     }
 
-    private void listProducts(HttpServletRequest request, HttpServletResponse response, ProductDAO dao)
-            throws SQLException, ServletException, IOException {
-        // Retrieve all products (active)
-        // TODO: Ideally we might want to see inactive ones too in admin, but reuse
-        // existing method for now
-        List<ProductBean> products = dao.doRetrieveAll(null, null, null);
-        request.setAttribute("products", products);
-        request.getRequestDispatcher("/admin_products.jsp").forward(request, response);
+    private void deleteProduct(HttpServletRequest request, ProductDAO productDAO) throws SQLException {
+        String idStr = request.getParameter("id");
+        if (idStr != null) {
+            productDAO.doDelete(Integer.parseInt(idStr));
+        }
     }
 
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response, ProductDAO dao)
-            throws SQLException, ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        ProductBean existingProduct = dao.doRetrieveByKey(id);
-        request.setAttribute("product", existingProduct);
-        request.getRequestDispatcher("/product_form.jsp").forward(request, response);
-    }
-
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response, ProductDAO dao)
-            throws SQLException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        dao.doDelete(id);
-        response.sendRedirect("products?action=list");
+    private boolean isAdmin(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null)
+            return false;
+        UserBean user = (UserBean) session.getAttribute("user");
+        return user != null && user.isAdmin();
     }
 }

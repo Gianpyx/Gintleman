@@ -13,7 +13,7 @@ public class ProductDAO {
      * Retrieves all active products, optionally filtered by min/max price and
      * nationality.
      */
-    public synchronized List<ProductBean> doRetrieveAll(Double minPrice, Double maxPrice, String nationality)
+    public synchronized List<ProductBean> doRetrieveAll(Double minPrice, Double maxPrice, List<String> nationalities)
             throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -27,8 +27,15 @@ public class ProductDAO {
         if (maxPrice != null) {
             query.append(" AND price <= ?");
         }
-        if (nationality != null && !nationality.isEmpty()) {
-            query.append(" AND nationality = ?");
+        if (nationalities != null && !nationalities.isEmpty()) {
+            query.append(" AND nationality IN (");
+            for (int i = 0; i < nationalities.size(); i++) {
+                query.append("?");
+                if (i < nationalities.size() - 1) {
+                    query.append(",");
+                }
+            }
+            query.append(")");
         }
 
         try {
@@ -40,8 +47,12 @@ public class ProductDAO {
                 preparedStatement.setDouble(paramIndex++, minPrice);
             if (maxPrice != null)
                 preparedStatement.setDouble(paramIndex++, maxPrice);
-            if (nationality != null && !nationality.isEmpty())
-                preparedStatement.setString(paramIndex++, nationality);
+
+            if (nationalities != null && !nationalities.isEmpty()) {
+                for (String nat : nationalities) {
+                    preparedStatement.setString(paramIndex++, nat);
+                }
+            }
 
             ResultSet rs = preparedStatement.executeQuery();
 

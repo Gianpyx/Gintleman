@@ -1,157 +1,174 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang = "it">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gintleman</title>
-    <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
-    <link rel="stylesheet" href="css/style.css"> <!-- Stili dell'homepage -->
-    <link rel="stylesheet" href="css/header.css"> <!-- Stili dell’header -->
-    <link rel="stylesheet" href="css/footer.css"> <!-- Stili del footer -->
-    <link rel="stylesheet" href="css/style_tablet.css"> <!-- Stili dell'homepage -->
-    <link rel="stylesheet" href="css/style_mobile.css"> <!-- Stili dell'homepage -->
-    <link rel="stylesheet" href="font/stylesheet1.css"> <!-- Font -->
+    <title>Gintleman - Premium Gin Shop</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
+    
+    <!-- Font Google: DM Sans (Simile a Google Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Fogli di stile -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Base Globale -->
+    <link rel="stylesheet" href="css/header.css"> <!-- Header -->
+    <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
+    <link rel="stylesheet" href="css/index.css">  <!-- SPECIFICO PER LA HOME -->
 </head>
 
 <body>
 
+    <%@ include file="header.jsp" %>
 
-<%@ include file="header.jsp" %>
-
-
-
-
-<div id = "hero">
-    <section id = "zona_centrale">
-        <h1 id="Title">Gintleman</h1>
-        <p>Il tuo gin con un click</p>
-        <button class="scopri_di_piu" type="button">
-            <span class="sdp_text">Scopri di più</span>
-            <span class="sdp_arrow">↓</span>
-        </button>
-    </section>
-</div>
-
-
-
-
-
-<div id = "second_section">
-    <h1 id="title_2">
-        Our Partnership
-    </h1>
-    <section id="partner">
-        <button class="bottone" type="button" onclick="window.location.href='bombay.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="img/Bottiglia%20Gin%20Bombay.png" class="bottiglie_gr" alt=""/>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='gin_mare.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="img/Bottiglia%20Gin%20Mare.png" class="bottiglie_gr"/>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='monkey_47.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="img/Bottiglia%20Monkey%2047.png" class="bottiglie_gr"/>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='malfy.jsp';" >
-            <div class="rettangolo_bt">
-                <img src="img/Bottiglia%20Gin%20Malfy.png" class="bottiglie_gr"/>
-            </div>
-        </button>
-    </section>
-</div>
-
-
-
-
-<div id="third_section">
-    <section id="general">
-        <button id="scopri_di_più">
-            <div id="rettangolo_sdp">
-                
-            </div>
-        </button>
-
-        <button id="go_shopping">
-            <div id="rettangolo_gs">
-                <div id="testo_cerchio">
-                    <p id="go_shopping_txt">Go shopping</p>
-                </div>
-            </div>
-            </button>
-    </section>
-</div>
-
-
-<div id = "fouth_section">
-    <h1 id = "title_3">
-        Best Seller
-    </h1>
-    <section id="best_seller">
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="" class="bottiglie_gr"/>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="" class="bottiglie_gr"/>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="" class="bottiglie_gr"/>
-            </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='login.jsp';" >
-            <div class="rettangolo_bt">
-                <img src="" class="bottiglie_gr"/>
-            </div>
-        </button>
-    </section>
-</div>
-
-
-
-<div id = "fifth_section">
-    <div id = "riquadri_shop">
-        <button class="bottone_piccolo" type="button" onclick="window.location.href='login.jsp';">
-            <div class="bt_piccolo">
-                <img src="img/Costiera%20Amalfitana.png" class="bt_piccolo_gr"/>
-                <p class="caption">Gin Italiani</p>
-            </div>
-        </button>
-        <button class="bottone_piccolo" type="button" onclick="window.location.href='login.jsp';">
-            <div class="bt_piccolo">
-                <p class="caption">Gin Esteri</p>
-                <img src="img/Londra.png" class="bt_piccolo_gr"/>
-            </div>
-        </button>
-        <div id="cta_section">
-            <div class="cta_card">
-                <p class="cta_title">Registrati su Gintleman<br>e scopri i tuoi vantaggi.</p>
-                <button type="button" class="cta_btn" onclick="window.location.href='scopri_di_piu.jsp';">
-                    Scopri tutti i vantaggi
-                </button>
-            </div>
+    <!-- 1. HERO SECTION -->
+    <header id="hero">
+        <div id="zona_centrale">
+            <h1>GINTLEMAN</h1>
+            <p>Il tuo gin, con un clic!</p>
+            <a href="catalog.jsp" class="btn-hero">Scopri la Collezione</a>
         </div>
-    </div>
-</div>
+    </header>
 
-<%@ include file="footer.jsp" %>
-<script src="js/header.js"></script>
+    <!-- 2. PARTNER SECTION -->
+    <section id="partners">
+        <h2 class="section-title">Our Partnership</h2>
+        <div class="card-grid">
+            <!-- Card 1: Bombay -->
+            <a href="bombay.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Gin%20Bombay.png" alt="Bombay Gin" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Bombay Sapphire</h3>
+                    <p class="card-subtitle">Il più Famoso</p>
+                </div>
+            </a>
+            
+            <!-- Card 2: Gin Mare -->
+            <a href="gin_mare.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Gin%20Mare.png" alt="Gin Mare" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Gin Mare</h3>
+                    <p class="card-subtitle">Mediterranean Gin</p>
+                </div>
+            </a>
 
+            <!-- Card 3: Monkey 47 -->
+            <a href="monkey_47.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Monkey%2047.png" alt="Monkey 47" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Monkey 47</h3>
+                    <p class="card-subtitle">Schwarzwald Dry Gin</p>
+                </div>
+            </a>
+
+            <!-- Card 4: Malfy -->
+            <a href="malfy.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Gin%20Malfy.png" alt="Malfy Gin" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Malfy</h3>
+                    <p class="card-subtitle">Gin Italiano</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. BANNER SECTION (Custom Image + Blue Card) -->
+    <section id="banner-cta">
+        <!-- Parte Sinistra: Immagine SVG -->
+        <div class="banner-img-container">
+            <img src="img/immagine_go_shopping.svg" alt="Gintleman Collection">
+        </div>
+        
+        <!-- Parte Destra: Card Blu -->
+        <a href="catalog.jsp" class="banner-card">
+            <div class="banner-card-content">
+                <h2 class="banner-card-title">Go Shopping</h2>
+                <div class="banner-arrow">&rarr;</div>
+            </div>
+            <div class="banner-footer">
+                Store: gintleman.it
+            </div>
+        </a>
+    </section>
+
+    <!-- 4. BEST SELLER SECTION -->
+    <section id="bestsellers">
+        <h2 class="section-title">Best Sellers</h2>
+        <div class="card-grid">
+            <!-- Esempio Best Seller -->
+            <a href="product.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Gin%20Malfy.png" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Malfy Originale</h3>
+                    <p class="card-subtitle">€ 29.90</p>
+                </div>
+            </a>
+            <a href="product.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Gin%20Bombay.png" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Bombay Sapphire</h3>
+                    <p class="card-subtitle">€ 22.50</p>
+                </div>
+            </a>
+            <a href="product.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Gin%20Mare.png" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Gin Mare Capri</h3>
+                    <p class="card-subtitle">€ 38.00</p>
+                </div>
+            </a>
+            <a href="product.jsp" class="card">
+                <div class="card-img-container">
+                    <img src="img/Bottiglia%20Monkey%2047.png" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Monkey 47 Dry</h3>
+                    <p class="card-subtitle">€ 45.00</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 5. CATEGORIES & REGISTRATION -->
+    <section id="shop-categories">
+        <a href="catalog.jsp?nationality=Italy" class="category-card">
+            <img src="img/Costiera%20Amalfitana.png" alt="Gin Italiani"> <!-- Assicurati che l'img esista o usa placeholder -->
+            <div class="category-label">Gin Italiani</div>
+        </a>
+        <a href="catalog.jsp?nationality=UK&nationality=Scotland&nationality=Japan&nationality=Spain" class="category-card">
+            <img src="img/Londra.png" alt="Gin Esteri"> <!-- Assicurati che l'img esista -->
+            <div class="category-label">Gin Esteri</div>
+        </a>
+    </section>
+
+    <!-- 6. REGISTRATION CTA (Blue Card Style) -->
+    <section id="cta-register">
+        <h2>Registrati su Gintleman<br>e scopri i tuoi vantaggi.</h2>
+        <a href="scopri_di_piu.jsp" class="btn-cta">Scopri tutti i vantaggi</a>
+    </section>
+
+    <%@ include file="footer.jsp" %>
+    
+    <!-- Script JS Specifico Home -->
+    <script src="js/index.js"></script>
 
 </body>
 </html>

@@ -16,40 +16,48 @@ import java.sql.SQLException;
 
 @WebServlet(name = "CheckoutServlet", value = "/checkout")
 public class CheckoutServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("user");
+        Cart cart = (Cart) session.getAttribute("cart");
 
-        // 1. Check if user is logged in
         if (user == null) {
             response.sendRedirect("login.jsp");
             return;
         }
-
-        // 2. Get Cart
-        Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null || cart.isEmpty()) {
-            response.sendRedirect("catalog.jsp"); // Retrieve URL or show empty cart message
+            response.sendRedirect("catalog.jsp");
             return;
         }
 
-        // 3. Create Order Object
+        // Retrieve form data
+        String address = request.getParameter("address");
+        String city = request.getParameter("city");
+        String zipCode = request.getParameter("zipCode");
+
+        // Create Order Object
         OrderBean order = new OrderBean();
         order.setUserId(user.getId());
         order.setTotalAmount(cart.getTotalAmount());
         order.setStatus("COMPLETED");
 
-        // 4. Save to DB
+        // Set Shipping Info
+        order.setAddress(address);
+        order.setCity(city);
+        order.setZipCode(zipCode);
+
+        // Save to DB
         OrderDAO orderDAO = new OrderDAO();
         try {
             orderDAO.doSave(order, cart);
 
-            // 5. Clear Cart on success
+            // Clear Cart on success
             session.removeAttribute("cart");
 
-            // 6. Redirect to Order History (User Area)
-            response.sendRedirect("orders.jsp");
+            // Redirect to Confirmation Page
+            response.sendRedirect("thankyou.jsp");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,8 +65,9 @@ public class CheckoutServlet extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        // Direct access to checkout -> show form
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
 }

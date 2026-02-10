@@ -9,7 +9,7 @@ public class DriverManagerConnectionPool {
     private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
     private static String DB_URL = "jdbc:mysql://localhost:3306/gintleman_db";
     private static String USER = "root";
-    private static String PASSWORD = "password"; /* Change this in production or use env vars */
+    private static String PASSWORD = "admin123"; /* Change this in production or use env vars */
 
     static {
         try {
@@ -21,6 +21,18 @@ public class DriverManagerConnectionPool {
     }
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL, USER, PASSWORD);
+        try {
+            System.out.println("DEBUG: Tentativo connessione DB...");
+            System.out.println("DEBUG: URL=" + DB_URL);
+            System.out.println("DEBUG: USER=" + USER);
+            // Non stampiamo la password per sicurezza, ma sappiamo che è quella settata
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            System.out.println("DEBUG: Connessione riuscita!");
+            return conn;
+        } catch (SQLException e) {
+            System.err.println("DEBUG: ERRORE CONNESSIONE DB: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
     }
 }

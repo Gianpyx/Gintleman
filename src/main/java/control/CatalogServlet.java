@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CatalogServlet", value = "/catalog")
@@ -35,14 +36,24 @@ public class CatalogServlet extends HttpServlet {
 
         String minPriceStr = request.getParameter("minPrice");
         String maxPriceStr = request.getParameter("maxPrice");
-        String nationality = request.getParameter("nationality");
+
+        // Handle multiple nationality parameters
+        String[] nationalityArray = request.getParameterValues("nationality");
+        List<String> nationalities = new ArrayList<>();
+        if (nationalityArray != null) {
+            for (String nat : nationalityArray) {
+                if (nat != null && !nat.trim().isEmpty()) {
+                    nationalities.add(nat);
+                }
+            }
+        }
 
         Double minPrice = (minPriceStr != null && !minPriceStr.isEmpty()) ? Double.valueOf(minPriceStr) : null;
         Double maxPrice = (maxPriceStr != null && !maxPriceStr.isEmpty()) ? Double.valueOf(maxPriceStr) : null;
 
         ProductDAO productDAO = new ProductDAO();
         try {
-            List<ProductBean> products = productDAO.doRetrieveAll(minPrice, maxPrice, nationality);
+            List<ProductBean> products = productDAO.doRetrieveAll(minPrice, maxPrice, nationalities);
 
             // Manual JSON construction to avoid Gson dependency for now
             PrintWriter out = response.getWriter();

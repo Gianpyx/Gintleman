@@ -17,7 +17,7 @@ public class OrderDAO {
         PreparedStatement psItem = null;
         int orderId = -1;
 
-        String insertOrderSQL = "INSERT INTO Orders (user_id, total_amount, status) VALUES (?, ?, ?)";
+        String insertOrderSQL = "INSERT INTO Orders (user_id, total_amount, status, address, city, zip_code) VALUES (?, ?, ?, ?, ?, ?)";
         String insertItemSQL = "INSERT INTO OrderItem (order_id, product_id, quantity, price_at_purchase) VALUES (?, ?, ?, ?)";
 
         try {
@@ -28,7 +28,10 @@ public class OrderDAO {
             psOrder = connection.prepareStatement(insertOrderSQL, Statement.RETURN_GENERATED_KEYS);
             psOrder.setInt(1, order.getUserId());
             psOrder.setBigDecimal(2, order.getTotalAmount());
-            psOrder.setString(3, "COMPLETED"); // Assuming immediate completion for this MVP
+            psOrder.setString(3, "COMPLETED");
+            psOrder.setString(4, order.getAddress());
+            psOrder.setString(5, order.getCity());
+            psOrder.setString(6, order.getZipCode());
 
             int affectedRows = psOrder.executeUpdate();
             if (affectedRows == 0) {

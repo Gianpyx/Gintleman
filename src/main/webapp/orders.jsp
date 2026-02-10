@@ -50,14 +50,14 @@
     <h1>I tuoi Ordini</h1>
     
     <%
-        UserBean user = (UserBean) session.getAttribute("user");
-        if (user == null) {
+        UserBean currentUser = (UserBean) session.getAttribute("user");
+        if (currentUser == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
         OrderDAO orderDAO = new OrderDAO();
-        List<OrderBean> orders = orderDAO.doRetrieveByUser(user.getId());
+        List<OrderBean> orders = orderDAO.doRetrieveByUser(currentUser.getId());
         
         if (orders.isEmpty()) {
     %>

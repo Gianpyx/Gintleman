@@ -1,0 +1,95 @@
+/* Admin Dashboard Layout */
+body {
+    background-color: #f4f4f4;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 7em; /* Space for fixed header */
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 250px;
+    background-color: #0B0E0D; /* Dark theme matching header */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    position: fixed;
+    bottom: 0;
+    top: 7em; /* Below header */
+    left: 0;
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.admin-sidebar li {
+    width: 100%;
+}
+
+.admin-sidebar a {
+    display: block;
+    padding: 1rem 2rem;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.admin-sidebar a:hover, .admin-sidebar a.active {
+    background-color: #1a1e1d;
+    color: white;
+    border-left-color: #fff;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background-color: #333;
+    margin: 1rem 0;
+}
+
+.logout-link {
+    color: #ff6b6b !important; /* Redish for logout */
+}
+
+.logout-link:hover {
+    background-color: rgba(255, 107, 107, 0.1) !important;
+    border-left-color: #ff6b6b !important;
+}
+
+/* Main Content */
+.admin-content {
+    flex-grow: 1;
+    margin-left: 250px; /* Width of sidebar */
+    padding: 3rem;
+    width: calc(100% - 250px);
+}
+
+.admin-header {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.admin-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.admin-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}

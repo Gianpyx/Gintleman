@@ -9,22 +9,24 @@
       <div class="sezione-sinistra">
         <button id="logo-header" type="button">
           <a href="index.jsp">
-            <img src="img/Logo_nero.png" sizes="32x32" alt="Home">
+            <img src="img/Logo_2.png" sizes="32x32" alt="Home">
           </a>
         </button>
       </div>
 
       <!-- Sezione Centrale: Barra di Ricerca (Solo Desktop) -->
       <div class="sezione-centrale solo-desktop">
-        <div class="barra-ricerca">
+        <div class="barra-ricerca" onclick="this.querySelector('input').focus()">
           <form action="#" method="get">
-            <input type="text" name="cerca" placeholder="Cerca">
             <button type="submit" aria-label="Cerca">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             </button>
+            <label>
+              <input type="text" name="cerca" placeholder="Cosa stai cercando?">
+            </label>
           </form>
         </div>
       </div>
@@ -40,18 +42,20 @@
               if (user != null) {
             %>
                 <div class="user-icon" style="color: white; display: flex; align-items: center; gap: 10px;">
-                    <%-- Replace with an actual icon image if available --%>
-                    <span>Welcome, <b><%= user.getFirstName() %></b></span>
-                    <a href="logout" style="color: grey; font-size: 0.8em; text-decoration: none;">(Logout)</a>
+    <% if (user.isAdmin()) { %>
+        <a href="admin_dashboard.jsp" class="login-scritta user-welcome-link">Welcome, <b><%= user.getFirstName() %></b></a>
+    <% } else { %>
+        <span class="login-scritta user-welcome-link">Welcome, <b><%= user.getFirstName() %></b></span>
+    <% } %>
                 </div>
             <% } else { %>
                 <a href="login.jsp" class="login-scritta">Log in</a>
             <% } %>
           </div>
           <div class="carrello">
-            <button id="bottone-carrello" type="button">
-              <img src="img/Logo_carrello.png" alt="Carrello"/>
-            </button>
+            <a href="cart" id="bottone-carrello">
+              <img src="img/Carrello_2.png" alt="Carrello"/>
+            </a>
           </div>
         </div>
 

@@ -1,66 +1,56 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.UserBean" %>
+<%
+    UserBean adminUser = (UserBean) session.getAttribute("user");
+    if (adminUser == null || !"ADMIN".equalsIgnoreCase(adminUser.getRole())) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <html>
 <head>
     <title>Admin Dashboard - Gintleman</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <style>
-        .admin-container {
-            max-width: 1000px;
-            margin: 120px auto 40px;
-            padding: 20px;
-            text-align: center;
-        }
-        .admin-card {
-            display: inline-block;
-            width: 300px;
-            padding: 40px;
-            margin: 20px;
-            background-color: #f4f4f4;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-decoration: none;
-            color: #333;
-            transition: transform 0.2s;
-        }
-        .admin-card:hover {
-            transform: translateY(-5px);
-            background-color: #e0e0e0;
-        }
-        .admin-card h2 {
-            margin-top: 0;
-        }
-    </style>
+    <!-- Admin Specific Style -->
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <%@ include file="header.jsp" %>
 
-<%
-    UserBean user = (UserBean) session.getAttribute("user");
-    if (user == null || !user.isAdmin()) {
-        response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
-        return;
-    }
-%>
+<div class="admin-wrapper">
+    <!-- Sidebar -->
+    <jsp:include page="admin_sidebar.jsp" />
 
-<div class="admin-container">
-    <h1>Admin Dashboard</h1>
-    
-    <a href="admin/products?action=list" class="admin-card">
-        <h2>Gestione Prodotti</h2>
-        <p>Aggiungi, modifica o elimina Gin dal catalogo.</p>
-    </a>
+    <!-- Main Content -->
+    <main class="admin-content">
+        <div class="admin-header">
+            <h1>Benvenuto, <%= adminUser.getFirstName() %></h1>
+            <p>Pannello di controllo amministrativo</p>
+        </div>
 
-    <a href="#" class="admin-card" style="opacity: 0.5; cursor: not-allowed;">
-        <h2>Gestione Utenti</h2>
-        <p>Presto disponibile</p>
-    </a>
+        <div class="admin-card">
+            <h2>Statistiche Veloci</h2>
+            <p>Qui potrai vedere un riepilogo delle attività recenti.</p>
+            <!-- Content placeholder -->
+        </div>
+        
+        <div class="admin-card">
+            <h2>Azioni Recenti</h2>
+            <p>Nessuna azione recente registrata.</p>
+        </div>
+    </main>
 </div>
-
-<%@ include file="footer.jsp" %>
 
 </body>
 </html>

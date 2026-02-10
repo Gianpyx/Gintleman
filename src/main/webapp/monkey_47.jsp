@@ -6,9 +6,13 @@
     <title>Monkey 47</title>
     <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
 
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/monkey_47.css"> <!-- Stili dell'homepage -->
 </head>
 <body>
+
+<%@ include file="header.jsp" %>
 
 
 

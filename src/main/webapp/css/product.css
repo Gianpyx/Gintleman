@@ -1,0 +1,196 @@
+/* =========================================
+   Gintleman - Stili Pagina Prodotto (product.css)
+   ========================================= */
+
+/* --- Layout Generale --- */
+.product-page-container {
+    max-width: 1300px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    font-family: var(--font-main, 'DM Sans', sans-serif);
+    color: #000;
+}
+
+.product-header-group {
+    margin-bottom: 3rem;
+}
+
+.product-title-main {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.product-subtitle-main {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+/* --- Griglia 3 Colonne --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 350px; /* Immagine - Descrizione - BuyBox */
+    gap: 4rem;
+    align-items: start;
+}
+
+/* 1. Colonna Immagine */
+.product-image-box {
+    border: 3px solid #33729E; /* Bordo Blu Spesso */
+    border-radius: 30px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff; /* O trasparente se preferito */
+    height: 600px; /* Altezza fissa imponente */
+    position: relative;
+}
+
+.product-image-box img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+/* 2. Colonna Descrizione */
+.product-description-box {
+    padding-top: 1rem;
+}
+
+.desc-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.desc-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 3. Colonna Buy Box */
+.product-buy-box {
+    border: 2px solid #33729E; /* Box con bordo blu come riferimento */
+    border-radius: 20px;
+    padding: 2rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.product-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.shipping-badge {
+    display: inline-block;
+    background: #e6f0ff; /* Azzurrino chiaro */
+    color: #0066cc;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start;
+}
+
+.shipping-info {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: -0.5rem;
+}
+
+.availability-badge {
+    background: #66cc66; /* Verde acceso */
+    color: #003300;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Select Quantità */
+.qty-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #33729E;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px; /* Pillola */
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    appearance: none; /* Rimuove stile default select */
+    -webkit-appearance: none;
+    text-align: left;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-size: 0.8rem;
+}
+
+/* Bottoni CTA */
+.btn-buy-outline {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: #fff;
+    border: 2px solid #ccc;
+    color: #000;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-buy-outline:hover {
+    border-color: #000;
+}
+
+.btn-add-cart {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: #33729E;
+    border: none;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer; /* Aggiunto cursore */
+    transition: background 0.2s;
+}
+
+.btn-add-cart:hover {
+    background-color: #275678;
+}
+
+/* Responsività */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .product-image-box {
+        height: 400px;
+    }
+}

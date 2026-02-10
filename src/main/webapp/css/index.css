@@ -1,0 +1,399 @@
+/* =========================================
+   Gintleman - Stili Specifici Homepage (index.css)
+   ========================================= */
+
+/* --- Variabili Palette Richiesta --- */
+:root {
+    --bg-color: #FFFFFF;
+    --bg-secondary: #F7F6F7;
+    --primary-blue: #33729E;
+    --text-dark: #0B0E0D;
+    --font-main: 'DM Sans', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    font-family: var(--font-main);
+}
+
+/* --- Hero Section --- */
+#hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../img/hero_background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Rimosso colore testo bianco, ora è nero come da foto */
+    color: #000;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Rimosso overlay scuro globale per permettere estetica "chiara" */
+#hero::before {
+    display: none; 
+}
+
+#zona_centrale {
+    position: relative;
+    z-index: 2;
+    padding: 8rem 4rem; /* Più padding verticale per il gradiente */
+    max-width: 1200px;
+    width: 90%; /* Assicura larghezza anche su mobile */
+    
+    /* Gradiente Radiale FIX: Bianco solido al centro, sfuma a trasparente ai bordi */
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0) 70%);
+    
+    /* Rimuovo border-radius netto e backdrop-filter che creano artefatti visibili */
+    border-radius: 0; 
+    
+    opacity: 0; 
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#zona_centrale h1 {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 6rem; /* Molto grande */
+    margin: 0;
+    line-height: 1;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+#zona_centrale p {
+    font-family: var(--font-main);
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    color: #000;
+}
+
+/* Bottone stile: Grigio chiaro, arrotondato */
+.btn-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2.5rem;
+    background-color: #e0e0e0; /* Colore */
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-hero:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+/* --- Sezioni Generali --- */
+section {
+    padding: 2rem 2rem; /* Padding interno standard */
+    max-width: var(--container-max, 1200px);
+    margin: 0 auto 3em auto; /* SPAZIATURA STANDARD: 3em tra le sezioni */
+}
+
+
+#partners, #bestsellers {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.section-title {
+    font-family: var(--font-main);
+    font-size: 3rem;
+    text-align: left; /* Richiesta #3 */
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+/* --- Sezione Banner (Go Shopping) --- */
+#banner-cta {
+    display: flex; /* Flex per controllo preciso */
+    gap: 1.5rem; /* Separazione netta tra immagine e card */
+    margin: 0 auto 3em auto; /* Spaziatura Standard */
+    height: 600px; /* Altezza fissa per allineamento */ 
+    align-items: stretch;
+    padding-top: 0; 
+    padding-bottom: 0;
+}
+
+.banner-img-container {
+    flex: 1.5; /* L'immagine prende più spazio */
+    background-color: #f0f0f0;
+    border-radius: 20px; /* Arrotondato su tutti i lati */
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-card {
+    flex: 1;
+    background-color: #33729E;
+    border-radius: 20px; /* Arrotondato su tutti i lati */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Spinge il footer in basso */
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-card-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.banner-card-title {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    color: #fff;
+    margin: 0;
+}
+
+.banner-arrow {
+    background: #fff;
+    color: #33729E;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.banner-card:hover .banner-arrow {
+    transform: translateX(10px);
+}
+
+.banner-footer {
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+    #banner-cta { flex-direction: column; height: auto; }
+    .banner-img-container { border-radius: 20px 20px 0 0; height: 300px; }
+    .banner-card { border-radius: 0 0 20px 20px; height: 250px; }
+}
+
+/* --- Shop Categories --- */
+#shop-categories {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Spazio tra le due card */
+    margin-bottom: 3em; /* Spaziatura Standard */
+    flex-wrap: wrap; /* Per mobile */
+}
+
+.category-card {
+    position: relative;
+    flex: 1; /* Larghezza flessibile per stare sulla stessa riga */
+    min-width: 300px; /* Minimo per mobile, poi va a capo */
+    height: 250px; /* Altezza ridotta come da richiesta */
+    border-radius: 50px; /* Arrotondamento forte come da foto */
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-label {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2); /* Leggero scuro per leggere testo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 4rem; /* Scritta molto grande come da foto */
+    font-weight: 800; /* Bold/Black */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* --- CTA Register (Blue Card) --- */
+#cta-register {
+    background: var(--primary-blue); /* #33729E */
+    color: #fff;
+    text-align: center;
+    padding: 4rem;
+    margin: 0 auto 3em auto; /* Spaziatura Standard */
+    max-width: var(--container-max, 1200px); /* Stessa larghezza container */
+    border-radius: 50px; /* Arrotondamento identico alle categorie */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#cta-register h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: #fff; /* Bottone bianco */
+    color: var(--text-dark); /* Testo scuro */
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Riduzione specifica spazio sopra i Best Seller per avvicinare il Banner */
+#bestsellers {
+    padding-top: 1rem;
+}
+
+/* --- Griglia Card (Partner & Best Seller) --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; /* Ridotto gap tra card */
+    width: 100%;
+}
+
+/* Stile Card */
+.card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: transparent; /* Sfondo trasparente per l'intero contenitore */
+    border: none;
+    box-shadow: none; /* Rimuovo ombre globali */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: none;
+}
+
+/* Contenitore Immagine */
+.card-img-container {
+    background-color: #33729E;
+    border-radius: 12px;
+    height: 400px; /* Altezza fissa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img {
+    max-height: 85%;
+    max-width: 85%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+}
+
+.card:hover .card-img {
+    transform: scale(1.05);
+}
+
+/* Info Sotto la Card */
+.card-info {
+    padding-top: 1rem;
+    text-align: left;
+}
+
+.card-title {
+    font-family: var(--font-main);
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-dark);
+    text-decoration: none; /* Base state no underline */
+    transition: text-decoration 0.2s ease;
+}
+
+.card:hover .card-title {
+    text-decoration: underline; /* Hover state */
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.25rem;
+    font-weight: 400;
+}
+
+/* Rimuovo overlay vecchi */
+.card-overlay {
+    display: none;
+}
+
+/* --- Keyframes --- */
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    #hero { height: 70vh; }
+    #zona_centrale h1 { font-size: 3rem; }
+    .section-title { font-size: 2.5rem; text-align: center; } /* Mobile center alignment */
+    #banner-cta { grid-template-columns: 1fr; }
+}

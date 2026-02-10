@@ -26,8 +26,14 @@ public class LoginServlet extends HttpServlet {
         try {
             user = userDAO.doRetrieveByEmailPassword(email, password);
         } catch (SQLException e) {
+            System.err.println("DEBUG: LoginServlet SQLException: " + e.getMessage());
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database Error");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database Error: " + e.getMessage());
+            return;
+        } catch (RuntimeException e) {
+            System.err.println("DEBUG: LoginServlet RuntimeException: " + e.getMessage());
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Error: " + e.getMessage());
             return;
         }
 

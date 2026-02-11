@@ -9,6 +9,7 @@
     padding: 0 2rem;
     font-family: var(--font-main, 'DM Sans', sans-serif);
     color: #000;
+    min-height: 60vh; /* Spinge il footer in basso se il contenuto è poco */
 }
 
 .product-header-group {
@@ -159,6 +160,7 @@
     text-align: center;
     text-decoration: none;
     transition: all 0.2s;
+    box-sizing: border-box; /* Ensures padding+border don't expand width */
 }
 
 .btn-buy-outline:hover {
@@ -170,7 +172,7 @@
     width: 100%;
     padding: 1rem;
     background: #33729E;
-    border: none;
+    border: 2px solid transparent; /* Match border width of btn-buy-outline */
     color: #fff;
     border-radius: 30px;
     font-size: 1.2rem;
@@ -178,6 +180,7 @@
     text-align: center;
     cursor: pointer; /* Aggiunto cursore */
     transition: background 0.2s;
+    box-sizing: border-box; /* Match box model */
 }
 
 .btn-add-cart:hover {

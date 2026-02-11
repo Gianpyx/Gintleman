@@ -59,15 +59,32 @@ public class CartServlet extends HttpServlet {
             ProductBean product = productDAO.doRetrieveByKey(productId);
 
             if (product != null && product.isActive()) {
-                cart.addItem(product);
+                int quantity = 1;
+                String quantityStr = request.getParameter("quantity");
+                if (quantityStr != null && !quantityStr.isEmpty()) {
+                    try {
+                        quantity = Integer.parseInt(quantityStr);
+                        if (quantity <= 0)
+                            quantity = 1;
+                    } catch (NumberFormatException e) {
+                        quantity = 1;
+                    }
+                }
 
-                // Return JSON response for AJAX
-                response.setContentType("application/json");
-                PrintWriter out = response.getWriter();
-                out.print("{");
-                out.print("\"status\":\"success\",");
-                out.print("\"cartCount\":" + cart.getTotalItemsCount());
-                out.print("}");
+                cart.addItem(product, quantity);
+
+                String redirect = request.getParameter("redirect");
+                if ("cart".equals(redirect)) {
+                    response.sendRedirect(request.getContextPath() + "/cart");
+                } else {
+                    // Return JSON response for AJAX
+                    response.setContentType("application/json");
+                    PrintWriter out = response.getWriter();
+                    out.print("{");
+                    out.print("\"status\":\"success\",");
+                    out.print("\"cartCount\":" + cart.getTotalItemsCount());
+                    out.print("}");
+                }
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found or inactive");
             }

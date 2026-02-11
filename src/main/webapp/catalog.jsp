@@ -152,8 +152,10 @@
                     const imgUrl = product.imageUrl ? product.imageUrl : 'img/default-bottle.png';
 
                     card.innerHTML = 
-                        '<img src="' + imgUrl + '" alt="' + product.name + '" class="product-image">' +
-                        '<div class="product-name">' + product.name + '</div>' +
+                        '<a href="product?id=' + product.id + '" style="text-decoration: none; color: inherit;">' +
+                            '<img src="' + imgUrl + '" alt="' + product.name + '" class="product-image">' +
+                            '<div class="product-name">' + product.name + '</div>' +
+                        '</a>' +
                         '<div class="product-nationality">' + product.nationality + '</div>' +
                         '<div class="product-price">€ ' + product.price.toFixed(2) + '</div>' +
                         '<button class="btn-add-cart" onclick="addToCart(' + product.id + ')">Aggiungi al Carrello</button>';

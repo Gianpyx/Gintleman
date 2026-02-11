@@ -3,7 +3,7 @@
     <title>Header</title>
   </head>
   <body>
-  <header class="testata">
+<header class="testata">
     <nav class="barra-navigazione">
       <!-- Sezione Sinistra: Logo -->
       <div class="sezione-sinistra">

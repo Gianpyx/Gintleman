@@ -1,10 +1,18 @@
 /* Catalog Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 .catalog-container {
     display: flex;
     max-width: 1200px;
     margin: 120px auto 40px; /* Top margin accounts for fixed header */
     padding: 0 20px;
     gap: 30px;
+    flex: 1;
 }
 
 /* Sidebar Filters */
@@ -56,8 +64,9 @@
 .catalog-grid {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* Force 4 columns on desktop */
     gap: 20px;
+    min-width: 0; /* Fix for flex item overflow */
 }
 
 .product-card {
@@ -112,11 +121,33 @@
     background-color: #f7ca00;
 }
 
+@media (max-width: 1100px) {
+    .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .catalog-container {
         flex-direction: column;
+        margin-top: 80px;
     }
     .catalog-sidebar {
         width: 100%;
+    }
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
     }
 }

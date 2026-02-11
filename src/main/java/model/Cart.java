@@ -18,14 +18,18 @@ public class Cart implements Serializable {
     }
 
     public void addItem(ProductBean product) {
+        addItem(product, 1);
+    }
+
+    public void addItem(ProductBean product, int quantity) {
         Optional<CartItem> existingItem = items.stream()
                 .filter(i -> i.getProduct().getId() == product.getId())
                 .findFirst();
 
         if (existingItem.isPresent()) {
-            existingItem.get().incrementQuantity();
+            existingItem.get().setQuantity(existingItem.get().getQuantity() + quantity);
         } else {
-            items.add(new CartItem(product, 1));
+            items.add(new CartItem(product, quantity));
         }
     }
 

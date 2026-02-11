@@ -65,6 +65,7 @@ public class CatalogServlet extends HttpServlet {
                 out.print("\"name\":\"" + escapeJson(p.getName()) + "\",");
                 out.print("\"price\":" + p.getPrice() + ",");
                 out.print("\"nationality\":\"" + escapeJson(p.getNationality()) + "\",");
+                out.print("\"stock\":" + p.getStock() + ",");
                 out.print("\"imageUrl\":\"" + (p.getImageUrl() != null ? escapeJson(p.getImageUrl()) : "") + "\"");
                 out.print("}");
                 if (i < products.size() - 1)

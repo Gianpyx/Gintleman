@@ -91,6 +91,22 @@
         .btn-complete:hover {
             background-color: #bfa12f;
         }
+
+        .error-alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .error-alert b {
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +115,19 @@
 
 <div class="checkout-container">
     <h1>Checkout Spedizione</h1>
+    
+    <%
+        String errorMsg = (String) session.getAttribute("errorMessage");
+        if (errorMsg != null) {
+            session.removeAttribute("errorMessage");
+    %>
+        <div class="error-alert">
+            <span>⚠️</span>
+            <div><%= errorMsg %></div>
+        </div>
+    <%
+        }
+    %>
     
     <div class="summary-box">
         <h3>Riepilogo Ordine</h3>

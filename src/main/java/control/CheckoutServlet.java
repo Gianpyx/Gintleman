@@ -3,7 +3,10 @@ package control;
 import model.Cart;
 import model.OrderBean;
 import model.OrderDAO;
+import model.OutOfStockException;
+import model.ProductDAO;
 import model.UserBean;
+import java.util.Map;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -50,7 +53,11 @@ public class CheckoutServlet extends HttpServlet {
 
         // Save to DB
         OrderDAO orderDAO = new OrderDAO();
+        ProductDAO productDAO = new ProductDAO();
         try {
+            // Bulk check stock before starting transaction
+            productDAO.checkStockBulk(cart);
+
             orderDAO.doSave(order, cart);
 
             // Clear Cart on success
@@ -59,6 +66,16 @@ public class CheckoutServlet extends HttpServlet {
             // Redirect to Confirmation Page
             response.sendRedirect("thankyou.jsp");
 
+        } catch (OutOfStockException e) {
+            Map<String, Integer> unavailable = e.getUnavailableProducts();
+            StringBuilder sb = new StringBuilder(
+                    "I seguenti prodotti non sono disponibili nelle quantità richieste:<br>");
+            for (Map.Entry<String, Integer> entry : unavailable.entrySet()) {
+                sb.append("- ").append(entry.getKey()).append(" (disponibili: ").append(entry.getValue())
+                        .append(" unità)<br>");
+            }
+            session.setAttribute("errorMessage", sb.toString());
+            response.sendRedirect("checkout.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error saving order: " + e.getMessage());

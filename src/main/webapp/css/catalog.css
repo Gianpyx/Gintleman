@@ -9,7 +9,7 @@ body {
 .catalog-container {
     display: flex;
     max-width: 1200px;
-    margin: 120px auto 40px; /* Top margin accounts for fixed header */
+    margin: 20px auto 40px; /* Reduced since body padding handles header */
     padding: 0 20px;
     gap: 30px;
     flex: 1;
@@ -119,6 +119,14 @@ body {
 
 .btn-add-cart:hover {
     background-color: #f7ca00;
+}
+
+.btn-add-cart:disabled {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
+    cursor: not-allowed;
+    opacity: 0.8;
 }
 
 @media (max-width: 1100px) {

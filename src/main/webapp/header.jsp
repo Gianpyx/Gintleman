@@ -38,14 +38,14 @@
           <div class="login">
             <%@ page import="model.UserBean" %>
             <%
-              UserBean user = (UserBean) session.getAttribute("user");
-              if (user != null) {
+              UserBean headerUser = (UserBean) session.getAttribute("user");
+              if (headerUser != null) {
             %>
                 <div class="user-icon" style="color: white; display: flex; align-items: center; gap: 10px;">
-    <% if (user.isAdmin()) { %>
-        <a href="admin_dashboard.jsp" class="login-scritta user-welcome-link">Welcome, <b><%= user.getFirstName() %></b></a>
+    <% if (headerUser.isAdmin()) { %>
+        <a href="admin_dashboard.jsp" class="login-scritta user-welcome-link">Welcome, <b><%= headerUser.getFirstName() %></b></a>
     <% } else { %>
-        <span class="login-scritta user-welcome-link">Welcome, <b><%= user.getFirstName() %></b></span>
+        <a href="dashboard" class="login-scritta user-welcome-link">Welcome, <b><%= headerUser.getFirstName() %></b></a>
     <% } %>
                 </div>
             <% } else { %>
@@ -93,6 +93,7 @@
       </div>
     </div>
   </header>
+  <script src="js/header.js"></script>
   </body>
 </html>
 

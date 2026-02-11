@@ -14,7 +14,7 @@
     <style>
         .cart-container {
             max-width: 1000px;
-            margin: 120px auto 40px;
+            margin: 2rem auto 40px; /* Reduced from 120px to match new layout */
             padding: 20px;
         }
         .cart-table {

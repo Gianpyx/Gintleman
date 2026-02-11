@@ -13,6 +13,7 @@ public class ProductBean implements Serializable {
     private String category;
     private BigDecimal alcoholContent;
     private String nationality;
+    private String subtitle;
     private boolean isActive;
 
     public ProductBean() {
@@ -32,6 +33,14 @@ public class ProductBean implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 
     public String getDescription() {

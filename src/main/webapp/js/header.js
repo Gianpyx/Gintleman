@@ -20,7 +20,7 @@
 
   let ultimoY = window.scrollY || 0;
   let inEsecuzione = false;
-  const soglia = 10;
+  const soglia = 5;
 
   function alloScroll() {
     const y = window.scrollY || 0;
@@ -53,17 +53,17 @@
   if (bottoneBurger && cassetto) {
     bottoneBurger.addEventListener("click", function () {
       cassetto.classList.toggle("aperto");
-      
+
       // Accessibilità e Stato
       const aperto = cassetto.classList.contains("aperto");
       bottoneBurger.setAttribute("aria-expanded", aperto);
-      
+
       // Blocca lo scroll del body quando il menu è aperto?
-       if (aperto) {
-           document.body.style.overflow = "hidden";
-       } else {
-           document.body.style.overflow = "";
-       }
+      if (aperto) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
     });
   }
 })();

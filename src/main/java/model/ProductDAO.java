@@ -3,9 +3,11 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductDAO {
 
@@ -67,6 +69,7 @@ public class ProductDAO {
                 bean.setCategory(rs.getString("category"));
                 bean.setAlcoholContent(rs.getBigDecimal("alcohol_content"));
                 bean.setNationality(rs.getString("nationality"));
+                bean.setSubtitle(rs.getString("subtitle"));
                 bean.setActive(rs.getBoolean("is_active"));
                 products.add(bean);
             }
@@ -108,6 +111,7 @@ public class ProductDAO {
                 bean.setCategory(rs.getString("category"));
                 bean.setAlcoholContent(rs.getBigDecimal("alcohol_content"));
                 bean.setNationality(rs.getString("nationality"));
+                bean.setSubtitle(rs.getString("subtitle"));
                 bean.setActive(rs.getBoolean("is_active"));
             }
 
@@ -127,7 +131,7 @@ public class ProductDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String insertSQL = "INSERT INTO Product (name, description, price, stock, image_url, category, alcohol_content, nationality, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO Product (name, description, price, stock, image_url, category, alcohol_content, nationality, subtitle, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             connection = DriverManagerConnectionPool.getConnection();
@@ -140,7 +144,8 @@ public class ProductDAO {
             preparedStatement.setString(6, product.getCategory());
             preparedStatement.setBigDecimal(7, product.getAlcoholContent());
             preparedStatement.setString(8, product.getNationality());
-            preparedStatement.setBoolean(9, product.isActive());
+            preparedStatement.setString(9, product.getSubtitle());
+            preparedStatement.setBoolean(10, product.isActive());
 
             preparedStatement.executeUpdate();
 
@@ -159,7 +164,7 @@ public class ProductDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String updateSQL = "UPDATE Product SET name = ?, description = ?, price = ?, stock = ?, image_url = ?, category = ?, alcohol_content = ?, nationality = ?, is_active = ? WHERE id = ?";
+        String updateSQL = "UPDATE Product SET name = ?, description = ?, price = ?, stock = ?, image_url = ?, category = ?, alcohol_content = ?, nationality = ?, subtitle = ?, is_active = ? WHERE id = ?";
 
         try {
             connection = DriverManagerConnectionPool.getConnection();
@@ -172,8 +177,9 @@ public class ProductDAO {
             preparedStatement.setString(6, product.getCategory());
             preparedStatement.setBigDecimal(7, product.getAlcoholContent());
             preparedStatement.setString(8, product.getNationality());
-            preparedStatement.setBoolean(9, product.isActive());
-            preparedStatement.setInt(10, product.getId());
+            preparedStatement.setString(9, product.getSubtitle());
+            preparedStatement.setBoolean(10, product.isActive());
+            preparedStatement.setInt(11, product.getId());
 
             preparedStatement.executeUpdate();
 
@@ -205,6 +211,95 @@ public class ProductDAO {
             try {
                 if (preparedStatement != null)
                     preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+    }
+
+    public synchronized void checkStockBulk(Cart cart) throws SQLException, OutOfStockException {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        Map<String, Integer> unavailable = new HashMap<>();
+
+        String sql = "SELECT name, stock FROM Product WHERE id = ?";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            ps = connection.prepareStatement(sql);
+
+            for (CartItem item : cart.getItems()) {
+                ps.setInt(1, item.getProduct().getId());
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        int currentStock = rs.getInt("stock");
+                        if (currentStock < item.getQuantity()) {
+                            unavailable.put(rs.getString("name"), currentStock);
+                        }
+                    }
+                }
+            }
+
+            if (!unavailable.isEmpty()) {
+                throw new OutOfStockException(unavailable);
+            }
+        } finally {
+            if (ps != null)
+                ps.close();
+            if (connection != null)
+                connection.close();
+        }
+    }
+
+    public synchronized void decrementStock(int productId, int quantity, Connection connection)
+            throws SQLException, OutOfStockException {
+        PreparedStatement ps = null;
+        String sql = "UPDATE Product SET stock = stock - ? WHERE id = ? AND stock >= ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, quantity);
+            ps.setInt(2, productId);
+            ps.setInt(3, quantity);
+
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0) {
+                // This shouldn't happen if checkStockBulk was called, but for safety:
+                String checkSql = "SELECT name, stock FROM Product WHERE id = ?";
+                try (PreparedStatement psCheck = connection.prepareStatement(checkSql)) {
+                    psCheck.setInt(1, productId);
+                    try (ResultSet rs = psCheck.executeQuery()) {
+                        if (rs.next()) {
+                            Map<String, Integer> single = new HashMap<>();
+                            single.put(rs.getString("name"), rs.getInt("stock"));
+                            throw new OutOfStockException(single);
+                        } else {
+                            throw new SQLException("Product not found: " + productId);
+                        }
+                    }
+                }
+            }
+        } finally {
+            if (ps != null)
+                ps.close();
+        }
+    }
+
+    public synchronized void zeroStock(int productId) throws SQLException {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE Product SET stock = 0 WHERE id = ?";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, productId);
+            ps.executeUpdate();
+        } finally {
+            try {
+                if (ps != null)
+                    ps.close();
             } finally {
                 if (connection != null)
                     connection.close();

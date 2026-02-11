@@ -11,7 +11,7 @@ public class OrderDAO {
      * Saves an Order and its items in a transaction.
      * Captures current product prices for history (Req #20).
      */
-    public synchronized int doSave(OrderBean order, Cart cart) throws SQLException {
+    public synchronized int doSave(OrderBean order, Cart cart) throws SQLException, OutOfStockException {
         Connection connection = null;
         PreparedStatement psOrder = null;
         PreparedStatement psItem = null;
@@ -47,8 +47,9 @@ public class OrderDAO {
                 }
             }
 
-            // 2. Insert Order Items
+            // 2. Insert Order Items and Decrement Stock
             psItem = connection.prepareStatement(insertItemSQL);
+            ProductDAO productDAO = new ProductDAO();
             for (CartItem item : cart.getItems()) {
                 psItem.setInt(1, orderId);
                 psItem.setInt(2, item.getProduct().getId());
@@ -56,12 +57,15 @@ public class OrderDAO {
                 // CRITICAL REQ #20: Save valid price at this moment
                 psItem.setBigDecimal(4, item.getProduct().getPrice());
                 psItem.addBatch();
+
+                // DECREMENT STOCK
+                productDAO.decrementStock(item.getProduct().getId(), item.getQuantity(), connection);
             }
             psItem.executeBatch();
 
             connection.commit(); // Commit Transaction
 
-        } catch (SQLException e) {
+        } catch (SQLException | OutOfStockException e) {
             if (connection != null) {
                 try {
                     connection.rollback();

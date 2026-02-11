@@ -7,11 +7,12 @@
 /* Assicura che le immagini non escano dal contenitore su schermi larghi */
 img{ max-width: 100%; height: auto; }
 
+
+
 @media (min-width: 1251px) {
     /*Questa prima parte è per lo stile in generale*/
     html, body {
         margin: 0;
-        padding: 0;
         overflow-x: hidden;
 
         font-family: 'SF Pro', sans-serif;

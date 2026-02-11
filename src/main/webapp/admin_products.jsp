@@ -198,14 +198,28 @@
                     if (products != null && !products.isEmpty()) {
                         for (ProductBean p : products) {
                 %>
-                    <tr class="product-row" onclick="showDetails('<%= p.getId() %>', '<%= p.getName().replace("'", "\\'") %>', '<%= p.getDescription().replace("'", "\\'").replace("\n", " ").replace("\r", " ") %>', '<%= p.getPrice() %>', '<%= p.getStock() %>', '<%= p.getImageUrl() %>', '<%= p.getCategory() %>', '<%= p.getAlcoholContent() %>', '<%= p.getNationality() %>')">
+                    <tr class="product-row" 
+                        data-id="<%= p.getId() %>"
+                        data-name="<%= p.getName().replace("\"", "&quot;") %>"
+                        data-subtitle="<%= p.getSubtitle() != null ? p.getSubtitle().replace("\"", "&quot;") : "" %>"
+                        data-desc="<%= p.getDescription().replace("\"", "&quot;").replace("\n", " ").replace("\r", " ") %>"
+                        data-price="<%= p.getPrice() %>"
+                        data-stock="<%= p.getStock() %>"
+                        data-img="<%= p.getImageUrl() %>"
+                        data-cat="<%= p.getCategory() %>"
+                        data-alc="<%= p.getAlcoholContent() %>"
+                        data-nat="<%= p.getNationality() %>"
+                        onclick="showDetailsFromRow(this)">
                         <td><img src="<%= p.getImageUrl() %>" class="product-img-preview" alt="img"></td>
                         <td><%= p.getName() %></td>
                         <td>€ <%= p.getPrice() %></td>
                         <td><%= p.getStock() %></td>
                         <td><%= p.getNationality() %></td>
                         <td onclick="event.stopPropagation()"> <!-- Stop propagation to prevent row click -->
-                            <button class="btn-action btn-edit" onclick="openForm('<%= p.getId() %>', '<%= p.getName().replace("'", "\\'") %>', '<%= p.getDescription().replace("'", "\\'").replace("\n", " ") %>', '<%= p.getPrice() %>', '<%= p.getStock() %>', '<%= p.getImageUrl() %>', '<%= p.getCategory() %>', '<%= p.getAlcoholContent() %>', '<%= p.getNationality() %>')">Modifica</button>
+                            <div style="display:flex; gap:0.5rem;">
+                                <button class="btn-action btn-edit" onclick="openFormFromRow(this.closest('.product-row'))">Modifica</button>
+                                <button class="btn-action btn-delete" style="background:#cc0000;" onclick="zeroStock('<%= p.getId() %>')">Esaurisci</button>
+                            </div>
                         </td>
                     </tr>
                 <%
@@ -236,6 +250,11 @@
             </div>
             
             <div class="form-group">
+                <label>Sottotitolo</label>
+                <input type="text" id="p_subtitle" name="subtitle" class="form-control" placeholder="es. London Dry Gin">
+            </div>
+            
+            <div class="form-group">
                 <label>Descrizione</label>
                 <textarea id="p_description" name="description" class="form-control" rows="3"></textarea>
             </div>
@@ -253,10 +272,6 @@
 
             <div class="form-group" style="display:flex; gap:1rem;">
                 <div style="flex:1;">
-                    <label>Gradazione (%)</label>
-                    <input type="number" step="0.1" id="p_alcohol" name="alcoholContent" class="form-control">
-                </div>
-                <div style="flex:1;">
                      <label>Nazionalità</label>
                      <input type="text" id="p_nationality" name="nationality" class="form-control">
                 </div>
@@ -271,6 +286,11 @@
                     <option value="Compound">
                     <option value="Old Tom">
                 </datalist>
+            </div>
+            
+            <div class="form-group" style="display:none;">
+                <label>Gradazione (%)</label>
+                <input type="number" step="0.1" id="p_alcohol" name="alcoholContent" class="form-control">
             </div>
             
             <div class="form-group">
@@ -292,16 +312,17 @@
         <div style="display:flex; gap: 2rem; margin-bottom: 2rem;">
             <img id="d_img" src="" style="width: 150px; height: 150px; object-fit: contain; border: 1px solid #eee; border-radius: 8px;">
             <div>
-                <p><strong>Descrizione:</strong> <span id="d_desc"></span></p>
-                <p><strong>Prezzo:</strong> € <span id="d_price"></span></p>
-                <p><strong>Stock:</strong> <span id="d_stock"></span> pz</p>
-                <p><strong>Nazionalità:</strong> <span id="d_nationality"></span></p>
-                <p><strong>Gradazione:</strong> <span id="d_alcohol"></span>%</p>
-                <p><strong>Categoria:</strong> <span id="d_category"></span></p>
-            </div>
+                    <p><strong>Sottotitolo:</strong> <span id="d_subtitle"></span></p>
+                    <p><strong>Descrizione:</strong> <span id="d_desc"></span></p>
+                    <p><strong>Prezzo:</strong> € <span id="d_price"></span></p>
+                    <p><strong>Stock:</strong> <span id="d_stock"></span> pz</p>
+                    <p><strong>Nazionalità:</strong> <span id="d_nationality"></span></p>
+                    <p><strong>Categoria:</strong> <span id="d_category"></span></p>
+                </div>
         </div>
         
         <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+            <button class="btn-action btn-delete" style="background:#cc0000; padding: 0.8rem 1.5rem;" onclick="zeroStock(document.getElementById('d_delete_id').value)">Esaurisci</button>
             <button id="btnDetailsEdit" class="btn-action btn-edit" style="padding: 0.8rem 1.5rem;">Modifica</button>
             <form action="admin_products?action=delete" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
                 <input type="hidden" id="d_delete_id" name="id">
@@ -312,7 +333,12 @@
 </div>
 
 <script>
-    function openForm(id, name, desc, price, stock, img, cat, alc, nat) {
+    function openFormFromRow(row) {
+        const d = row.dataset;
+        openForm(d.id, d.name, d.subtitle, d.desc, d.price, d.stock, d.img, d.cat, d.alc, d.nat);
+    }
+
+    function openForm(id, name, subtitle, desc, price, stock, img, cat, alc, nat) {
         document.getElementById('productFormModal').style.display = 'flex';
         
         if (id) {
@@ -320,6 +346,7 @@
             document.getElementById('modalTitle').innerText = "Modifica Prodotto";
             document.getElementById('p_id').value = id;
             document.getElementById('p_name').value = name;
+            document.getElementById('p_subtitle').value = subtitle;
             document.getElementById('p_description').value = desc;
             document.getElementById('p_price').value = price;
             document.getElementById('p_stock').value = stock;
@@ -342,24 +369,35 @@
         document.getElementById('productFormModal').style.display = 'none';
     }
     
-    function showDetails(id, name, desc, price, stock, img, cat, alc, nat) {
+    function showDetailsFromRow(row) {
+        const d = row.dataset;
+        showDetails(d.id, d.name, d.subtitle, d.desc, d.price, d.stock, d.img, d.cat, d.alc, d.nat);
+    }
+
+    function showDetails(id, name, subtitle, desc, price, stock, img, cat, alc, nat) {
         document.getElementById('detailsModal').style.display = 'flex';
         
         document.getElementById('d_name').innerText = name;
+        document.getElementById('d_subtitle').innerText = subtitle;
         document.getElementById('d_desc').innerText = desc;
         document.getElementById('d_price').innerText = price;
         document.getElementById('d_stock').innerText = stock;
         document.getElementById('d_img').src = img;
         document.getElementById('d_category').innerText = cat;
-        document.getElementById('d_alcohol').innerText = alc;
         document.getElementById('d_nationality').innerText = nat;
         
         document.getElementById('d_delete_id').value = id;
         
         // Setup Edit Button in Details
         document.getElementById('btnDetailsEdit').onclick = function() {
-            openForm(id, name, desc, price, stock, img, cat, alc, nat);
+            openForm(id, name, subtitle, desc, price, stock, img, cat, alc, nat);
         };
+    }
+    
+    function zeroStock(id) {
+        if (confirm("Vuoi azzerare lo stock di questo prodotto?")) {
+            window.location.href = "admin_products?action=zeroStock&id=" + id;
+        }
     }
     
     function closeDetails() {

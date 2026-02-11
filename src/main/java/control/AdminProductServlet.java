@@ -29,6 +29,14 @@ public class AdminProductServlet extends HttpServlet {
 
         ProductDAO productDAO = new ProductDAO();
         try {
+            String action = request.getParameter("action");
+            if ("zeroStock".equals(action)) {
+                int productId = Integer.parseInt(request.getParameter("id"));
+                productDAO.zeroStock(productId);
+                response.sendRedirect("admin_products");
+                return;
+            }
+
             // Retrieve all products (no filters)
             List<ProductBean> products = productDAO.doRetrieveAll(null, null, null);
             request.setAttribute("products", products);
@@ -38,7 +46,7 @@ public class AdminProductServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database Error");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database Error: " + e.getMessage());
         }
     }
 
@@ -57,12 +65,24 @@ public class AdminProductServlet extends HttpServlet {
         try {
             if ("save".equals(action)) {
                 saveProduct(request, productDAO);
-            } else if ("delete".equals(action)) {
+            } else if ("zeroStock".equals(action)) {
+                int productId = Integer.parseInt(request.getParameter("id"));
+                try {
+                    productDAO.zeroStock(productId);
+                    response.sendRedirect("admin_products");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                            "Error zeroing stock: " + e.getMessage());
+                }
+            } else if (action.equals("delete")) {
                 deleteProduct(request, productDAO);
             }
 
             // Redirect back to list
-            response.sendRedirect("admin_products");
+            if (!response.isCommitted()) {
+                response.sendRedirect("admin_products");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,6 +99,7 @@ public class AdminProductServlet extends HttpServlet {
         String category = request.getParameter("category");
         String alcoholStr = request.getParameter("alcoholContent");
         String nationality = request.getParameter("nationality");
+        String subtitle = request.getParameter("subtitle");
         String imageUrl = request.getParameter("imageUrl");
 
         // Handle Image Placeholder
@@ -94,6 +115,7 @@ public class AdminProductServlet extends HttpServlet {
         product.setCategory(category);
         product.setAlcoholContent(alcoholStr != null && !alcoholStr.isEmpty() ? new BigDecimal(alcoholStr) : null);
         product.setNationality(nationality);
+        product.setSubtitle(subtitle);
         product.setImageUrl(imageUrl);
         product.setActive(true);
 

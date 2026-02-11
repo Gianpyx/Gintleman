@@ -31,7 +31,7 @@
         <!-- Header: Titolo e Sottotitolo -->
         <div class="product-header-group">
             <h1 class="product-title-main">${product.name}</h1>
-            <p class="product-subtitle-main">${product.category}</p>
+            <p class="product-subtitle-main">${product.subtitle}</p>
         </div>
 
         <!-- Grid: 3 Columns -->
@@ -48,19 +48,22 @@
                 <p class="desc-text">${product.description}</p>
             </div>
 
-            <!-- 3. Buy Box (Prezzo e Pulsanti) -->
-            <div class="product-buy-box">
-                <p class="product-price">€ ${product.price}</p>
+            <!-- 3. Colonna Buy Box -->
+        <div class="product-buy-box">
+            <h2 class="product-price">€ ${product.price}</h2>
+            
+            <div class="availability-badge ${product.stock <= 0 ? 'out-of-stock' : ''}">
+                ${product.stock <= 0 ? 'Esaurito' : 'Disponibilità immediata'}
+            </div>
+            <p class="shipping-info">
+                ${product.stock <= 0 ? 'questo prodotto non è attualmente disponibile' : 'consegna prevista entro <strong>5 giorni</strong> dall\'acquisto'}
+            </p>
+            
+            <form action="cart" method="get" class="buy-form">
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="productId" value="${product.id}">
                 
-                <div>
-                    <p class="shipping-info">consegna prevista entro <strong>5 giorni</strong> dall'acquisto</p>
-                </div>
-
-                <div class="availability-badge">
-                    ${product.stock > 0 ? 'Disponibilità immediata' : 'Esaurito'}
-                </div>
-
-                <select class="qty-selector" id="product-quantity">
+                <select name="quantity" class="qty-selector" id="product-quantity" ${product.stock <= 0 ? 'disabled' : ''}>
                     <option value="1">Quantità: 1</option>
                     <option value="2">Quantità: 2</option>
                     <option value="3">Quantità: 3</option>
@@ -68,10 +71,9 @@
                     <option value="5">Quantità: 5</option>
                 </select>
 
-                <button class="btn-buy-outline" onclick="buyNow('${product.id}')">Acquista ora</button>
-                <button class="btn-add-cart" onclick="addToCart('${product.id}')">Aggiungi al carrello</button>
-            </div>
-
+                <button type="submit" name="redirect" value="cart" class="btn-buy-outline" ${product.stock <= 0 ? 'disabled' : ''}>Acquista ora</button>
+                <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}')" ${product.stock <= 0 ? 'disabled' : ''}>Aggiungi al carrello</button>
+            </form>
         </div>
 
     </main>
@@ -140,12 +142,6 @@
                     console.error('Error:', error);
                     showToast("Errore di comunicazione col server", "error");
                 });
-        }
-
-        function buyNow(productId) {
-            if (!productId) return;
-            const quantity = document.getElementById("product-quantity").value;
-            window.location.href = '${pageContext.request.contextPath}/cart?action=add&productId=' + productId + '&quantity=' + quantity + '&redirect=cart';
         }
 
         function showToast(message, type) {

@@ -5,7 +5,7 @@
 /* --- Layout Generale --- */
 .product-page-container {
     max-width: 1300px;
-    margin: 4rem auto;
+    margin: 1rem auto 4rem; /* Further reduced to ensure top content visibility */
     padding: 0 2rem;
     font-family: var(--font-main, 'DM Sans', sans-serif);
     color: #000;
@@ -13,7 +13,7 @@
 }
 
 .product-header-group {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem; /* Reduced gap between title and grid */
 }
 
 .product-title-main {
@@ -34,34 +34,35 @@
 /* --- Griglia 3 Colonne --- */
 .product-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 350px; /* Immagine - Descrizione - BuyBox */
-    gap: 4rem;
-    align-items: start;
+    grid-template-columns: 1fr 1.2fr 320px;
+    gap: 3rem;
+    align-items: start; /* Changed back to start as requested */
 }
 
 /* 1. Colonna Immagine */
 .product-image-box {
-    border: 3px solid #33729E; /* Bordo Blu Spesso */
-    border-radius: 30px;
-    padding: 2rem;
+    border: 2px solid #33729E;
+    border-radius: 20px;
+    padding: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff; /* O trasparente se preferito */
-    height: 600px; /* Altezza fissa imponente */
+    background: #fff;
+    height: 420px; /* Slightly shorter to ensure it fits in viewport */
     position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .product-image-box img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 80%; /* Smaller image */
+    max-height: 80%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
 /* 2. Colonna Descrizione */
 .product-description-box {
-    padding-top: 1rem;
+    padding-top: 0; /* Absolute top as requested */
 }
 
 .desc-title {
@@ -79,13 +80,13 @@
 
 /* 3. Colonna Buy Box */
 .product-buy-box {
-    border: 2px solid #33729E; /* Box con bordo blu come riferimento */
+    border: 1.5px solid #33729E;
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1.5rem; /* Reduced padding */
     background: #fff;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem; /* Slightly reduced gap */
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
@@ -124,6 +125,11 @@
     font-size: 1.1rem;
 }
 
+.availability-badge.out-of-stock {
+    background: #ff4d4d; /* Rosso */
+    color: #fff;
+}
+
 /* Select Quantità */
 .qty-selector {
     display: flex;
@@ -144,6 +150,20 @@
     background-repeat: no-repeat;
     background-position: right 1.5rem center;
     background-size: 0.8rem;
+    margin-bottom: 0.4rem; /* Tighten distance to Buy Now button */
+}
+
+.qty-selector:disabled {
+    background: #000 !important;
+    color: #fff !important;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.buy-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem; /* Controlled gap between buttons */
 }
 
 /* Bottoni CTA */
@@ -167,6 +187,14 @@
     border-color: #000;
 }
 
+.btn-buy-outline:disabled {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #000;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
 .btn-add-cart {
     display: block;
     width: 100%;
@@ -185,6 +213,14 @@
 
 .btn-add-cart:hover {
     background-color: #275678;
+}
+
+.btn-add-cart:disabled {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #000;
+    cursor: not-allowed;
+    opacity: 0.8;
 }
 
 /* Responsività */

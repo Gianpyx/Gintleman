@@ -4,36 +4,50 @@
 </head>
 <body>
 <footer id="footer">
-    <div class="footer_general">
-        <!-- Colonna sinistra -->
-        <div class="footer_left">
-            <h3 class="follow_us">FOLLOW US</h3>
-            <hr class="line">
-            <ul class="social_list">
-                <li><a href="#" class="social_circle" aria-label="Instagram">IG</a></li>
-            </ul>
+    <div class="footer_container">
+        
+        <!-- TOP SECTION: Contact & Actions -->
+        <div class="footer_top">
+            
+            <!-- LEFT: Contacts -->
+            <div class="footer_contacts">
+                <div class="contact_item">
+                    <div class="square_icon">
+                        <img src="img/icona_telefono.png" alt="Telefono">
+                    </div>
+                    <span class="contact_text">telefono - 333 3333333</span>
+                </div>
+                
+                <div class="contact_item">
+                    <div class="square_icon">
+                        <img src="img/icona_mail.png" alt="Email">
+                    </div>
+                    <span class="contact_text">email - prova@gmail.com</span>
+                </div>
+            </div>
+
+            <!-- RIGHT: Actions & Social -->
+            <div class="footer_actions">
+                <a href="registration.jsp" class="btn_registrati">REGISTRATI</a>
+                
+                <div class="social_icons">
+                    <a href="https://www.instagram.com/_gianpower_/" class="circle_icon" target="_blank">
+                        <img src="img/icona_instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://github.com/Gianpyx" class="circle_icon" target="_blank">
+                        <img src="img/icona_github.jpg" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Colonna centrale -->
-        <div class="footer_center">
-            <div class="logo_center">
-                <img src="img/Logo_nero.png" alt="Gintleman" />
-            </div>
+        <!-- BOTTOM SECTION: Line & Credits -->
+        <div class="footer_bottom">
+            <hr class="simple_line">
+            <p class="credits">made with &#128154; by Gianpaolo</p>
         </div>
 
-        <!-- Colonna destra -->
-        <div class="footer_right">
-            <h3 class="join_us">JOIN US</h3>
-            <hr class="line">
-            <div class="join_us_buttons">
-                <a class="circle_btn" href="login.jsp">Registrati</a>
-                <a class="circle_btn" href="login.jsp">Newsletter</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer_bottom">
-        <hr class="line">
-        <p class="credits">made with &#x1F49A; by Gianpaolo</p>
     </div>
 </footer>
 

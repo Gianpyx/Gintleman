@@ -1,147 +1,146 @@
-#footer{
-    padding: 8em 0 3em;
+#footer {
+    padding: 4rem 2rem 2rem;
+    background-color: white; /* Assicurati che sia bianco come da immagine */
+    font-family: 'DM Sans', sans-serif;
 }
 
-.footer_general{
-    width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
+.footer_container {
+    max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 6em;
+    width: 100%;
 }
-
-.footer_left, .footer_right{
-    text-align: center;
-}
-
 
 /* ====================
-     sezione sinistra
+   TOP SECTION
 ==================== */
-
-
-.follow_us{
-    margin: 0 0 0.5em;
-    font-size: 2em;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
+.footer_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Allinea in basso */
+    margin-bottom: 3rem;
+    padding: 0 2rem;
 }
 
-.social_list{
-    list-style: none;
+/* Contacts (Left) */
+.footer_contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact_item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.square_icon {
+    /* Background rimosso */
+    width: 50px; /* Dimensione contenitore icona */
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2.2em;
-    margin: 0;
-    padding: 0;
 }
 
-.social_circle{
-    width: 4.5em;
-    height: 4.5em;
-    padding: 0;
-    border-radius: 50%;
+.square_icon img {
+    width: 100%; 
+    height: auto;
+    object-fit: contain;
 }
 
-.social_circle, .circle_btn{
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     width:5.5em;
-     height: 4.5em;
-     padding: 0 1.6em;
-     border-radius: 999px;
-     background: #e8e8e8;
-     color: #000;
-     text-decoration: none;
- }
-
-
-/* ====================
-     sezione centrale
-==================== */
-
-
-.logo_center{
-    width: 10em;
-    height: 10em;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: #f2f4f5;
+.contact_text {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 400;
 }
 
-.logo_center img{
+/* Actions (Right) */
+.footer_actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Allinea a destra */
+    gap: 2rem;
+}
+
+.btn_registrati {
+    font-size: 1.5rem;
+    font-weight: 800; /* Bold */
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 3px solid #007bff; /* Linea blu sotto */
+    padding-bottom: 2px;
+}
+
+.social_icons {
+    display: flex;
+    gap: 2rem;
+}
+
+.circle_icon {
+    /* Background rimosso */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s;
+}
+
+.circle_icon:hover {
+    opacity: 0.7;
+}
+
+.circle_icon img {
     width: 100%;
     height: auto;
-    border-radius: 999px;
+    object-fit: contain;
 }
 
 
 /* ====================
-     sezione destra
+   BOTTOM SECTION
 ==================== */
-
-
-.join_us{
-    margin: 0 0 0.5em;
-    font-size: 2em;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.join_us_buttons{
+.footer_bottom {
     display: flex;
-    gap: 2em;
-    justify-content: center;
-}
-
-.circle_btn{
-    height: 4.5em;
-    width: 5.5em;
-    border-radius: 20px; /* rectangular with rounded corners */
-    font-size: 1.2em;
-}
-
-.line{
-    border: 0;
-    border-top: 2px solid #000000;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
     width: 100%;
-    margin: 0.2em 0 1em; /* spacing under headings */
+}
+
+.simple_line {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #e0e0e0; /* Linea chiara e sottile */
+    margin: 0;
+}
+
+.credits {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    margin: 0;
 }
 
 
 /* ====================
-     sezione bassa
+   Responsive
 ==================== */
-
-
-.footer_bottom{
-    margin-top: 5em;
-    display: grid;
-    gap: 1em;
-    justify-items: center;
-}
-.footer_bottom .line{
-    margin: 0 0 0; /* spacing under headings */
-    max-width: min(75em, 100%);
-}
-.footer_bottom .credits{
-    margin: 0;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-}
-
-@media (max-width: 700px){
-    .footer_general{
-        grid-template-columns: 1fr;
-        gap: 3.5em;
+@media (max-width: 900px) {
+    .footer_top {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
         text-align: center;
+    }
+    
+    .footer_actions {
+        align-items: center;
+    }
+    
+    .footer_contacts {
+        align-items: center; /* Centra contatti su mobile/tablet */
     }
 }

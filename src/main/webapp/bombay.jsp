@@ -26,7 +26,7 @@
         <h2 class="hero-subtitle">London dry gin</h2>
         
         <div class="hero-bottom-left">
-            <p class="hero-description">Mini descrizione sul bombayyyyyyy</p>
+            <p class="hero-description">Un classico London Dry Gin che si sposa volentieri con un gin tonic</p>
         </div>
     </div>
     
@@ -74,8 +74,10 @@
                     <span class="box-label">casse vendute</span>
                 </div>
                 <div class="stat-box">
-                    <span class="box-text">sito</span>
-                    <span class="box-label">casse vendute</span> <!-- Placeholder text from design -->
+                    <span class="box-text">
+                        <a href="https://www.bombaysapphire.com/it/it/" target="_blank" class="brand-link">Bombay Sapphire</a>
+                    </span>
+                    <span class="box-label">Original Site</span>
                 </div>
             </div>
         </div>

@@ -71,8 +71,10 @@
                     <span class="box-label">casse vendute</span>
                 </div>
                 <div class="stat-box">
-                    <span class="box-text">sito</span>
-                    <span class="box-label">casse vendute</span> <!-- Placeholder text from design -->
+                    <span class="box-text">
+                        <a href="https://monkey47.com/?nl=true" target="_blank" class="brand-link">Monkey 47</a>
+                    </span>
+                    <span class="box-label">Original Site</span> <!-- Placeholder text from design -->
                 </div>
             </div>
         </div>

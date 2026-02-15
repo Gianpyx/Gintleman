@@ -71,8 +71,10 @@
                     <span class="box-label">casse vendute</span>
                 </div>
                 <div class="stat-box">
-                    <span class="box-text">sito</span>
-                    <span class="box-label">casse vendute</span> <!-- Placeholder text from design -->
+                    <span class="box-text">
+                        <a href="https://www.ginmare.com/it-it/" target="_blank" class="brand-link">Gin Mare</a>
+                    </span>
+                    <span class="box-label">Original Site</span>
                 </div>
             </div>
         </div>

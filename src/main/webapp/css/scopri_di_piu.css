@@ -159,11 +159,272 @@ img{ max-width: 100%; height: auto; }
         padding: 1em;
     }
 
+
     .rettangolo-bottom p {
         margin: 0;
         font-size: 1.1em;
         font-weight: bold;
         text-align: center;
         color: #000;
+    }
+}
+
+/* =========================================
+   TABLET / LAPTOP PICCOLI (768px - 1250px)
+   ========================================= */
+@media (min-width: 768px) and (max-width: 1250px) {
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'SF Pro', sans-serif;
+        font-size: 14px; /* Base font size slightly smaller */
+    }
+
+    p {
+        font-size: 2rem;
+    }
+
+    /* --- Prima Sezione (Hero) --- */
+    #hero {
+        min-height: 60vh; /* Allow it to shrink */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        box-sizing: border-box;
+        background-image: url("../img/scopri_di_piu_sfondo.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    #zona_centrale {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+        padding: 1.5em 2em;
+        border-radius: 1em;
+        background-color: rgba(255, 255, 255, 0.6); /* More opacity for readability */
+        width: 80%;
+        text-align: center;
+    }
+
+    #zona_centrale h1 {
+        margin: 0.5em 0;
+        font-size: 3em;
+        font-weight: 600;
+        line-height: 1.1;
+        text-transform: uppercase;
+        color: #000;
+    }
+
+    /* --- Seconda Sezione --- */
+    #second_section {
+        padding: 2em 1em;
+    }
+
+    #title_2 {
+        font-size: 1.8em;
+        width: 90%;
+        margin: 1em auto 0.5em;
+        text-align: center;
+    }
+
+    #sub_title2 {
+        font-size: 2.5em; /* Smaller than desktop */
+        width: 90%;
+        margin: 0.5em auto 1.5em;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    #partner {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        justify-content: center;
+        gap: 2em;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    /* Cards */
+    .rettangolo_bt_1,
+    .rettangolo_bt_2,
+    .rettangolo_bt_3 {
+        width: 45%; /* 2 per row roughly */
+        height: auto;
+        min-height: 25em; /* Ensure some height */
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background-color: #E0B9D8;
+        margin-bottom: 1em;
+    }
+    
+    .rettangolo_bt_2 { background-color: #CDDCAE; }
+    .rettangolo_bt_3 { background-color: #D7EEFE; width: 60%; /* Center the last one if 3 items */ }
+
+
+    .rettangolo-top {
+        height: 200px; /* Fixed height for image part */
+        width: 100%;
+    }
+
+    .rettangolo-top img.rettangolo_gr {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .rettangolo-bottom {
+        padding: 1.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    .rettangolo-bottom p {
+        margin: 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+        color: #000;
+    }
+}
+
+
+/* =========================================
+   MOBILE (max-width: 767px)
+   ========================================= */
+@media (max-width: 767px) {
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'SF Pro', sans-serif;
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    /* --- Hero Section --- */
+    #hero {
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        box-sizing: border-box;
+        background-image: url("../img/scopri_di_piu_sfondo.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #zona_centrale {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+        padding: 1.5em;
+        border-radius: 0.5em;
+        background-color: rgba(255, 255, 255, 0.7);
+        width: 90%;
+        text-align: center;
+    }
+
+    #zona_centrale h1 {
+        margin: 0;
+        font-size: 2em; /* Much smaller */
+        font-weight: 600;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: #000;
+    }
+
+    /* --- Second Section --- */
+    #second_section {
+        padding: 2em 0.5em;
+    }
+
+    #title_2 {
+        font-size: 1.3em;
+        width: 90%;
+        margin: 0 auto 0.5em;
+        text-align: center;
+    }
+
+    #sub_title2 {
+        font-size: 1.8em;
+        width: 95%;
+        margin: 0 auto 1.5em;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    #partner {
+        display: flex;
+        flex-direction: column; /* Stack vertically */
+        align-items: center;
+        gap: 1.5em;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Cards - Full width on mobile */
+    .rettangolo_bt_1,
+    .rettangolo_bt_2,
+    .rettangolo_bt_3 {
+        width: 90%;
+        height: auto;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background-color: #E0B9D8;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .rettangolo_bt_2 { background-color: #CDDCAE; }
+    .rettangolo_bt_3 { background-color: #D7EEFE; }
+
+    .rettangolo-top {
+        height: 180px;
+        width: 100%;
+    }
+
+    .rettangolo-top img.rettangolo_gr {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .rettangolo-bottom {
+        padding: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rettangolo-bottom p {
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+        text-align: center;
+        color: #000;
+        line-height: 1.3;
     }
 }

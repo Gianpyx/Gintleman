@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     <!-- Reuse Admin CSS for shared layout -->
     <link rel="stylesheet" href="css/admin.css">
     
@@ -136,7 +137,7 @@
             </div>
             
             <form action="dashboard?action=updateProfile" method="post" id="profileForm">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="form-row">
                     <div class="form-group">
                         <label>Nome</label>
                         <input type="text" name="firstName" id="p_firstName" value="<%= user.getFirstName() %>" class="form-control" disabled required>
@@ -168,44 +169,46 @@
         <!-- ORDERS SECTION -->
         <section id="section-orders" class="admin-card hidden-section">
             <h2 style="margin-bottom: 2rem;">Cronologia Ordini</h2>
-            <table class="order-table">
-                <thead>
-                    <tr>
-                        <th>ID Ordine</th>
-                        <th>Data Acquisto</th>
-                        <th>Importo Totale</th>
-                        <th>Stato Spedizione</th>
-                        <th>Azioni</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <%
-                    if (orders != null && !orders.isEmpty()) {
-                        for (OrderBean o : orders) {
-                %>
-                    <tr>
-                        <td>#<%= o.getId() %></td>
-                        <td><%= sdf.format(o.getCreatedAt()) %></td>
-                        <td><strong>€ <%= o.getTotalAmount() %></strong></td>
-                        <td>
-                            <span class="badge badge-completed">
-                                <%= o.getStatus() %>
-                            </span>
-                        </td>
-                        <td>
-                            <a href="dashboard?orderId=<%= o.getId() %>" class="btn-edit-toggle" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin:0;">Dettagli</a>
-                        </td>
-                    </tr>
-                <%
-                        }
-                    } else {
-                %>
-                    <tr>
-                        <td colspan="5" style="text-align:center; padding: 2rem; color: #666;">Non hai ancora effettuato ordini su Gintleman.</td>
-                    </tr>
-                <% } %>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>ID Ordine</th>
+                            <th>Data Acquisto</th>
+                            <th>Importo Totale</th>
+                            <th>Stato Spedizione</th>
+                            <th>Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        if (orders != null && !orders.isEmpty()) {
+                            for (OrderBean o : orders) {
+                    %>
+                        <tr>
+                            <td>#<%= o.getId() %></td>
+                            <td><%= sdf.format(o.getCreatedAt()) %></td>
+                            <td><strong>€ <%= o.getTotalAmount() %></strong></td>
+                            <td>
+                                <span class="badge badge-completed">
+                                    <%= o.getStatus() %>
+                                </span>
+                            </td>
+                            <td>
+                                <a href="dashboard?orderId=<%= o.getId() %>" class="btn-edit-toggle" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin:0;">Dettagli</a>
+                            </td>
+                        </tr>
+                    <%
+                            }
+                        } else {
+                    %>
+                        <tr>
+                            <td colspan="5" style="text-align:center; padding: 2rem; color: #666;">Non hai ancora effettuato ordini su Gintleman.</td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 </div>
@@ -234,26 +237,28 @@
         </div>
 
         <h3 style="border-bottom: 1px solid #eee; padding-bottom: 0.5rem; margin-bottom: 1rem;">Articoli Ordinati</h3>
-        <table class="order-table">
-            <thead>
-                <tr>
-                    <th>Prodotto</th>
-                    <th>Quantità</th>
-                    <th>Prezzo Unitario</th>
-                    <th>Subtotale</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for (model.OrderItemBean item : selectedOrder.getItems()) { %>
-                <tr>
-                    <td><%= item.getProduct().getName() %></td>
-                    <td>x<%= item.getQuantity() %></td>
-                    <td>€ <%= item.getPriceAtPurchase() %></td>
-                    <td>€ <%= item.getPriceAtPurchase().multiply(new java.math.BigDecimal(item.getQuantity())) %></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th>Prodotto</th>
+                        <th>Quantità</th>
+                        <th>Prezzo Unitario</th>
+                        <th>Subtotale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (model.OrderItemBean item : selectedOrder.getItems()) { %>
+                    <tr>
+                        <td><%= item.getProduct().getName() %></td>
+                        <td>x<%= item.getQuantity() %></td>
+                        <td>€ <%= item.getPriceAtPurchase() %></td>
+                        <td>€ <%= item.getPriceAtPurchase().multiply(new java.math.BigDecimal(item.getQuantity())) %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div style="position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:999;" onclick="window.location.href='dashboard'"></div>
 <% } %>
@@ -264,11 +269,12 @@
 
 <script>
     // If we land on the page with a selected order, show the orders section
-    <% if (selectedOrder != null || orderError != null) { %>
+    var autoShowOrders = "<%= (selectedOrder != null || orderError != null) %>" === "true";
+    if (autoShowOrders) {
         window.onload = function() {
             showSection('orders');
         };
-    <% } %>
+    }
     function enableEditing() {
         document.getElementById('p_firstName').disabled = false;
         document.getElementById('p_lastName').disabled = false;

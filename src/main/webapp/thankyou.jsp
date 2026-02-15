@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     <style>
         .thankyou-container {
             max-width: 600px;

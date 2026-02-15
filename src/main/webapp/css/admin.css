@@ -1,7 +1,14 @@
 /* Admin Dashboard Layout */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #f4f4f4;
     font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .admin-wrapper {
@@ -77,6 +84,7 @@ body {
     margin-bottom: 2rem;
     border-bottom: 2px solid #ddd;
     padding-bottom: 1rem;
+    margin-top: 5rem;
 }
 
 .admin-header h1 {
@@ -91,4 +99,101 @@ body {
     padding: 2rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     margin-bottom: 2rem;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* =============================
+   Responsive: Mobile & Tablet (≤ 1024px)
+   ============================= */
+@media (max-width: 1024px) {
+    .admin-wrapper {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed; /* Fisso in basso */
+        top: auto;
+        bottom: 0;
+        left: 0;
+        padding: 0.8rem 0; /* Padding ridotto */
+        flex-direction: row;
+        justify-content: center;
+        z-index: 1000; /* Assicura che sia sopra tutto */
+        box-shadow: 0 -4px 10px rgba(0,0,0,0.1); /* Ombra verso l'alto */
+        background-color: #0B0E0D; 
+    }
+
+    .admin-sidebar ul {
+        display: flex;
+        flex-wrap: nowrap; /* Non andare a capo se possibile, scroll orizzontale se serve */
+        justify-content: space-around; /* Spazia equamente */
+        width: 100%; 
+        gap: 0.5rem;
+        overflow-x: auto; /* Scroll se troppe icone */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .admin-sidebar li {
+        width: auto;
+        flex-grow: 1; /* Occupa spazio disponibile */
+        display: flex;
+        justify-content: center;
+    }
+
+    .admin-sidebar a {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.85rem;
+        border-left: none;
+        border-bottom: none; 
+        border-top: 3px solid transparent; /* Indicatore sopra */
+        text-align: center;
+        width: 100%;
+    }
+
+    .admin-sidebar a:hover, .admin-sidebar a.active {
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+        border-top-color: #fff;
+        background-color: rgba(255,255,255,0.05);
+    }
+
+    .sidebar-divider {
+        display: none; 
+    }
+
+    /* Content Area */
+    .admin-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem; 
+        padding-bottom: 80px; /* Spazio per la barra in basso */
+    }
+
+    .admin-header {
+        margin-top: 0; /* Header top margin non serve più se la barra è giù */
+    }
+
+    .admin-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .form-row {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 }

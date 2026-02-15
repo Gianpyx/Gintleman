@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     <style>
         .orders-container {
             max-width: 1000px;

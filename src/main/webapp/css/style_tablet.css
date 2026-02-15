@@ -4,11 +4,16 @@
 @media (min-width: 768px) and (max-width: 1250px) {
     :root { --container: min(95vw, 100%); }
 
+    /* Fix Universale per evitare scroll orizzontale */
+    * {
+        box-sizing: border-box; 
+    }
+
     html, body {
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
-
+        overflow-x: hidden; /* IMPEDISCE SCROLL ORIZZONTALE */
+        width: 100%;
         font-family: 'SF Pro', sans-serif;
         font-size: 16px;
     }
@@ -276,10 +281,6 @@
     /* Cassetto */
     .cassetto-mobile {
         top: 5em;
-    }
-    
-    .cassetto-mobile.aperto {
-        height: calc(100vh - 5em);
     }
     
     /* Stile Ricerca Tablet nel cassetto */

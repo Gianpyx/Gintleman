@@ -154,3 +154,72 @@ img {
     color: #47a9ed;
 }
 .registration_hint a{ color: inherit; text-decoration: underline; }
+
+/* Responsive adjustments */
+
+/* Tablet and Mobile Landscape */
+@media (max-width: 1250px) {
+    :root {
+        --container-gutter: 2rem;
+        --gap: 1.5rem;
+    }
+    
+    .registration {
+        width: 90%;
+        /* Keep 2 columns if space allows, or switch to 1 earlier if needed.
+           The existing code doesn't switch to 1 column until < 900px (desktop media query reversed).
+           Actually existing code has @media (min-width: 900px) { grid-template-columns: 1fr 1fr; }
+           So below 900px it is already 1 column. This is good.
+           We just ensure width and padding are better.
+        */
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    :root {
+        --container-gutter: 1rem;
+        --gap: 1rem;
+    }
+
+    .registration {
+        width: 92%;
+        /* Ensure 1 column layout */
+        grid-template-columns: 1fr;
+    }
+    
+    .registration_sx {
+        /* Hide decorative image on mobile to focus on the form */
+        display: none;
+    }
+
+    .registration_rx {
+        padding: 1.5rem 1rem;
+    }
+    
+    .registration_title {
+        font-size: 32px; /* Reduce from 50px */
+        margin-bottom: 0.5rem;
+    }
+    
+    .registration_sub_title {
+        font-size: 16px;
+        margin-bottom: 2rem;
+    }
+
+    .registration_row {
+        /* Stack first name and last name vertically on small mobile screens */
+        grid-template-columns: 1fr; 
+        gap: 1rem;
+    }
+    
+    .registration_input, .registration_submit {
+        padding: 12px 16px;
+        font-size: 16px; 
+    }
+    
+    .registration_submit {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+}

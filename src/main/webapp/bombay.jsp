@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/header.css"> <!-- Header Standard -->
     <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
     <link rel="stylesheet" href="css/bombay.css"> <!-- Stile specifico Bombay -->
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     
     <!-- Font Google: DM Sans + Serif font per eleganza se serve -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

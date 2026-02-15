@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 </head>
 
 <body>

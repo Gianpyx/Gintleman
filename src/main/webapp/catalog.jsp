@@ -3,6 +3,7 @@
 <head>
     <title>Catalogo - Gintleman</title>
     <!-- Usa index.css come base comune per reset e variabili -->
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">

@@ -11,6 +11,7 @@
     
     <!-- Font Google: DM Sans (Simile a Google Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -19,6 +20,8 @@
     <link rel="stylesheet" href="css/header.css"> <!-- Header -->
     <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
     <link rel="stylesheet" href="css/index.css">  <!-- SPECIFICO PER LA HOME -->
+    <link rel="stylesheet" href="css/style_tablet.css"> <!-- Tablet -->
+    <link rel="stylesheet" href="css/style_mobile.css"> <!-- Mobile -->
 </head>
 
 <body>

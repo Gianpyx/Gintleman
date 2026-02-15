@@ -6,10 +6,19 @@
     --container: 92vw;
   }
 
+  /* Fix Universale per evitare scroll orizzontale */
+  * {
+      box-sizing: border-box; 
+  }
+
   html,
   body {
     font-size: 15px; /* base leggibile su mobile */
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden; /* IMPEDISCE SCROLL ORIZZONTALE */
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   /* Hero */
@@ -171,10 +180,6 @@
   .cassetto-mobile {
       top: 4.5em; /* Deve matchare l'altezza header mobile */
       height: 0;
-  }
-  
-  .cassetto-mobile.aperto {
-      height: calc(100vh - 4.5em);
   }
 
   /* Ricerca Mobile nel cassetto */

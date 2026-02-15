@@ -231,6 +231,12 @@ body {
     padding-bottom: 0.5rem;
 }
 
+/* Disabilita click su admin link mobile/tablet */
+.admin-disabled-mobile {
+    pointer-events: none;
+    cursor: default;
+}
+
 /* Utilità Visibilità - Default Desktop */
 .solo-desktop {
     display: flex !important;

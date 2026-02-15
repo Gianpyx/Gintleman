@@ -59,9 +59,19 @@
     <div id="cassetto-navigazione" class="cassetto-mobile solo-mobile">
       <div class="contenuto-cassetto">
 
-        <!-- Link Mobile -->
-        <a href="login.jsp" class="link-mobile">Log in</a>
-        <a href="#" class="link-mobile">Carrello</a>
+        <!-- Link Mobile Login/User -->
+        <% if (headerUser != null) { %>
+            <% if (headerUser.isAdmin()) { %>
+                <a href="admin_dashboard.jsp" class="link-mobile admin-disabled-mobile">Welcome, <b><%= headerUser.getFirstName() %></b></a>
+            <% } else { %>
+                <a href="dashboard" class="link-mobile">Welcome, <b><%= headerUser.getFirstName() %></b></a>
+            <% } %>
+        <% } else { %>
+            <a href="login.jsp" class="link-mobile">Log in</a>
+        <% } %>
+
+        <!-- Link Mobile Carrello -->
+        <a href="cart" class="link-mobile">Carrello</a>
       </div>
     </div>
   </header>

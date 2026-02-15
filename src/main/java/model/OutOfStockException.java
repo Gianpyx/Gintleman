@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Map;
-import java.util.HashMap;
 
 public class OutOfStockException extends Exception {
     private Map<String, Integer> unavailableProducts;

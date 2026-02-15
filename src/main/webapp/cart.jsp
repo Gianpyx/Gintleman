@@ -11,45 +11,8 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <style>
-        .cart-container {
-            max-width: 1000px;
-            margin: 2rem auto 40px; /* Reduced from 120px to match new layout */
-            padding: 20px;
-        }
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        .cart-table th, .cart-table td {
-            text-align: left;
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        .cart-total {
-            text-align: right;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .btn-checkout {
-            display: inline-block;
-            background-color: #ffd814;
-            color: #000;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            float: right;
-            margin-top: 10px;
-        }
-        .btn-remove {
-            color: red;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-    </style>
+    <link rel="stylesheet" href="css/cart.css"> <!-- New styles -->
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 </head>
 <body>
 
@@ -62,7 +25,12 @@
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null || cart.isEmpty()) {
     %>
-        <p>Il carrello è vuoto. <a href="catalog.jsp">Torna al catalogo</a>.</p>
+        <div class="empty-cart-container">
+            <img src="img/Carrello_2.png" alt="Carrello Vuoto" class="empty-cart-icon">
+            <h2>Il tuo carrello è vuoto</h2>
+            <p>Sembra che tu non abbia ancora aggiunto nulla.</p>
+            <a href="catalog.jsp" class="btn-shop">Inizia lo shopping</a>
+        </div>
     <%
         } else {
     %>

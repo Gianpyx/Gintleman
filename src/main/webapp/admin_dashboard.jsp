@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/footer.css">
     <!-- Admin Specific Style -->
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
+
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     

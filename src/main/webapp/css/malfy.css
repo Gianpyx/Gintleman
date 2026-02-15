@@ -34,7 +34,7 @@ section {
 ==================== */
 .hero-section {
     position: relative;
-    min-height: 80vh;
+    min-height: 110vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -240,28 +240,31 @@ section {
     text-align: center; /* Centered like Monkey/Mare/Bombay */
 }
 
-/* Desktop Defaults (Grid/Flex Row behaviour) */
+/* Desktop Defaults (Carousel behavior matching Bombay) */
 .carousel-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center items on desktop */
+    /* justify-content: center; Removed to allow start alignment */
 }
 
 .carousel-track {
     display: flex;
     gap: 2rem;
     width: 100%;
-    /* On desktop, we ideally want them in a row. */
-    justify-content: center; /* Center the 4 Items */
-    flex-wrap: wrap; /* Allow wrapping if screen is small but > tablet breakpoint? */
-    /* No horizontal scroll on desktop by default */
-    overflow-x: visible; 
+    /* Enabled horizontal scroll on desktop */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem; /* Space for scrollbar if visible */
+    scrollbar-width: none; /* Firefox */
+}
+.carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
 .partner-card {
-    /* 4 cards visible on desktop */
-    min-width: calc((100% - 6rem) / 4); /* 4 items with 3 * 2rem gaps */
+    /* 4 items visible without shrinking, allowing scrolling if more added or cleaner layout */
+    min-width: calc((100% - 6rem) / 4); 
     background-color: var(--color-elements); /* #F3EDE2 */
     border-radius: 8px;
     text-decoration: none;
@@ -293,9 +296,37 @@ section {
     margin-bottom: 0;
 }
 
-/* Hide Navigation Arrow on Desktop */
+/* Show Navigation Arrow on Desktop */
 .nav-arrow-btn {
-    display: none; 
+    background-color: #F3EDE2; /* Light colour like cards */
+    color: #000;
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+    margin-left: 1rem; /* Space from carousel */
+    flex-shrink: 0;
+    transition: transform 0.3s ease, background-color 0.2s ease;
+}
+
+.nav-arrow-btn:hover {
+    transform: scale(1.1);
+    background-color: #fff;
+}
+
+.nav-arrow-btn.rotated {
+    transform: rotate(180deg);
+}
+
+.nav-arrow-btn.rotated:hover {
+    transform: rotate(180deg) scale(1.1);
 }
 
 
@@ -310,7 +341,7 @@ section {
         align-items: center;
         text-align: center;
         padding: 6rem 5% 4rem 5% !important; /* Force padding */
-        min-height: auto;
+        min-height: 110vh;
     }
     
     .hero-content {

@@ -34,7 +34,7 @@
     </div>
 
     <div class="hero-cta-container">
-        <a href="product?id=3" class="btn-buy">BUY 45.00€</a>
+        <a href="product?id=5" class="btn-buy">BUY 45.00€</a>
     </div>
 </section>
 

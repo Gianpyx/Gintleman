@@ -34,11 +34,12 @@ section {
 ==================== */
 .hero-section {
     position: relative;
-    min-height: 80vh;
+    min-height: 110vh; /* Reduced from 80vh to pull content up */
     display: flex;
-    align-items: center;
+    display: flex; /* Kept double for safety in replace? No, just fix it */
+    align-items: center; 
     justify-content: space-between;
-    padding: 8rem 5% 4rem 5% !important; /* Force padding */
+    padding: 2rem 5% 4rem 5% !important; /* Reduced top padding to start near header */
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
@@ -347,12 +348,12 @@ section {
         align-items: center;
         text-align: center;
         padding: 6rem 5% 4rem 5% !important; /* Force padding */
-        min-height: auto;
     }
     
     .hero-content {
         max-width: 100%;
         margin-left: 0;
+        margin-top: 0; /* Reset desktop push */
         margin-bottom: 2rem; /* Reduced from 300px to natural spacing */
         z-index: 2;
         /* Ensure text is above image if negative margins used, but here we use flow */

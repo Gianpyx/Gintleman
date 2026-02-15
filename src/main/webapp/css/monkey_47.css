@@ -34,7 +34,7 @@ section {
 ==================== */
 .hero-section {
     position: relative;
-    min-height: 80vh;
+    min-height: 110vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -313,7 +313,7 @@ section {
         align-items: center;
         text-align: center;
         padding: 6rem 5% 4rem 5% !important; /* Force padding */
-        min-height: auto;
+        min-height: 110vh;
     }
     
     .hero-content {

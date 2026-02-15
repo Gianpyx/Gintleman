@@ -34,7 +34,7 @@
     </div>
 
     <div class="hero-cta-container">
-        <a href="product?id=4" class="btn-buy">BUY 30.00€</a>
+        <a href="product?id=3" class="btn-buy">BUY 30.00€</a>
     </div>
 </section>
 
@@ -133,8 +133,6 @@
             let isAtEnd = false;
 
             nextBtn.addEventListener('click', function() {
-                // If on desktop (button hidden), this won't trigger.
-                // Mobile logic:
                 const cardWidth = carousel.querySelector('.partner-card').offsetWidth;
                 const gap = 32; // 2rem
                 const scrollAmount = cardWidth + gap;

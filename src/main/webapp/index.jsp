@@ -107,37 +107,40 @@
     <section id="bestsellers">
         <h2 class="section-title">Best Sellers</h2>
         <div class="card-grid">
-            <!-- Esempio Best Seller -->
-            <a href="product.jsp" class="card">
+            <!-- Best Seller 1: Malfy Rosa (ID: 3) -->
+            <a href="product?id=3" class="card">
                 <div class="card-img-container">
-                    <img src="img/Bottiglia%20Gin%20Malfy.png" class="card-img">
+                    <img src="img/prodotto_malfy_rosa.png" class="card-img">
                 </div>
                 <div class="card-info">
-                    <h3 class="card-title">Malfy Originale</h3>
+                    <h3 class="card-title">Malfy Rosa</h3>
                     <p class="card-subtitle">€ 29.90</p>
                 </div>
             </a>
-            <a href="product.jsp" class="card">
+            <!-- Best Seller 2: Bombay (ID: 1) -->
+            <a href="product?id=1" class="card">
                 <div class="card-img-container">
-                    <img src="img/Bottiglia%20Gin%20Bombay.png" class="card-img">
+                    <img src="img/prodotto_bombay.png" class="card-img">
                 </div>
                 <div class="card-info">
                     <h3 class="card-title">Bombay Sapphire</h3>
                     <p class="card-subtitle">€ 22.50</p>
                 </div>
             </a>
-            <a href="product.jsp" class="card">
+            <!-- Best Seller 3: Gin Mare Capri (ID: 7) -->
+            <a href="product?id=7" class="card">
                 <div class="card-img-container">
-                    <img src="img/Bottiglia%20Gin%20Mare.png" class="card-img">
+                    <img src="img/prodotto_gin_mare_capri.png" class="card-img">
                 </div>
                 <div class="card-info">
                     <h3 class="card-title">Gin Mare Capri</h3>
                     <p class="card-subtitle">€ 38.00</p>
                 </div>
             </a>
-            <a href="product.jsp" class="card">
+            <!-- Best Seller 4: Monkey 47 (ID: 5) -->
+            <a href="product?id=5" class="card">
                 <div class="card-img-container">
-                    <img src="img/Bottiglia%20Monkey%2047.png" class="card-img">
+                    <img src="img/prodotto_monkey.png" class="card-img">
                 </div>
                 <div class="card-info">
                     <h3 class="card-title">Monkey 47 Dry</h3>

@@ -1,64 +1,104 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monkey 47</title>
     <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
-
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/monkey_47.css"> <!-- Stili dell'homepage -->
+    <link rel="stylesheet" href="css/index.css"> <!-- Base Globale -->
+    <link rel="stylesheet" href="css/header.css"> <!-- Header Standard -->
+    <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
+    <link rel="stylesheet" href="css/monkey_47.css"> <!-- Stile specifico Monkey 47 -->
+    
+    <!-- Font Google: DM Sans + Serif font per eleganza se serve -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <%@ include file="header.jsp" %>
 
-
-
-
-<div id="prima_sezione">
-    <img src="img/monkey_logo.png"/>
-</div>
-
-
-
-
-<div class="sfondo_gradient">
-<div class="seconda_sezione">
-    <!-- Colonna immagine -->
-    <section class="img_sinistra">
-        <img src="img/monkey_bicchiere.png">
-    </section>
-    <!-- Colonna testo -->
-    <section class="info_testo_dx">
-        <div class="rettangolo_txt">
-            <p>
-                Monkey 47 nasce nella Foresta Nera tedesca e conquista con la sua complessità aromatica.
-                Distillato con ben 47 botaniche selezionate da tutto il mondo — tra cui mirtilli rossi della Foresta Nera,
-                erbe esotiche e spezie orientali — questo gin artigianale unisce
-                la precisione tedesca con l’eccentricità britannica.
-            </p>
+<!-- 1. HERO SECTION -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Monkey 47</h1>
+        <h2 class="hero-subtitle">Schwarzwald Dry Gin</h2>
+        
+        <div class="hero-bottom-left">
+            <p class="hero-description">Il gin della Foresta Nera con 47 botaniche.</p>
         </div>
-    </section>
-    <section class="img_destra">
-        <img src="img/monkey_bottiglia.png">
-    </section>
-</div>
+    </div>
+    
+    <div class="hero-image-container">
+        <img src="img/prodotto_monkey.png" alt="Monkey 47 Bottle" class="hero-bottle">
+    </div>
 
+    <div class="hero-cta-container">
+        <a href="product?id=3" class="btn-buy">BUY 45.00€</a>
+    </div>
+</section>
 
-
-
-
-<div id = "terza_sezione">
-    <section id="partner">
-        <button class="bottone" type="button" onclick="window.location.href='bombay.jsp';">
-            <div class ="rettangolo_bt">
-                <%-- <img src="img/Bottiglia%20Gin%20Bombay.png" class="bottiglie_gr"/> --%>
+<!-- 2. ABOUT SECTION -->
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-left">
+            <h2 class="about-title">About this partner</h2>
+        </div>
+        
+        <div class="about-right">
+            <div class="stats-table">
+                <div class="stat-row">
+                    <span class="stat-label">ORIGIN</span>
+                    <span class="stat-value">GERMANY</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">FOUNDING YEARS</span>
+                    <span class="stat-value">2010</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">MAIN BOTANICALS</span>
+                    <span class="stat-value">MIRTILLI ROSSI, ABETE ROSSO, SAMBUCO</span>
+                </div>
+                <div class="stat-row no-border">
+                    <span class="stat-label">MAIN BOTTLE</span>
+                    <span class="stat-value">MONKEY 47 DRY GIN</span>
+                </div>
             </div>
-        </button>
-    </section>
-</div>
-</div>
+            
+            <div class="extra-stats-grid">
+                <div class="stat-box">
+                    <span class="box-number">1.200.000</span>
+                    <span class="box-label">casse vendute</span>
+                </div>
+                <div class="stat-box">
+                    <span class="box-text">sito</span>
+                    <span class="box-label">casse vendute</span> <!-- Placeholder text from design -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. PARTNER PRODUCT SECTION (Carousel Structure 1 item) -->
+<section class="partner-product-section">
+    <div class="partner-container">
+        <h2 class="section-title-white">Partner Product</h2>
+        
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- Card 1 -->
+                <div class="partner-card">
+                    <div class="card-inner">
+                        <img src="img/prodotto_monkey.png" alt="Monkey 47" class="partner-bottle-img">
+                    </div>
+                </div>
+            </div>
+            <!-- No Nav Button needed for 1 item -->
+        </div>
+    </div>
+</section>
+
+<%@ include file="footer.jsp" %>
+
 </body>
 </html>

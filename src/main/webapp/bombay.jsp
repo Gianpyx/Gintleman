@@ -1,71 +1,184 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bombay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombay Sapphire</title>
     <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
     <link rel="stylesheet" href="css/index.css"> <!-- Base Globale -->
     <link rel="stylesheet" href="css/header.css"> <!-- Header Standard -->
+    <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
     <link rel="stylesheet" href="css/bombay.css"> <!-- Stile specifico Bombay -->
+    
+    <!-- Font Google: DM Sans + Serif font per eleganza se serve -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <%@ include file="header.jsp" %>
 
-<div id="prima_sezione">
-    <img src="img/Logo_Bombay.png"/>
-</div>
-
-<div class="seconda_sezione">
-    
-    <!-- Colonna immagine (Sinistra) -->
-    <section class="img_sinistra">
-        <img src="img/Bombay_foto.png" alt="Bombay Sapphire Foto">
-    </section>
-
-    <!-- Colonna testo (Destra) -->
-    <section class="info_testo_dx">
-        <div class="rettangolo_txt"> <!-- Corretto: era rettangolo_txt_dx nel tentativo precedente, ma il CSS dice rettangolo_txt -->
-            <p>
-                <strong>Bombay Sapphire</strong> è un London Dry Gin di fama mondiale, celebrato per il suo gusto equilibrato e versatile.
-                La sua iconica bottiglia blu racchiude un distillato creato attraverso un processo unico di "Vapour Infusion",
-                che cattura delicatamente gli aromi naturali delle botaniche.<br><br>
-                Le 10 botaniche esotiche, tra cui ginepro toscano, scorza di limone spagnolo e coriandolo marocchino,
-                vengono selezionate a mano da tutto il mondo. Il risultato è un gin dal profilo aromatico complesso ma morbido,
-                perfetto per il classico Gin Tonic o per cocktail creativi.
-            </p>
+<!-- 1. HERO SECTION -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Bombay Sapphire</h1>
+        <h2 class="hero-subtitle">London dry gin</h2>
+        
+        <div class="hero-bottom-left">
+            <p class="hero-description">Mini descrizione sul bombayyyyyyy</p>
         </div>
-    </section>
+    </div>
+    
+    <div class="hero-image-container">
+        <!-- Usa l'immagine della bottiglia scontornata se possibile, altrimenti quella disponibile -->
+        <img src="img/prodotto_bombay.png" alt="Bombay Sapphire Bottle" class="hero-bottle">
+    </div>
 
-</div>
+    <div class="hero-cta-container">
+        <!-- Link al prodotto specifico (ID=1 per Bombay) -->
+        <a href="product?id=1" class="btn-buy">BUY 22.50€</a>
+    </div>
+</section>
 
-<div id = "terza_sezione">
-    <section id="partner">
-        <button class="bottone" type="button" onclick="window.location.href='bombay.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="img/Bottiglia%20Gin%20Bombay.png" class="bottiglie_gr"/>
+<!-- 2. ABOUT SECTION -->
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-left">
+            <h2 class="about-title">About this partner</h2>
+        </div>
+        
+        <div class="about-right">
+            <div class="stats-table">
+                <div class="stat-row">
+                    <span class="stat-label">ORIGIN</span>
+                    <span class="stat-value">ENGLAND</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">FOUNDING YEARS</span>
+                    <span class="stat-value">1987</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">MAIN BOTANICALS</span>
+                    <span class="stat-value">GINEPRO, LIMONE, CORIANDOLO</span>
+                </div>
+                <div class="stat-row no-border">
+                    <span class="stat-label">MAIN BOTTLE</span>
+                    <span class="stat-value">BOMBAY SAPPHIRE</span>
+                </div>
             </div>
-        </button>
-
-        <button class="bottone" type="button" onclick="window.location.href='gin_mare.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="img/Bottiglia%20Gin%20Mare.png" class="bottiglie_gr"/>
+            
+            <div class="extra-stats-grid">
+                <div class="stat-box">
+                    <span class="box-number">4.600.000</span>
+                    <span class="box-label">casse vendute</span>
+                </div>
+                <div class="stat-box">
+                    <span class="box-text">sito</span>
+                    <span class="box-label">casse vendute</span> <!-- Placeholder text from design -->
+                </div>
             </div>
-        </button>
+        </div>
+    </div>
+</section>
 
-        <button class="bottone" type="button" onclick="window.location.href='monkey_47.jsp';">
-            <div class ="rettangolo_bt">
-                <img src="img/Bottiglia%20Monkey%2047.png" class="bottiglie_gr"/>
+<!-- 3. PARTNER PRODUCT SECTION -->
+<section class="partner-product-section">
+    <div class="partner-container">
+        <h2 class="section-title-white">Partner Product</h2>
+        
+        <div class="carousel-wrapper">
+            <div class="carousel-track" id="bombayCarousel">
+                <!-- Card 1 -->
+                <div class="partner-card">
+                    <div class="card-inner">
+                        <img src="img/prodotto_bombay_original.png" alt="Bombay Original" class="partner-bottle-img">
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="partner-card">
+                    <div class="card-inner">
+                        <img src="img/prodotto_bombay_premier_cru.png" alt="Bombay Premier Cru" class="partner-bottle-img">
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="partner-card">
+                    <div class="card-inner">
+                        <img src="img/prodotto_bombay_sunset.png" alt="Bombay Sunset" class="partner-bottle-img">
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="partner-card">
+                    <div class="card-inner">
+                        <img src="img/prodotto_bombay.png" alt="Bombay Sapphire" class="partner-bottle-img">
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="partner-card">
+                    <div class="card-inner">
+                        <img src="img/prodotto_citron_presse.png" alt="Bombay Citron Presse" class="partner-bottle-img">
+                    </div>
+                </div>
             </div>
-        </button>
 
-        <button class="bottone" type="button" onclick="window.location.href='malfy.jsp';" >
-            <div class="rettangolo_bt">
-                <img src="img/Bottiglia%20Gin%20Malfy.png" class="bottiglie_gr"/>
-            </div>
-        </button>
-    </section>
-</div>
+            <!-- Navigation Arrow -->
+             <button class="nav-arrow-btn" id="carouselNext">&gt;</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.getElementById('bombayCarousel');
+        const nextBtn = document.getElementById('carouselNext');
+        
+        if (carousel && nextBtn) {
+            let isAtEnd = false;
+
+            nextBtn.addEventListener('click', function() {
+                const cardWidth = carousel.querySelector('.partner-card').offsetWidth;
+                const gap = 32; // 2rem
+                const scrollAmount = cardWidth + gap;
+
+                if (!isAtEnd) {
+                    // Scroll to the right (next item)
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    // Trust the scroll listener to update state when end is reached
+                } else {
+                    // Scroll back to the start (left)
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                    // Reset rotation handled by scroll listener, but force it for immediate feedback just in case
+                    isAtEnd = false; // Optimistic update
+                    nextBtn.classList.remove('rotated');
+                }
+            });
+
+            // Detect scroll position to update arrow
+            carousel.addEventListener('scroll', () => {
+                const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+                // If close to end (tolerance 10px)
+                if (carousel.scrollLeft >= maxScrollLeft - 10) {
+                    if (!isAtEnd) {
+                        nextBtn.classList.add('rotated');
+                        isAtEnd = true;
+                    }
+                } else {
+                    // If not at end, we allow going back to normal state
+                    // BUT only if we were at end? Actually, if user scrolls back manually, we should reset.
+                    if (isAtEnd && carousel.scrollLeft < maxScrollLeft - 10) {
+                        nextBtn.classList.remove('rotated');
+                        isAtEnd = false;
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

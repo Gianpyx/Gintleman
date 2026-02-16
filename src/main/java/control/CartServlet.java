@@ -17,6 +17,7 @@ import java.sql.SQLException;
 @WebServlet(name = "CartServlet", value = "/cart")
 public class CartServlet extends HttpServlet {
 
+    // Gestione della visualizzazione e delle operazioni rapide sul carrello
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -24,6 +25,7 @@ public class CartServlet extends HttpServlet {
             action = "view";
         }
 
+        // Recupero della sessione o creazione di un nuovo carrello se non presente
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null) {
@@ -32,11 +34,16 @@ public class CartServlet extends HttpServlet {
         }
 
         try {
+            // Aggiunta di un prodotto al carrello
             if ("add".equals(action)) {
                 addToCart(request, response, cart);
-            } else if ("remove".equals(action)) {
+            }
+            // Rimozione di un prodotto dal carrello
+            else if ("remove".equals(action)) {
                 removeFromCart(request, response, cart);
-            } else if ("view".equals(action)) {
+            }
+            // Forward alla pagina di visualizzazione del carrello
+            else if ("view".equals(action)) {
                 request.getRequestDispatcher("cart.jsp").forward(request, response);
             }
         } catch (SQLException e) {
@@ -45,11 +52,13 @@ public class CartServlet extends HttpServlet {
         }
     }
 
+    // Delega le operazioni di manipolazione dati al metodo doGet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
     }
 
+    // Logica per l'aggiunta di un prodotto con controllo disponibilità e quantità
     private void addToCart(HttpServletRequest request, HttpServletResponse response, Cart cart)
             throws SQLException, IOException {
         String productIdStr = request.getParameter("productId");
@@ -58,6 +67,7 @@ public class CartServlet extends HttpServlet {
             ProductDAO productDAO = new ProductDAO();
             ProductBean product = productDAO.doRetrieveByKey(productId);
 
+            // Verifica che il prodotto esista e sia attivo per la vendita
             if (product != null && product.isActive()) {
                 int quantity = 1;
                 String quantityStr = request.getParameter("quantity");
@@ -74,10 +84,12 @@ public class CartServlet extends HttpServlet {
                 cart.addItem(product, quantity);
 
                 String redirect = request.getParameter("redirect");
+                // Successo: redirect alla pagina del carrello
                 if ("cart".equals(redirect)) {
                     response.sendRedirect(request.getContextPath() + "/cart");
-                } else {
-                    // Return JSON response for AJAX
+                }
+                // Successo: risposta JSON per aggiornamento dinamico della UI
+                else {
                     response.setContentType("application/json");
                     PrintWriter out = response.getWriter();
                     out.print("{");
@@ -85,12 +97,15 @@ public class CartServlet extends HttpServlet {
                     out.print("\"cartCount\":" + cart.getTotalItemsCount());
                     out.print("}");
                 }
-            } else {
+            }
+            // Errore: prodotto non trovato o non disponibile
+            else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found or inactive");
             }
         }
     }
 
+    // Rimuove completamente un prodotto dal carrello in base all'ID
     private void removeFromCart(HttpServletRequest request, HttpServletResponse response, Cart cart)
             throws IOException {
         String productIdStr = request.getParameter("productId");
@@ -98,7 +113,7 @@ public class CartServlet extends HttpServlet {
             int productId = Integer.parseInt(productIdStr);
             cart.removeItem(productId);
 
-            // Redirect back to cart page
+            // Redirect conclusivo alla pagina del carrello
             response.sendRedirect("cart.jsp");
         }
     }

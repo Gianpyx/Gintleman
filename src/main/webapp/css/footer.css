@@ -1,9 +1,15 @@
+/* ==================== 
+Footer 
+==================== */
+
+/* impostazioni generali footer */
 #footer {
     padding: 4rem 2rem 2rem;
     background-color: white; /* Assicurati che sia bianco come da immagine */
     font-family: 'DM Sans', sans-serif;
 }
 
+/* contenitore centrale footer */
 .footer_container {
     max-width: 1200px;
     margin: 0 auto;
@@ -11,8 +17,10 @@
 }
 
 /* ====================
-   TOP SECTION
+Sezione Superiore
 ==================== */
+
+/* layout parte alta del footer */
 .footer_top {
     display: flex;
     justify-content: space-between;
@@ -21,19 +29,21 @@
     padding: 0 2rem;
 }
 
-/* Contacts (Left) */
+/* Contatti (Sinistra) */
 .footer_contacts {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
+/* elemento singolo contatto */
 .contact_item {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
+/* icona quadrata contatto */
 .square_icon {
     /* Background rimosso */
     width: 50px; /* Dimensione contenitore icona */
@@ -42,19 +52,21 @@
     align-items: center;
 }
 
+/* immagine all'interno dell'icona */
 .square_icon img {
     width: 100%; 
     height: auto;
     object-fit: contain;
 }
 
+/* testo del contatto */
 .contact_text {
     font-size: 1.2rem;
     color: #333;
     font-weight: 400;
 }
 
-/* Actions (Right) */
+/* Azioni (Destra) */
 .footer_actions {
     display: flex;
     flex-direction: column;
@@ -62,6 +74,7 @@
     gap: 2rem;
 }
 
+/* bottone registrati */
 .btn_registrati {
     font-size: 1.5rem;
     font-weight: 800; /* Bold */
@@ -72,11 +85,13 @@
     padding-bottom: 2px;
 }
 
+/* contenitore icone social */
 .social_icons {
     display: flex;
     gap: 2rem;
 }
 
+/* icona circolare social */
 .circle_icon {
     /* Background rimosso */
     width: 50px;
@@ -87,10 +102,12 @@
     transition: opacity 0.3s;
 }
 
+/* hover icona social */
 .circle_icon:hover {
     opacity: 0.7;
 }
 
+/* immagine all'interno dell'icona social */
 .circle_icon img {
     width: 100%;
     height: auto;
@@ -99,8 +116,10 @@
 
 
 /* ====================
-   BOTTOM SECTION
+Sezione Inferiore
 ==================== */
+
+/* layout parte bassa del footer */
 .footer_bottom {
     display: flex;
     flex-direction: column;
@@ -110,6 +129,7 @@
     width: 100%;
 }
 
+/* linea separatrice semplice */
 .simple_line {
     width: 100%;
     border: none;
@@ -117,6 +137,7 @@
     margin: 0;
 }
 
+/* testo crediti */
 .credits {
     font-size: 1rem;
     color: #333;
@@ -126,9 +147,11 @@
 
 
 /* ====================
-   Responsive
+Responsive
 ==================== */
+
 @media (max-width: 900px) {
+    /* layout a colonna su tablet/mobile */
     .footer_top {
         flex-direction: column;
         align-items: center;
@@ -136,10 +159,12 @@
         text-align: center;
     }
     
+    /* allineamento centrale azioni */
     .footer_actions {
         align-items: center;
     }
     
+    /* allineamento centrale contatti */
     .footer_contacts {
         align-items: center; /* Centra contatti su mobile/tablet */
     }

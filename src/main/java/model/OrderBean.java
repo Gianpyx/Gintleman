@@ -5,16 +5,17 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+// Bean che rappresenta un ordine effettuato da un utente, contenente i dettagli di spedizione e il totale
 public class OrderBean implements Serializable {
     private int id;
     private int userId;
     private BigDecimal totalAmount;
-    private String status; // PENDING, COMPLETED, CANCELED
+    private String status;
     private String address;
     private String city;
     private String zipCode;
     private Timestamp createdAt;
-    private List<OrderItemBean> items; // Optional, for full order details
+    private List<OrderItemBean> items; // Lista opzionale per caricare i dettagli completi dell'ordine
 
     public OrderBean() {
     }

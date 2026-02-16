@@ -1,6 +1,10 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="model.DriverManagerConnectionPool" %>
 <%@ page contentType="text/plain" %>
+<!-- ==================== 
+     PAGINA DI TEST DATABASE 
+     (Uso Interno)
+     ==================== -->
 <%
     try (Connection conn = DriverManagerConnectionPool.getConnection();
          Statement stmt = conn.createStatement();

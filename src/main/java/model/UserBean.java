@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+// Bean che rappresenta un utente registrato nel sistema
 public class UserBean implements Serializable {
     private int id;
     private String email;
@@ -71,6 +72,7 @@ public class UserBean implements Serializable {
         this.createdAt = createdAt;
     }
 
+    // Verifica se l'utente ha privilegi amministrativi
     public boolean isAdmin() {
         return "ADMIN".equalsIgnoreCase(this.role);
     }

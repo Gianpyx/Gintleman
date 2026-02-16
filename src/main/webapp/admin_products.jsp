@@ -2,6 +2,9 @@
 <%@ page import="model.UserBean" %>
 <%@ page import="model.ProductBean" %>
 <%@ page import="java.util.List" %>
+<!-- ==================== 
+     LOGICA DI ACCESSO 
+     ==================== -->
 <%
     UserBean adminUser = (UserBean) session.getAttribute("user");
     if (adminUser == null || !"ADMIN".equalsIgnoreCase(adminUser.getRole())) {
@@ -9,29 +12,36 @@
         return;
     }
     
+    // Recupero lista prodotti
     List<ProductBean> products = (List<ProductBean>) request.getAttribute("products");
 %>
 <html>
 <head>
     <title>Gestione Prodotti - Gintleman Admin</title>
-    <!-- Common Styles -->
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
+    <!-- Stili Comuni -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <!-- Admin Specific Style -->
+    
+    <!-- Stile Specifico Admin -->
     <link rel="stylesheet" href="css/admin.css">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 
-    
-    <!-- Fonts -->
+    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Specific Styles for Product Management */
+        /* ==================== 
+           STILI SPECIFICI GESTIONE PRODOTTI 
+           ==================== */
         .admin-toolbar {
             display: flex;
             justify-content: space-between;
@@ -99,7 +109,7 @@
             cursor: pointer;
         }
         
-        /* Modal/Overlay for Form */
+        /* Modale/Overlay per Form */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -160,19 +170,21 @@
         }
         
         .details-view {
-            display: none; /* Hidden by default */
+            display: none; /* Nascosto di default */
         }
     </style>
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="admin-wrapper">
+    <!-- Sidebar Laterale -->
     <jsp:include page="admin_sidebar.jsp" />
 
     <main class="admin-content">
-        <!-- HEADER & TOOLBAR -->
+        <%-- Header & Toolbar --%>
         <div class="admin-header">
             <h1>Gestione Prodotti</h1>
             <p>Lista di tutti i prodotti disponibili.</p>
@@ -182,7 +194,9 @@
             <button class="btn-add" onclick="openForm()">+ Aggiungi Prodotto</button>
         </div>
 
-        <!-- PRODUCT LIST -->
+        <!-- ==================== 
+             LISTA PRODOTTI 
+             ==================== -->
         <div class="admin-card" style="padding: 0;">
             <table class="product-table">
                 <thead>
@@ -217,7 +231,7 @@
                         <td>€ <%= p.getPrice() %></td>
                         <td><%= p.getStock() %></td>
                         <td><%= p.getNationality() %></td>
-                        <td onclick="event.stopPropagation()"> <!-- Stop propagation to prevent row click -->
+                        <td onclick="event.stopPropagation()"> <!-- Stop propagazione per prevenire click su riga -->
                             <div style="display:flex; gap:0.5rem;">
                                 <button class="btn-action btn-edit" onclick="openFormFromRow(this.closest('.product-row'))">Modifica</button>
                                 <button class="btn-action btn-delete" style="background:#cc0000;" onclick="zeroStock('<%= p.getId() %>')">Esaurisci</button>
@@ -238,7 +252,9 @@
     </main>
 </div>
 
-<!-- MODAL FORM (ADD/EDIT) -->
+<!-- ==================== 
+     MODAL FORM (AGGIUNGI/MODIFICA) 
+     ==================== -->
 <div id="productFormModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-modal" onclick="closeForm()">&times;</span>
@@ -306,7 +322,9 @@
     </div>
 </div>
 
-<!-- MODAL DETAILS -->
+<!-- ==================== 
+     MODAL DETTAGLI 
+     ==================== -->
 <div id="detailsModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-modal" onclick="closeDetails()">&times;</span>
@@ -363,7 +381,7 @@
             document.getElementById('p_id').value = "";
         }
         
-        // Close details if open
+        // Chiudi dettagli se aperti
         closeDetails();
     }
 
@@ -390,7 +408,7 @@
         
         document.getElementById('d_delete_id').value = id;
         
-        // Setup Edit Button in Details
+        // Setup Bottone Edit nei Dettagli
         document.getElementById('btnDetailsEdit').onclick = function() {
             openForm(id, name, subtitle, desc, price, stock, img, cat, alc, nat);
         };
@@ -406,7 +424,7 @@
         document.getElementById('detailsModal').style.display = 'none';
     }
 
-    // Close modal if clicking outside
+    // Chiudi modale se si clicca fuori
     window.onclick = function(event) {
         if (event.target == document.getElementById('productFormModal')) {
             closeForm();

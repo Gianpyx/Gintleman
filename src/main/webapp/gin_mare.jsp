@@ -3,22 +3,33 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gin Mare</title>
-    <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
-    <link rel="stylesheet" href="css/index.css"> <!-- Base Globale -->
-    <link rel="stylesheet" href="css/header.css"> <!-- Header Standard -->
-    <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
-    <link rel="stylesheet" href="css/gin_mare.css"> <!-- Stile specifico Gin Mare -->
     
-    <!-- Font Google: DM Sans + Serif font per eleganza se serve -->
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
+    <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
+    
+    <!-- Stili Comuni -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    
+    <!-- Stile Specifico -->
+    <link rel="stylesheet" href="css/gin_mare.css">
+    
+    <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
-<!-- 1. HERO SECTION -->
+<!-- ==================== 
+     SEZIONE HERO 
+     ==================== -->
 <section class="hero-section">
     <div class="hero-content">
         <h1 class="hero-title">Gin Mare</h1>
@@ -38,7 +49,9 @@
     </div>
 </section>
 
-<!-- 2. ABOUT SECTION -->
+<!-- ==================== 
+     SEZIONE ABOUT 
+     ==================== -->
 <section class="about-section">
     <div class="about-container">
         <div class="about-left">
@@ -81,7 +94,9 @@
     </div>
 </section>
 
-<!-- 3. PARTNER PRODUCT SECTION (Static 2 bottles) -->
+<!-- ==================== 
+     SEZIONE PRODOTTI PARTNER 
+     ==================== -->
 <section class="partner-product-section">
     <div class="partner-container">
         <h2 class="section-title-white">Partner Product</h2>
@@ -104,6 +119,7 @@
     </div>
 </section>
 
+<!-- Footer Gintleman -->
 <%@ include file="footer.jsp" %>
 
 </body>

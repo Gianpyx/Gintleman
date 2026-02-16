@@ -6,29 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gintleman - Premium Gin Shop</title>
     
-    <!-- Favicon -->
+    <!-- ==================== 
+         STILI E RISORSE    
+         ==================== -->
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     
-    <!-- Font Google: DM Sans (Simile a Google Sans) -->
+    <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Fogli di stile -->
-    <link rel="stylesheet" href="css/style.css"> <!-- Base Globale -->
-    <link rel="stylesheet" href="css/header.css"> <!-- Header -->
-    <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
-    <link rel="stylesheet" href="css/index.css">  <!-- SPECIFICO PER LA HOME -->
-    <link rel="stylesheet" href="css/style_tablet.css"> <!-- Tablet -->
-    <link rel="stylesheet" href="css/style_mobile.css"> <!-- Mobile -->
+    <!-- Fogli di Stile -->
+    <link rel="stylesheet" href="css/style.css">        <!-- Base Globale -->
+    <link rel="stylesheet" href="css/header.css">       <!-- Header -->
+    <link rel="stylesheet" href="css/footer.css">       <!-- Footer -->
+    <link rel="stylesheet" href="css/index.css">        <!-- Stile Homepage -->
+    <link rel="stylesheet" href="css/style_tablet.css"> <!-- Responsive Tablet -->
+    <link rel="stylesheet" href="css/style_mobile.css"> <!-- Responsive Mobile -->
 </head>
 
 <body>
 
+    <!-- Header Gintleman -->
     <%@ include file="header.jsp" %>
 
-    <!-- 1. HERO SECTION -->
+    <!-- ==================== 
+         SEZIONE HERO 
+         ==================== -->
     <header id="hero">
         <div id="zona_centrale">
             <h1>GINTLEMAN</h1>
@@ -37,7 +41,9 @@
         </div>
     </header>
 
-    <!-- 2. PARTNER SECTION -->
+    <!-- ==================== 
+         SEZIONE PARTNER 
+         ==================== -->
     <section id="partners">
         <h2 class="section-title">Our Partnership</h2>
         <div class="card-grid">
@@ -87,7 +93,9 @@
         </div>
     </section>
 
-    <!-- 3. BANNER SECTION (Custom Image + Blue Card) -->
+    <!-- ==================== 
+         SEZIONE BANNER CTA 
+         ==================== -->
     <section id="banner-cta">
         <!-- Parte Sinistra: Immagine SVG -->
         <div class="banner-img-container">
@@ -106,7 +114,9 @@
         </a>
     </section>
 
-    <!-- 4. BEST SELLER SECTION -->
+    <!-- ==================== 
+         SEZIONE BEST SELLER 
+         ==================== -->
     <section id="bestsellers">
         <h2 class="section-title">Best Sellers</h2>
         <div class="card-grid">
@@ -153,24 +163,29 @@
         </div>
     </section>
 
-    <!-- 5. CATEGORIES & REGISTRATION -->
+    <!-- ==================== 
+         SEZIONE CATEGORIE 
+         ==================== -->
     <section id="shop-categories">
         <a href="catalog.jsp?nationality=Italy" class="category-card">
-            <img src="img/Costiera%20Amalfitana.png" alt="Gin Italiani"> <!-- Assicurati che l'img esista o usa placeholder -->
+            <img src="img/Costiera%20Amalfitana.png" alt="Gin Italiani"> 
             <div class="category-label">Gin Italiani</div>
         </a>
         <a href="catalog.jsp?nationality=UK&nationality=Scotland&nationality=Japan&nationality=Spain" class="category-card">
-            <img src="img/Londra.png" alt="Gin Esteri"> <!-- Assicurati che l'img esista -->
+            <img src="img/Londra.png" alt="Gin Esteri"> 
             <div class="category-label">Gin Esteri</div>
         </a>
     </section>
 
-    <!-- 6. REGISTRATION CTA (Blue Card Style) -->
+    <!-- ==================== 
+         SEZIONE CTA REGISTRAZIONE 
+         ==================== -->
     <section id="cta-register">
         <h2>Registrati su Gintleman<br>e scopri i tuoi vantaggi.</h2>
         <a href="scopri_di_piu.jsp" class="btn-cta">Scopri tutti i vantaggi</a>
     </section>
 
+    <!-- Footer Gintleman -->
     <%@ include file="footer.jsp" %>
     
     <!-- Script JS Specifico Home -->

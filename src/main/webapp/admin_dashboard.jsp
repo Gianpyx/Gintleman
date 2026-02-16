@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.UserBean" %>
+<!-- ==================== 
+     LOGICA DI CONTROLLO ACCESSO 
+     ==================== -->
 <%
     UserBean adminUser = (UserBean) session.getAttribute("user");
     if (adminUser == null || !"ADMIN".equalsIgnoreCase(adminUser.getRole())) {
@@ -10,31 +13,42 @@
 <html>
 <head>
     <title>Admin Dashboard - Gintleman</title>
-    <!-- Common Styles -->
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
+    <!-- Stili Comuni -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <!-- Admin Specific Style -->
+    
+    <!-- Stile Specifico Admin -->
     <link rel="stylesheet" href="css/admin.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 
-    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Fonts -->
+    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<!-- ==================== 
+     HEADER GINTLEMAN 
+     ==================== -->
 <%@ include file="header.jsp" %>
 
 <div class="admin-wrapper">
-    <!-- Sidebar -->
+    <!-- ==================== 
+         SIDEBAR LATERALE 
+         ==================== -->
     <jsp:include page="admin_sidebar.jsp" />
 
-    <!-- Main Content -->
+    <!-- ==================== 
+         CONTENUTO PRINCIPALE 
+         ==================== -->
     <main class="admin-content">
         <div class="admin-header">
             <h1>Benvenuto, <%= adminUser.getFirstName() %></h1>
@@ -44,7 +58,7 @@
         <div class="admin-card">
             <h2>Statistiche Veloci</h2>
             <p>Qui potrai vedere un riepilogo delle attività recenti.</p>
-            <!-- Content placeholder -->
+            <!-- Placeholder contenuto -->
         </div>
         
         <div class="admin-card">

@@ -1,25 +1,28 @@
-/* === Variables === */
+/* ==================== 
+Variabili Globali 
+==================== */
 :root {
-    --color-blue-bg: #FFC2C2; /* Malfy Pink */
-    --color-text-on-blue: #1a1a1a; /* Dark text for contrast on light pink */
-    --color-white-bg: #FCF6EC;
-    --color-elements: #F3EDE2; /* Rectangles, lines, cards */
+    --color-blue-bg: #FFC2C2; /* Rosa Malfy */
+    --color-text-on-blue: #1a1a1a; /* Testo scuro per contrasto su sfondo rosa chiaro */
+    --color-white-bg: #FCF6EC; /* Sfondo chiaro standard */
+    --color-elements: #F3EDE2; /* Rettangoli, linee e carte */
     --color-text-dark: #1a1a1a;
     
     --font-primary: 'DM Sans', sans-serif;
 }
 
+/* impostazioni globali per pagina e corpo */
 body, html {
     background-color: var(--color-blue-bg);
     color: var(--color-text-on-blue);
     font-family: var(--font-primary);
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden; /* Previene scroll orizzontale */
     width: 100%;
 }
 
-/* Override index.css global section constraints */
+/* sovrascrittura vincoli di sezione globali */
 section {
     max-width: none !important;
     margin-left: 0 !important;
@@ -30,26 +33,30 @@ section {
 
 
 /* ====================
-     1. Hero Section
+     1. Sezione Hero
 ==================== */
+
+/* contenitore principale hero */
 .hero-section {
     position: relative;
     min-height: 110vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8rem 5% 4rem 5% !important; /* Force padding */
+    padding: 8rem 5% 4rem 5% !important; /* Padding forzato */
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
 }
 
+/* contenitore testo hero */
 .hero-content {
     max-width: 70%; 
     margin-left: 2rem; 
     z-index: 2;
 }
 
+/* titolo principale hero */
 .hero-title {
     font-size: 3.5rem; 
     font-weight: 700;
@@ -58,6 +65,7 @@ section {
     white-space: nowrap; 
 }
 
+/* sottotitolo hero */
 .hero-subtitle {
     font-size: 2rem;
     font-weight: 400;
@@ -66,16 +74,18 @@ section {
     opacity: 0.9;
 }
 
+/* margine inferiore sinistro */
 .hero-bottom-left {
     margin-top: 10rem;
 }
 
+/* descrizione hero */
 .hero-description {
     font-size: 1.1rem;
     max-width: 300px;
 }
 
-/* Central Image */
+/* Immagine Centrale */
 .hero-image-container {
     position: absolute;
     top: 50%;
@@ -85,13 +95,14 @@ section {
     width: 300px; 
 }
 
+/* stile immagine bottiglia */
 .hero-bottle {
     width: 100%;
     height: auto;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 }
 
-/* CTA Button */
+/* Bottone CTA */
 .hero-cta-container {
     position: absolute;
     bottom: 8rem; 
@@ -99,34 +110,39 @@ section {
     z-index: 2;
 }
 
+/* stile bottone acquista */
 .btn-buy {
     display: inline-block;
-    background-color: #1a1a1a; /* Dark button for contrast */
-    color: #FCF6EC; /* Light text */
+    background-color: #1a1a1a; /* Bottone scuro per contrasto */
+    color: #FCF6EC; /* Testo chiaro */
     padding: 1rem 2rem;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    /* border-radius: 4px; Optional based on design */
+    /* border-radius: 4px; Opzionale */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* hover bottone acquista */
 .btn-buy:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* ====================
-     2. About Section
+     2. Sezione About
 ==================== */
+
+/* contenitore sezione about */
 .about-section {
     background-color: var(--color-white-bg);
     color: var(--color-text-dark);
-    padding: 10rem 5% 4rem 5% !important; /* Force padding */
+    padding: 10rem 5% 4rem 5% !important; /* Padding forzato */
     width: 100%;
     box-sizing: border-box;
 }
 
+/* layout flessibile about */
 .about-container {
     display: flex;
     justify-content: space-between;
@@ -135,16 +151,19 @@ section {
     gap: 4rem;
 }
 
+/* colonna sinistra about */
 .about-left {
     flex: 1;
 }
 
+/* titolo about */
 .about-title {
     font-size: 2.5rem;
     font-weight: 500;
     margin-top: 0;
 }
 
+/* colonna destra about */
 .about-right {
     flex: 1.5;
     display: flex;
@@ -152,13 +171,14 @@ section {
     gap: 3rem;
 }
 
-/* Stats Table */
+/* Tabella Statistiche */
 .stats-table {
     border-top: 1px solid #ccc; /* Fallback */
     border-top: 1px solid var(--color-elements); 
-    border-top-color: #d1cbbd; /* Slightly darker for visibility */
+    border-top-color: #d1cbbd; /* Leggermente più scuro per visibilità */
 }
 
+/* riga statistica */
 .stat-row {
     display: flex;
     justify-content: space-between;
@@ -170,24 +190,28 @@ section {
     text-transform: uppercase;
 }
 
+/* riga senza bordo */
 .stat-row.no-border {
     border-bottom: none;
 }
 
+/* etichetta statistica */
 .stat-label {
     opacity: 0.7;
 }
 
+/* valore statistica */
 .stat-value {
     text-align: right;
 }
 
-/* Extra Stats Grid (Boxes) */
+/* Griglia Statistiche Extra (Box) */
 .extra-stats-grid {
     display: flex;
     gap: 2rem;
 }
 
+/* box singolo */
 .stat-box {
     background-color: var(--color-elements); /* #F3EDE2 */
     flex: 1;
@@ -198,18 +222,21 @@ section {
     min-height: 120px;
 }
 
+/* numero box */
 .box-number {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
+/* testo box */
 .box-text {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
+/* etichetta box */
 .box-label {
     font-size: 0.8rem;
     opacity: 0.6;
@@ -217,53 +244,59 @@ section {
 }
 
 /* ====================
-   3. Partner Product (Responsive: Grid on Desktop, Carousel on Mobile)
+   3. Sezione Partner (Responsive: Griglia su Desktop, Carosello su Mobile)
 ==================== */
+
+/* contenitore sezione partner */
 .partner-product-section {
     background-color: var(--color-blue-bg);
     color: var(--color-text-on-blue);
-    padding: 1rem 5% 4rem 5% !important; /* Force padding */
+    padding: 1rem 5% 4rem 5% !important; /* Padding forzato */
     width: 100%;
     box-sizing: border-box;
 }
 
+/* contenitore centrale partner */
 .partner-container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
+/* titolo sezione bianco */
 .section-title-white {
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 3rem;
     color: var(--color-text-on-blue);
-    text-align: center; /* Centered like Monkey/Mare/Bombay */
+    text-align: center; /* Centrato come Monkey/Mare/Bombay */
 }
 
-/* Desktop Defaults (Carousel behavior matching Bombay) */
+/* Default Desktop (Comportamento carosello come Bombay) */
 .carousel-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-    /* justify-content: center; Removed to allow start alignment */
+    /* justify-content: center; Rimosso per permettere allineamento inizio */
 }
 
+/* traccia carosello */
 .carousel-track {
     display: flex;
     gap: 2rem;
     width: 100%;
-    /* Enabled horizontal scroll on desktop */
+    /* Abilitato scroll orizzontale su desktop */
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding-bottom: 1rem; /* Space for scrollbar if visible */
+    padding-bottom: 1rem; /* Spazio per scrollbar se visibile */
     scrollbar-width: none; /* Firefox */
 }
 .carousel-track::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
 }
 
+/* carta partner */
 .partner-card {
-    /* 4 items visible without shrinking, allowing scrolling if more added or cleaner layout */
+    /* 4 elementi visibili senza restringimento, permette scroll se ne aggiungi di più */
     min-width: calc((100% - 6rem) / 4); 
     background-color: var(--color-elements); /* #F3EDE2 */
     border-radius: 8px;
@@ -278,10 +311,12 @@ section {
     box-sizing: border-box; 
 }
 
+/* hover carta */
 .partner-card:hover {
     transform: translateY(-5px);
 }
 
+/* contenuto interno carta */
 .card-inner {
     height: 100%;
     display: flex;
@@ -289,6 +324,7 @@ section {
     align-items: center;
 }
 
+/* immagine bottiglia partner */
 .partner-bottle-img {
     max-height: 90%; 
     max-width: 90%;
@@ -296,9 +332,9 @@ section {
     margin-bottom: 0;
 }
 
-/* Show Navigation Arrow on Desktop */
+/* Bottone Navigazione (Visibile su Desktop) */
 .nav-arrow-btn {
-    background-color: #F3EDE2; /* Light colour like cards */
+    background-color: #F3EDE2; /* Colore chiaro come le carte */
     color: #000;
     font-size: 2rem;
     width: 3rem;
@@ -311,7 +347,7 @@ section {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     z-index: 10;
-    margin-left: 1rem; /* Space from carousel */
+    margin-left: 1rem; /* Spazio dal carosello */
     flex-shrink: 0;
     transition: transform 0.3s ease, background-color 0.2s ease;
 }
@@ -330,20 +366,23 @@ section {
 }
 
 
-/* Responsive */
+/* ====================
+   Responsive
+==================== */
 @media (max-width: 1023px) {
-    /* Tablet & Mobile shared styles */
+    /* Stili condivisi Tablet & Mobile */
 
-    /* Hero Section */
+    /* Sezione Hero */
     .hero-section {
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 6rem 5% 4rem 5% !important; /* Force padding */
+        padding: 6rem 5% 4rem 5% !important; /* Padding forzato */
         min-height: 110vh;
     }
     
+    /* contenuto hero */
     .hero-content {
         max-width: 100%;
         margin-left: 0;
@@ -351,11 +390,13 @@ section {
         z-index: 2;
     }
 
+    /* titolo hero */
     .hero-title {
         font-size: 3rem; 
         white-space: normal;
     }
 
+    /* immagine hero */
     .hero-image-container {
         position: relative; 
         top: auto;
@@ -367,6 +408,7 @@ section {
         z-index: 1;
     }
 
+    /* cta hero */
     .hero-cta-container {
         position: relative;
         bottom: auto;
@@ -375,6 +417,7 @@ section {
         z-index: 2;
     }
 
+    /* aggiustamenti margini */
     .hero-bottom-left {
         margin-top: 2rem;
     }
@@ -383,32 +426,37 @@ section {
         margin: 0 auto;
     }
 
-    /* About Section */
+    /* Sezione About */
     .about-section {
-        padding: 4rem 5% !important; /* Force padding */
+        padding: 4rem 5% !important; /* Padding forzato */
     }
 
+    /* contenitore about */
     .about-container {
         flex-direction: column;
         gap: 2rem; 
         align-items: center; 
     }
     
+    /* titolo about */
     .about-title {
         text-align: center;
         margin-bottom: 0;
     }
 
+    /* colonne about */
     .about-left, .about-right {
         width: 100%;
         flex: auto; 
     }
 
+    /* tabella statistiche */
     .stats-table {
         margin-bottom: 2rem;
         width: 100%;
     }
 
+    /* griglia extra stats */
     .extra-stats-grid {
         display: flex;
         flex-direction: row; 
@@ -416,20 +464,21 @@ section {
         justify-content: center;
     }
 
-    /* Partner Product Section */
+    /* Sezione Partner Product */
     .partner-product-section {
-        padding: 4rem 5% !important; /* Force padding */
+        padding: 4rem 5% !important; /* Padding forzato */
     }
 
+    /* titolo sezione */
     .section-title-white {
         text-align: center;
     }
 
-    /* ENABLING CAROUSEL BEHAVIOUR ON TABLET/MOBILE */
+    /* ABILITA COMPORTAMENTO CAROSELLO SU TABLET/MOBILE */
     .carousel-track {
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* Enable scroll */
-        justify-content: flex-start; /* Start from left */
+        flex-wrap: nowrap; /* Previene wrap */
+        overflow-x: auto; /* Abilita scroll */
+        justify-content: flex-start; /* Inizia da sinistra */
         scroll-behavior: smooth;
         padding-bottom: 1rem;
         scrollbar-width: none; 
@@ -439,13 +488,13 @@ section {
     }
 
     .partner-card {
-        min-width: calc((100% - 2rem) / 3); /* 3 cards on tablet */
-        width: auto; /* Reset fixed width */
+        min-width: calc((100% - 2rem) / 3); /* 3 card su tablet */
+        width: auto; /* Reset larghezza fissa */
         flex-shrink: 0;
     }
 
     .nav-arrow-btn {
-        display: flex; /* Show arrow on tablet/mobile */
+        display: flex; /* Mostra freccia su tablet/mobile */
         background-color: #F3EDE2; 
         color: #000;
         font-size: 2rem;
@@ -474,8 +523,9 @@ section {
 }
 
 @media (max-width: 767px) {
-    /* Mobile specific overrides */
+    /* Override specifici Mobile */
 
+    /* font titolo hero */
     .hero-title {
         font-size: 2.2rem; 
     }
@@ -484,20 +534,22 @@ section {
         margin-bottom: 0;
     }
     
+    /* immagine hero ridotta */
     .hero-image-container {
         width: 160px; 
         margin: 1.5rem auto;
     }
 
+    /* padding about mobile */
     .about-section {
-        padding: 3rem 1.5rem !important; /* Force padding */
+        padding: 3rem 1.5rem !important; /* Padding forzato */
     }
 
     .about-title {
         font-size: 1.8rem;
     }
 
-    /* Wrap stat rows to prevent overflow */
+    /* Avvolge righe statistiche per prevenire overflow */
     .stat-row {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -508,23 +560,29 @@ section {
         font-size: 0.85rem; 
     }
 
+    /* extra stats in colonna */
     .extra-stats-grid {
-        flex-direction: column; /* Ensure stack */
+        flex-direction: column; /* Assicura pila */
         gap: 1.5rem;
     }
 
+    /* box stats */
     .stat-box {
         min-height: auto;
         padding: 1.5rem;
-        width: 100%; /* Full width */
+        width: 100%; /* Larghezza piena */
         box-sizing: border-box; 
     }
     
-    /* Carousel Mobile */
+    /* Carosello Mobile */
+    .carousel-track {
+         justify-content: center; /* Centra su mobile anche per item singoli */
+    }
+
     .partner-card {
-        min-width: 80%; /* Force 80% width */
-        width: 80%; /* Force 80% width */
+        min-width: 80%; /* Forza larghezza 80% */
+        width: 80%; 
         aspect-ratio: 2/3; 
-        flex-shrink: 0; /* Prevent shrinking */
+        flex-shrink: 0; /* Previene restringimento */
     }
 }

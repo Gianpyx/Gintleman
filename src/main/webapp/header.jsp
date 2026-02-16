@@ -1,8 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <title>Header</title>
   </head>
   <body>
+<!-- ==================== 
+     HEADER PRINCIPALE 
+     ==================== -->
 <header class="testata">
     <nav class="barra-navigazione">
       <!-- Sezione Sinistra: Logo -->
@@ -13,8 +17,6 @@
           </a>
         </button>
       </div>
-
-
 
       <!-- Sezione Destra: Area Utente (Desktop) o Burger (Mobile) -->
       <div class="sezione-destra">
@@ -27,16 +29,19 @@
               if (headerUser != null) {
             %>
                 <div class="user-icon" style="color: white; display: flex; align-items: center; gap: 10px;">
-    <% if (headerUser.isAdmin()) { %>
-        <a href="admin_dashboard.jsp" class="login-scritta user-welcome-link">Welcome, <b><%= headerUser.getFirstName() %></b></a>
-    <% } else { %>
-        <a href="dashboard" class="login-scritta user-welcome-link">Welcome, <b><%= headerUser.getFirstName() %></b></a>
-    <% } %>
+                <!-- Visualizza Link Admin o Dashboard Utente -->
+                <% if (headerUser.isAdmin()) { %>
+                    <a href="admin_dashboard.jsp" class="login-scritta user-welcome-link">Welcome, <b><%= headerUser.getFirstName() %></b></a>
+                <% } else { %>
+                    <a href="dashboard" class="login-scritta user-welcome-link">Welcome, <b><%= headerUser.getFirstName() %></b></a>
+                <% } %>
                 </div>
             <% } else { %>
+                <!-- Utente non loggato -->
                 <a href="login.jsp" class="login-scritta">Log in</a>
             <% } %>
           </div>
+
           <div class="carrello">
             <a href="cart" id="bottone-carrello">
               <img src="img/Carrello_2.png" alt="Carrello"/>
@@ -55,7 +60,9 @@
       </div>
     </nav>
 
-    <!-- Cassetto Navigazione Mobile -->
+    <!-- ==================== 
+         CASSETTO NAVIGAZIONE MOBILE 
+         ==================== -->
     <div id="cassetto-navigazione" class="cassetto-mobile solo-mobile">
       <div class="contenuto-cassetto">
 
@@ -78,4 +85,3 @@
   <script src="js/header.js"></script>
   </body>
 </html>
-

@@ -1,4 +1,8 @@
-/* === Global layout tokens (validi a tutte le larghezze) === */
+/* =========================================
+   Gintleman - Stili Generali (style.css)
+   ========================================= */
+
+/* === Token Layout Globali (validi a tutte le larghezze) === */
 :root{
   --container-max: 1200px;   /* larghezza fissa desiderata del contenuto */
   --container-gutter: 4rem;  /* margini minimi laterali */
@@ -7,10 +11,11 @@
 /* Assicura che le immagini non escano dal contenitore su schermi larghi */
 img{ max-width: 100%; height: auto; }
 
-
-
+/* =========================================
+   Desktop (min-width: 1251px)
+   ========================================= */
 @media (min-width: 1251px) {
-    /*Questa prima parte è per lo stile in generale*/
+    /* Stile generale */
     html, body {
         margin: 0;
         overflow-x: hidden;
@@ -19,14 +24,12 @@ img{ max-width: 100%; height: auto; }
         font-size: 16px;
     }
 
-
     p {
         font-size: 3rem; /* 1 × 16px = 16px */
     }
 
-
     /* ====================
-         Prima sezione
+         Prima Sezione
     ==================== */
     #hero {
         min-height: 100vh;
@@ -37,7 +40,6 @@ img{ max-width: 100%; height: auto; }
         padding: 1rem;
         box-sizing: border-box;
 
-
         background-image: url("../img/hero_background.png");
         background-size: cover;
         background-position: center;
@@ -46,8 +48,7 @@ img{ max-width: 100%; height: auto; }
         position: relative;
     }
 
-
-    /* zona con le scritte */
+    /* Zona con le scritte */
     #zona_centrale {
         display: inline-flex; /**/
         flex-direction: column;
@@ -76,8 +77,7 @@ img{ max-width: 100%; height: auto; }
         color: #000000;
     }
 
-
-    /* pulsante scopri di più */
+    /* Pulsante Scopri di Più */
     .scopri_di_piu {
         display: inline-flex;
         align-items: center;
@@ -89,7 +89,7 @@ img{ max-width: 100%; height: auto; }
         text-decoration: none;
     }
 
-    /*testo del pulsante*/
+    /* Testo del pulsante */
     .scopri_di_piu .sdp_text {
         font-family: 'SF Pro', sans-serif;
         font-size: 1em; /* 16px */
@@ -98,20 +98,19 @@ img{ max-width: 100%; height: auto; }
         margin-right: 0.5em;
     }
 
-    /*freccia del pulsante*/
+    /* Freccia del pulsante */
     .scopri_di_piu .sdp_icon {
         font-size: 1.5em; /* regola la dimensione della freccia */
         line-height: 1;
     }
 
-    /*stato hover*/
+    /* Stato hover */
     .scopri_di_piu:hover {
         background-color: #d4d4d4;
     }
 
-
     /* ====================
-        Seconda sezione
+        Seconda Sezione
     ==================== */
     #title_2 {
         font-size: 5em;
@@ -155,7 +154,7 @@ img{ max-width: 100%; height: auto; }
         z-index: 1;
     }
 
-    #partner { /*spazio tra i rettangoli*/
+    #partner { /* spazio tra i rettangoli */
         display: flex;
         justify-content: flex-start;
         gap: 5.5em;
@@ -165,7 +164,7 @@ img{ max-width: 100%; height: auto; }
 
 
     /* ====================
-         Terza sezione
+         Terza Sezione
     ==================== */
     #general {
         display: flex;
@@ -174,7 +173,6 @@ img{ max-width: 100%; height: auto; }
         width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
         margin: 0 auto 6em;
     }
-
 
     #scopri_di_più {
         position: relative;
@@ -231,9 +229,8 @@ img{ max-width: 100%; height: auto; }
         border-radius: 12px;
     }
 
-
     /* ====================
-         Quarta sezione
+         Quarta Sezione
     ==================== */
     #title_3 {
         font-size: 5em;
@@ -242,7 +239,7 @@ img{ max-width: 100%; height: auto; }
         text-align: left;
     }
 
-    #best_seller { /*spazio tra i rettangoli*/
+    #best_seller { /* spazio tra i rettangoli */
         display: flex;
         justify-content: flex-start;
         gap: 5.5em;
@@ -250,9 +247,8 @@ img{ max-width: 100%; height: auto; }
         margin: 0 auto 10.25em;
     }
 
-
     /* ====================
-         Quinta sezione
+         Quinta Sezione
     ==================== */
     #riquadri_shop {
         display: flex;
@@ -301,11 +297,11 @@ img{ max-width: 100%; height: auto; }
     .caption {
         position: absolute;
         inset: 0; /* top:0; right:0; bottom:0; left:0 */
-        display: flex; /* center text inside the overlay */
+        display: flex; /* centra il testo nell'overlay */
         align-items: center;
         justify-content: center;
-        margin: 0; /* remove default p margins that shift centering */
-        padding: 0 10%; /* allow multiline text with side breathing room */
+        margin: 0; /* rimuove margini default */
+        padding: 0 10%; /* spazio laterale per testo multilinea */
         text-align: center;
         font-size: 5em;
         font-weight: bold;
@@ -314,15 +310,13 @@ img{ max-width: 100%; height: auto; }
         pointer-events: none;
     }
 
-
-    /* Sesta sezione – CTA blu in basso */
+    /* Sesta Sezione – CTA Blu in basso */
     #cta_section {
         display: flex;
         justify-content: center;
         flex: 0 0 100%; /* occupa tutta la riga */
         width: 100%; /* allinea la card al centro della riga */
         margin: 6em 0 0; /* spazio sopra, niente auto ai lati (ci pensa la riga) */
-
     }
 
     .cta_card {

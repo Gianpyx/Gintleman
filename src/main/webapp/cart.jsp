@@ -7,24 +7,35 @@
 <html>
 <head>
     <title>Carrello - Gintleman</title>
-    <!-- Usa index.css come base comune per reset e variabili anche nel carrello -->
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
+    <!-- Stili Comuni -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/cart.css"> <!-- New styles -->
+    
+    <!-- Stile Specifico Carrello -->
+    <link rel="stylesheet" href="css/cart.css"> 
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="cart-container">
     <h1>Il tuo Carrello</h1>
 
+    <!-- ==================== 
+         LOGICA VISUALIZZAZIONE CARRELLO 
+         ==================== -->
     <%
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null || cart.isEmpty()) {
     %>
+        <!-- Caso: Carrello Vuoto -->
         <div class="empty-cart-container">
             <img src="img/Carrello_2.png" alt="Carrello Vuoto" class="empty-cart-icon">
             <h2>Il tuo carrello è vuoto</h2>
@@ -34,6 +45,7 @@
     <%
         } else {
     %>
+        <!-- Caso: Carrello con Prodotti -->
         <table class="cart-table">
             <thead>
                 <tr>
@@ -59,6 +71,7 @@
             </tbody>
         </table>
 
+        <!-- Totale Ordine -->
         <div class="cart-total">
             Totale Ordine: € <%= cart.getTotalAmount() %>
         </div>

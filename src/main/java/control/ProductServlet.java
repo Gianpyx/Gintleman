@@ -14,6 +14,7 @@ import java.sql.SQLException;
 @WebServlet(name = "ProductServlet", value = "/product")
 public class ProductServlet extends HttpServlet {
 
+    // Visualizzazione dettaglio singolo prodotto
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String idStr = request.getParameter("id");
@@ -28,7 +29,7 @@ public class ProductServlet extends HttpServlet {
                     request.setAttribute("product", product);
                     request.getRequestDispatcher("product.jsp").forward(request, response);
                 } else {
-                    // Product not found
+                    // Prodotto non trovato nel database
                     response.sendRedirect("catalog.jsp");
                 }
             } catch (NumberFormatException | SQLException e) {
@@ -36,7 +37,7 @@ public class ProductServlet extends HttpServlet {
                 response.sendRedirect("catalog.jsp");
             }
         } else {
-            // No ID provided
+            // Nessun ID fornito nella richiesta
             response.sendRedirect("catalog.jsp");
         }
     }

@@ -2,21 +2,32 @@
 <html>
 <head>
     <title>Catalogo - Gintleman</title>
-    <!-- Usa index.css come base comune per reset e variabili -->
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
+    
+    <!-- Stili Comuni -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    
+    <!-- Stili Specifici -->
     <link rel="stylesheet" href="css/catalog.css">
-    <link rel="stylesheet" href="css/style.css"> <!-- Base Globale -->
+    <link rel="stylesheet" href="css/style.css"> 
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="catalog-container">
-    <!-- Sidebar Filters -->
+    <!-- ==================== 
+         SIDEBAR: FILTRI 
+         ==================== -->
     <aside class="catalog-sidebar">
         <div class="filter-group">
             <h3>Filtra per Prezzo</h3>
@@ -38,17 +49,23 @@
         <button onclick="loadProducts()" class="btn-filter">Applica Filtri</button>
     </aside>
 
-    <!-- Product Grid -->
+    <!-- ==================== 
+         MAIN: GRIGLIA PRODOTTI 
+         ==================== -->
     <main id="product-grid" class="catalog-grid">
-        <!-- Products will be loaded here via AJAX -->
+        <!-- I prodotti verranno caricati qui via AJAX -->
         <p>Caricamento prodotti...</p>
     </main>
 </div>
 
+<!-- Footer Gintleman -->
 <%@ include file="footer.jsp" %>
 
+<!-- ==================== 
+     NOTIFICHE E STILI JS 
+     ==================== -->
 <style>
-    /* Custom Toast Notification */
+    /* Notifica Toast Personalizzata */
     #toast-notification {
         visibility: hidden;
         min-width: 250px;
@@ -75,25 +92,28 @@
     }
     
     #toast-notification.success {
-        background-color: #28a745; /* Green for success */
+        background-color: #28a745; /* Verde per successo */
     }
     
     #toast-notification.error {
-        background-color: #dc3545; /* Red for error */
+        background-color: #dc3545; /* Rosso per errore */
     }
 </style>
 
 <div id="toast-notification">Prodotto aggiunto al carrello!</div>
 
+<!-- ==================== 
+     LOGICA CLIENT-SIDE (AJAX) 
+     ==================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Parse URL parameters to set initial filter state
+        // Analizza i parametri URL per impostare lo stato iniziale dei filtri
         const params = new URLSearchParams(window.location.search);
         
-        // Handle 'nationality' parameters (can be multiple)
+        // Gestione filtri nazionalità multipli
         const nationalities = params.getAll('nationality');
         
-        // Iterate over all checkboxes and check them if their value is in the URL list
+        // Itera su tutte le checkbox e seleziona quelle presenti nell'URL
         const formCheckboxes = document.querySelectorAll('input[name="nationality"]');
         formCheckboxes.forEach(cb => {
             if (nationalities.includes(cb.value)) {
@@ -108,7 +128,7 @@
         const minPrice = document.getElementById("minPrice").value;
         const maxPrice = document.getElementById("maxPrice").value;
         
-        // Collect all checked nationalities
+        // Raccogli tutte le nazionalità selezionate
         const checkboxes = document.querySelectorAll('input[name="nationality"]:checked');
         
         const params = new URLSearchParams();
@@ -120,13 +140,13 @@
             params.append('nationality', checkbox.value);
         });
 
-        // Update the browser URL to reflect the current filters (without reloading)
+        // Aggiorna l'URL del browser per riflettere i filtri correnti (senza ricaricare)
         const displayParams = new URLSearchParams(params);
-        displayParams.delete('action'); // Don't show 'action=load' in the address bar
+        displayParams.delete('action'); // Nascondi 'action=load' dalla barra indirizzi
         const newUrl = window.location.pathname + '?' + displayParams.toString();
         window.history.pushState({}, '', newUrl);
 
-        // Add cache-busting timestamp for the AJAX request
+        // Aggiungi timestamp per evitare caching della richiesta AJAX
         params.append('_t', new Date().getTime());
 
         console.log("Loading products with params:", params.toString());
@@ -138,7 +158,7 @@
             })
             .then(data => {
                 const grid = document.getElementById("product-grid");
-                grid.innerHTML = ""; // Clear existing content
+                grid.innerHTML = ""; // Pulisci contenuto esistente
 
                 if (data.length === 0) {
                     grid.innerHTML = "<p>Nessun prodotto trovato.</p>";
@@ -149,7 +169,7 @@
                     const card = document.createElement("div");
                     card.className = "product-card";
                     
-                    // Fallback image if none provided
+                    // Immagine di fallback se non presente
                     const imgUrl = product.imageUrl ? product.imageUrl : 'img/default-bottle.png';
 
                     const isDisabled = product.stock <= 0 ? 'disabled' : '';
@@ -179,7 +199,7 @@
             .then(data => {
                 if(data.status === "success") {
                     showToast("Prodotto aggiunto al carrello!", "success");
-                    // Optionally update a cart badge here if you implement one
+                    // Qui potresti aggiornare un badge del carrello se implementato
                 } else {
                     showToast("Errore: " + (data.message || "Impossibile aggiungere"), "error");
                 }

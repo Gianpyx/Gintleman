@@ -1,27 +1,30 @@
-/* === Variables === */
+/* ==================== 
+Variabili Globali 
+==================== */
 :root {
-    --color-blue-bg: #447BD2;
-    --color-text-on-blue: #FCF6EC;
-    --color-white-bg: #FCF6EC;
-    --color-elements: #F3EDE2; /* Rectangles, lines, cards */
+    --color-blue-bg: #447BD2; /* colore blu principale di sfondo */
+    --color-text-on-blue: #FCF6EC; /* colore testo su sfondo blu */
+    --color-white-bg: #FCF6EC; /* colore sfondo chiaro */
+    --color-elements: #F3EDE2; /* colore per rettangoli, linee e carte */
     --color-text-dark: #1a1a1a;
     
     --font-primary: 'DM Sans', sans-serif;
 }
 
-body, html { /* Added html */
+/* impostazioni globali per pagina e corpo */
+body, html { 
     background-color: var(--color-blue-bg);
     color: var(--color-text-on-blue);
     font-family: var(--font-primary);
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden; /* previene lo scroll orizzontale */
     width: 100%;
 }
 
-/* Override index.css global section constraints */
+/* sovrascrittura vincoli di sezione globali */
 section {
-    max-width: none !important;
+    max-width: none !important; /* rimuove limite larghezza */
     margin-left: 0 !important;
     margin-right: 0 !important;
     padding-left: 0 !important;
@@ -32,33 +35,38 @@ section {
 /* ====================
      1. Hero Section
 ==================== */
+
+/* contenitore principale della sezione hero */
 .hero-section {
     position: relative;
-    min-height: 110vh; /* Reduced from 80vh to pull content up */
+    min-height: 110vh; /* altezza minima aumentata per bilanciamento */
     display: flex;
-    display: flex; /* Kept double for safety in replace? No, just fix it */
+
     align-items: center; 
-    justify-content: space-between;
-    padding: 2rem 5% 4rem 5% !important; /* Reduced top padding to start near header */
+    justify-content: space-between; /* distribuisce contenuto ai lati */
+    padding: 2rem 5% 4rem 5% !important; /* padding forzato */
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
 }
 
+/* contenitore del testo hero */
 .hero-content {
-    max-width: 70%; /* Increased from 40% to allow text to fit */
-    margin-left: 2rem; /* Move content slightly to the right */
-    z-index: 2;
+    max-width: 70%; /* larghezza massima aumentata */
+    margin-left: 2rem; /* sposta contenuto a destra */
+    z-index: 2; /* livello superiore per sovrapposizione */
 }
 
+/* titolo principale hero */
 .hero-title {
-    font-size: 3.5rem; /* Reduced size from 5rem */
+    font-size: 3.5rem; /* dimensione font ridotta */
     font-weight: 700;
     margin-bottom: 0.2rem;
     line-height: 1;
-    white-space: nowrap; /* Force single line */
+    white-space: nowrap; /* forza su una singola riga */
 }
 
+/* sottotitolo hero */
 .hero-subtitle {
     font-size: 2rem;
     font-weight: 400;
@@ -67,39 +75,43 @@ section {
     opacity: 0.9;
 }
 
+/* sezione inferiore sinistra hero */
 .hero-bottom-left {
     margin-top: 10rem;
 }
 
+/* descrizione hero */
 .hero-description {
     font-size: 1.1rem;
     max-width: 300px;
 }
 
-/* Central Image */
+/* immagine centrale bottiglia */
 .hero-image-container {
-    position: absolute;
+    position: absolute; /* posizionamento al centro */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    width: 300px; /* Adjust size as needed */
+    transform: translate(-50%, -50%); /* centra perfettamente */
+    z-index: 1; /* livello inferiore rispetto al testo */
+    width: 300px; /* dimensione fissa */
 }
 
+/* stile immagine bottiglia */
 .hero-bottle {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); /* ombra realistica */
 }
 
 /* CTA Button */
 .hero-cta-container {
-    position: absolute;
-    bottom: 8rem; /* Moved up from 4rem */
+    position: absolute; /* posizionamento assoluto */
+    bottom: 8rem; /* sposta verso l'alto */
     right: 5%;
     z-index: 2;
 }
 
+/* bottone acquista */
 .btn-buy {
     display: inline-block;
     background-color: var(--color-text-on-blue);
@@ -109,95 +121,99 @@ section {
     font-weight: 600;
     font-size: 1.1rem;
     /* border-radius: 4px; Optional based on design */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* animazione interazione */
 }
 
+/* hover bottone acquista */
 .btn-buy:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* leggero spostamento in alto */
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* ====================
-     2. About Section
+     2. Sezione about
 ==================== */
+/* sezione informativa con sfondo chiaro */
 .about-section {
-    background-color: var(--color-white-bg);
+    background-color: var(--color-white-bg); /* sfondo bianco panna */
     color: var(--color-text-dark);
-    padding: 10rem 5% 4rem 5%; /* Reduced bottom padding */
+    padding: 10rem 5% 4rem 5%; /* padding ampio */
     width: 100%;
     box-sizing: border-box;
 }
 
+/* contenitore flessibile about */
 .about-container {
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
-    margin: 0 auto;
-    gap: 4rem;
+    margin: 0 auto; /* centra orizzontalmente */
+    gap: 4rem; /* spazio tra le colonne */
 }
 
+/* colonna sinistra about */
 .about-left {
     flex: 1;
 }
 
+/* titolo sezione about */
 .about-title {
     font-size: 2.5rem;
     font-weight: 500;
     margin-top: 0;
 }
 
+/* colonna destra about */
 .about-right {
-    flex: 1.5;
+    flex: 1.5; /* occupa più spazio della sinistra */
     display: flex;
     flex-direction: column;
     gap: 3rem;
 }
 
-/* Stats Table */
+/* tabella statistiche */
 .stats-table {
     border-top: 1px solid #ccc; /* Fallback */
-    border-top: 1px solid var(--color-elements); /* Doesn't show well on same bg? Design has lines */
-    /* Adjust border color to be visible against FCF6EC. F3EDE2 is very close. 
-       Let's use a darker shade for borders if needed, or maybe F3EDE2 IS the dark line?
-       Wait, F3EDE2 is "Rectangles and lines".
-       FCF6EC is bg.
-       F3EDE2 is slightly darker/different?
-       Let's stick to user request.
-    */
-    border-top-color: #d1cbbd; /* Slightly darker for visibility */
+    border-top: 1px solid var(--color-elements); 
+    border-top-color: #d1cbbd; /* bordo superiore leggermente più scuro */
 }
 
+/* riga statistica */
 .stat-row {
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
-    border-bottom: 1px solid #d1cbbd; /* Matching border color */
+    border-bottom: 1px solid #d1cbbd; /* bordo inferiore corrispondente */
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
+    text-transform: uppercase; /* testo maiuscolo */
 }
 
+/* riga senza bordo */
 .stat-row.no-border {
     border-bottom: none;
 }
 
+/* etichetta statistica */
 .stat-label {
-    opacity: 0.7;
+    opacity: 0.7; /* leggermente trasparente */
 }
 
+/* valore statistica */
 .stat-value {
     text-align: right;
 }
 
-/* Extra Stats Grid (Boxes) */
+/* griglia statistiche extra */
 .extra-stats-grid {
     display: flex;
     gap: 2rem;
 }
 
+/* box statistica */
 .stat-box {
-    background-color: var(--color-elements); /* #F3EDE2 */
+    background-color: var(--color-elements); /* sfondo elemento grafico */
     flex: 1;
     padding: 2rem;
     display: flex;
@@ -206,18 +222,21 @@ section {
     min-height: 120px;
 }
 
+/* numero nel box */
 .box-number {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
+/* testo nel box */
 .box-text {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
+/* etichetta nel box */
 .box-label {
     font-size: 0.8rem;
     opacity: 0.6;
@@ -225,21 +244,25 @@ section {
 }
 
 /* ====================
-   3. Partner Product
+   3. Sezione Partner 
 ==================== */
+
+/* sezione prodotti partner */
 .partner-product-section {
-    background-color: var(--color-blue-bg);
+    background-color: var(--color-blue-bg); /* sfondo blu */
     color: var(--color-text-on-blue);
-    padding: 1rem 5% 4rem 5% !important; /* Force padding */
+    padding: 1rem 5% 4rem 5% !important; /* padding forzato */
     width: 100%;
     box-sizing: border-box;
 }
 
+/* contenitore partner */
 .partner-container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
+/* titolo sezione bianco */
 .section-title-white {
     font-size: 2.5rem;
     font-weight: 600;
@@ -247,46 +270,51 @@ section {
     color: var(--color-text-on-blue);
 }
 
+/* wrapper carosello */
 .carousel-wrapper {
     position: relative;
     display: flex;
     align-items: center;
 }
 
+/* traccia carosello scorrevole */
 .carousel-track {
     display: flex;
     gap: 2rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    overflow-x: auto; /* scroll orizzontale */
+    scroll-behavior: smooth; /* scorrimento fluido */
     width: 100%;
     padding-bottom: 1rem; /* Space for scrollbar if visible, layout purposes */
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; /* nasconde scrollbar firefox */
 }
+
+/* nasconde scrollbar webkit */
 .carousel-track::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
 }
 
+/* carta prodotto partner */
 .partner-card {
-    /* 4 cards visible: (100% - 3 * 2rem gap) / 4 */
-    /* Use min-width to ensure they don't shrink */
-    min-width: calc((100% - 6rem) / 4); 
+    min-width: calc((100% - 6rem) / 4); /* calcolo per 4 carte visibili */
     background-color: var(--color-elements); /* #F3EDE2 */
     border-radius: 8px;
     text-decoration: none;
     color: var(--color-text-dark);
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* animazione hover */
     overflow: hidden;
-    aspect-ratio: 2/3.5;
+    aspect-ratio: 2/3.5; /* rapporto aspetto verticale */
     position: relative;
     padding: 2rem 1rem;
     box-sizing: border-box; /* Important for padding */
 }
 
+/* hover carta partner */
 .partner-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* sollevamento */
 }
 
+/* interno carta */
 .card-inner {
     height: 100%;
     display: flex;
@@ -294,22 +322,22 @@ section {
     align-items: center;
 }
 
+/* immagine bottiglia partner */
 .partner-bottle-img {
-    max-height: 90%; /* Larger image since text is gone */
+    max-height: 90%; 
     max-width: 90%;
-    object-fit: contain;
-    /* Removed margin bottom since no text */
+    object-fit: contain; /* mantiene proporzioni */
     margin-bottom: 0;
 }
 
-/* Nav Button */
+/* bottone navigazione carosello */
 .nav-arrow-btn {
-    background-color: #F3EDE2; /* Light colour like cards */
+    background-color: #F3EDE2; /* colore chiaro */
     color: #000;
     font-size: 2rem;
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    border-radius: 50%; /* cerchio */
     border: none;
     display: flex;
     align-items: center;
@@ -319,62 +347,69 @@ section {
     z-index: 10;
     margin-left: 1rem; /* Space from carousel */
     flex-shrink: 0;
-    transition: transform 0.3s ease, background-color 0.2s ease; /* Added transition */
+    transition: transform 0.3s ease, background-color 0.2s ease; 
 }
 
+/* hover bottone navigazione */
 .nav-arrow-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* ingrandimento */
     background-color: #fff;
 }
 
+/* classe rotazione bottone */
 .nav-arrow-btn.rotated {
     transform: rotate(180deg);
 }
 
+/* hover bottone ruotato */
 .nav-arrow-btn.rotated:hover {
     transform: rotate(180deg) scale(1.1); /* Preserve rotation on hover */
 }
 
 
-/* Responsive */
-/* Responsive */
+/* ==================== 
+Responsive 
+==================== */
+
 @media (max-width: 1023px) {
-    /* Tablet & Mobile shared styles (stacking layout) */
     
-    /* Hero Section */
+    /* modifica layout hero per tablet/mobile */
     .hero-section {
-        flex-direction: column;
+        flex-direction: column; /* impila contenuti verticalmente */
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 6rem 5% 4rem 5% !important; /* Force padding */
+        padding: 6rem 5% 4rem 5% !important; 
     }
     
+    /* aggiustamenti testo hero */
     .hero-content {
         max-width: 100%;
         margin-left: 0;
-        margin-top: 0; /* Reset desktop push */
-        margin-bottom: 2rem; /* Reduced from 300px to natural spacing */
+        margin-top: 0; 
+        margin-bottom: 2rem; 
         z-index: 2;
-        /* Ensure text is above image if negative margins used, but here we use flow */
     }
 
+    /* dimensione font hero adattata */
     .hero-title {
         font-size: 3rem; 
-        white-space: normal;
+        white-space: normal; /* permette a capo */
     }
 
+    /* immagine hero adattata */
     .hero-image-container {
-        position: relative; /* Changed from absolute to relative flow */
+        position: relative; 
         top: auto;
         bottom: auto;
         left: auto;
         transform: none;
         width: 220px;
-        margin: 2rem auto; /* Center with margin */
+        margin: 2rem auto; /* cenntra */
         z-index: 1;
     }
 
+    /* bottone cta adattato */
     .hero-cta-container {
         position: relative;
         bottom: auto;
@@ -391,15 +426,16 @@ section {
         margin: 0 auto;
     }
 
-    /* About Section */
+    /* aggiustamenti about per tablet */
     .about-section {
         padding: 4rem 5% !important; /* Force padding */
     }
 
+    /* layout about a colonna unica */
     .about-container {
         flex-direction: column;
-        gap: 2rem; /* Reduced gap */
-        align-items: center; /* Center children */
+        gap: 2rem; 
+        align-items: center; 
     }
     
     .about-title {
@@ -409,7 +445,7 @@ section {
 
     .about-left, .about-right {
         width: 100%;
-        flex: auto; /* Reset flex */
+        flex: auto; 
     }
 
     .stats-table {
@@ -417,9 +453,10 @@ section {
         width: 100%;
     }
 
+    /* statistiche extra affiancate su tablet */
     .extra-stats-grid {
         display: flex;
-        flex-direction: row; /* Side-by-side on tablet */
+        flex-direction: row; /* Side-by-side su tablet */
         gap: 1.5rem;
         justify-content: center;
     }
@@ -433,25 +470,27 @@ section {
         text-align: center;
     }
 
-    /* Carousel */
+    /* carte carosello su tablet (3 per riga) */
     .partner-card {
-        min-width: calc((100% - 2rem) / 3); /* 3 cards on tablet */
+        min-width: calc((100% - 2rem) / 3);
     }
 }
 
 @media (max-width: 767px) {
     /* Mobile specific overrides */
 
+    /* font hero mobile */
     .hero-title {
-        font-size: 2.2rem; /* Slightly smaller */
+        font-size: 2.2rem; 
     }
     
     .hero-content {
         margin-bottom: 0;
     }
     
+    /* immagine hero mobile ridotta */
     .hero-image-container {
-        width: 160px; /* Reduced specific size for mobile */
+        width: 160px; 
         margin: 1.5rem auto;
     }
 
@@ -463,19 +502,20 @@ section {
         font-size: 1.8rem;
     }
 
-    /* Wrap stat rows to prevent overflow */
+    /* adatta righe statistiche per schermi piccoli */
     .stat-row {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
     
     .stat-value {
-        text-align: left; /* Allow left align when wrapped */
-        font-size: 0.85rem; /* Slightly smaller text */
+        text-align: left; 
+        font-size: 0.85rem; 
     }
 
+    /* statistiche extra impilate su mobile */
     .extra-stats-grid {
-        flex-direction: column; /* Ensure stack */
+        flex-direction: column;
         gap: 1.5rem;
     }
 
@@ -483,12 +523,12 @@ section {
         min-height: auto;
         padding: 1.5rem;
         width: 100%; /* Full width */
-        box-sizing: border-box; /* Prevent padding overflow */
+        box-sizing: border-box; /* Previene overflow del padding */
     }
 
-    /* Carousel */
+    /* carte carosello su mobile */
     .partner-card {
-        min-width: 80%; /* Show one card clearly with peek */
-        aspect-ratio: 2/3; /* Adjust aspect ratio for mobile if needed */
+        min-width: 80%;
+        aspect-ratio: 2/3; 
     }
 }

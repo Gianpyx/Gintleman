@@ -1,127 +1,160 @@
-/* Admin Dashboard Layout */
+/* ==================== 
+Layout Dashboard Admin 
+==================== */
+
+/* reset del box model per tutti gli elementi */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* include padding e border nel calcolo della larghezza */ 
 }
 
+/* impostazioni base per il corpo della pagina */
 body {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; 
     font-family: 'DM Sans', sans-serif;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; /* previene lo scroll orizzontale */
 }
 
+/* contenitore principale flessibile */
 .admin-wrapper {
-    display: flex;
-    min-height: 100vh;
+    display: flex; /* layout flessibile per sidebar e contenuto */
+    min-height: 100vh; /* altezza minima intera finestra */
 }
 
-/* Sidebar */
+/* ==================== 
+Sidebar di Navigazione 
+==================== */
+
+/* barra laterale sinistra fissa */
 .admin-sidebar {
-    width: 250px;
-    background-color: #0B0E0D; /* Dark theme matching header */
+    width: 250px; /* larghezza fissa */
+    background-color: #0B0E0D; 
     color: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* elementi in colonna */
     padding: 2rem 0;
-    position: fixed;
+    position: fixed; /* rimane fissa durante lo scroll */
     bottom: 0;
-    top: 7em; /* Below header */
+    top: 7em; 
     left: 0;
 }
 
+/* lista non ordinata per i link di navigazione */
 .admin-sidebar ul {
-    list-style: none;
+    list-style: none; /* rimuove i bullet points */
     padding: 0;
     margin: 0;
     width: 100%;
 }
 
+/* elemento della lista */
 .admin-sidebar li {
     width: 100%;
 }
 
+/* link di navigazione */
 .admin-sidebar a {
-    display: block;
+    display: block; /* occupa intera larghezza */
     padding: 1rem 2rem;
-    color: #ccc;
+    color: #ccc; /* colore testo grigio chiaro */
     text-decoration: none;
     font-size: 1.1rem;
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
+    transition: all 0.3s ease; /* transizione fluida per hover */
+    border-left: 4px solid transparent; /* bordo sinistro invisibile per stato attivo */
 }
 
+/* stili per hover e stato attivo del link */
 .admin-sidebar a:hover, .admin-sidebar a.active {
-    background-color: #1a1e1d;
+    background-color: #1a1e1d; /* sfondo leggermente più chiaro */
     color: white;
-    border-left-color: #fff;
+    border-left-color: #fff; /* mostra bordo bianco a sinistra */
 }
 
+/* linea divisoria nella sidebar */
 .sidebar-divider {
     height: 1px;
-    background-color: #333;
+    background-color: #333; /* colore scuro */
     margin: 1rem 0;
 }
 
+/* stile specifico per il link di logout */
 .logout-link {
     color: #ff6b6b !important; /* Redish for logout */
 }
 
+/* hover specifico per logout */
 .logout-link:hover {
-    background-color: rgba(255, 107, 107, 0.1) !important;
-    border-left-color: #ff6b6b !important;
+    background-color: rgba(255, 107, 107, 0.1) !important; /* sfondo rosso trasparente */
+    border-left-color: #ff6b6b !important; /* bordo rosso */
 }
 
-/* Main Content */
+/* ==================== 
+Contenuto Principale 
+==================== */
+
+/* area del contenuto a destra della sidebar */
 .admin-content {
-    flex-grow: 1;
-    margin-left: 250px; /* Width of sidebar */
+    flex-grow: 1; /* occupa lo spazio rimanente */
+    margin-left: 250px; 
     padding: 3rem;
-    width: calc(100% - 250px);
+    width: calc(100% - 250px); /* larghezza calcolata sottraendo la sidebar */
 }
 
+/* intestazione della sezione admin */
 .admin-header {
     margin-bottom: 2rem;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #ddd; /* linea separatrice inferiore */
     padding-bottom: 1rem;
     margin-top: 5rem;
 }
 
+/* titolo principale */
 .admin-header h1 {
     font-size: 2.5rem;
     color: #333;
     margin: 0;
 }
 
+/* ==================== 
+Componenti UI 
+==================== */
+
+/* carta contenitore con sfondo bianco e ombra */
 .admin-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 12px; /* angoli arrotondati */
     padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* ombra leggera */
     margin-bottom: 2rem;
 }
 
+/* contenitore tabella scrollabile */
 .table-responsive {
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: auto; /* abilita scroll orizzontale se necessario */
+    -webkit-overflow-scrolling: touch; /* scroll fluido su ios */
     margin-bottom: 1rem;
 }
 
+/* layout a griglia per i form */
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr; /* due colonne uguali */
+    gap: 2rem; /* spazio tra le colonne */
 }
+
 
 /* =============================
    Responsive: Mobile & Tablet (≤ 1024px)
    ============================= */
 @media (max-width: 1024px) {
+    /* modifica layout wrapper in colonna */
     .admin-wrapper {
         flex-direction: column;
     }
 
+    /* sidebar diventa barra di navigazione inferiore */
     .admin-sidebar {
         width: 100%;
         height: auto;
@@ -130,16 +163,17 @@ body {
         bottom: 0;
         left: 0;
         padding: 0.8rem 0; /* Padding ridotto */
-        flex-direction: row;
+        flex-direction: row; /* elementi in riga */
         justify-content: center;
         z-index: 1000; /* Assicura che sia sopra tutto */
         box-shadow: 0 -4px 10px rgba(0,0,0,0.1); /* Ombra verso l'alto */
         background-color: #0B0E0D; 
     }
 
+    /* lista navigazione orizzontale */
     .admin-sidebar ul {
         display: flex;
-        flex-wrap: nowrap; /* Non andare a capo se possibile, scroll orizzontale se serve */
+        flex-wrap: nowrap; /* Non andare a capo, scroll orizzontale se serve */
         justify-content: space-around; /* Spazia equamente */
         width: 100%; 
         gap: 0.5rem;
@@ -147,6 +181,7 @@ body {
         -webkit-overflow-scrolling: touch;
     }
 
+    /* elemento lista flessibile */
     .admin-sidebar li {
         width: auto;
         flex-grow: 1; /* Occupa spazio disponibile */
@@ -154,6 +189,7 @@ body {
         justify-content: center;
     }
 
+    /* link navigazione ottimizzati per mobile */
     .admin-sidebar a {
         padding: 0.5rem 0.5rem;
         font-size: 0.85rem;
@@ -164,6 +200,7 @@ body {
         width: 100%;
     }
 
+    /* indicatori attivo/hover per mobile (bordo superiore) */
     .admin-sidebar a:hover, .admin-sidebar a.active {
         border-left-color: transparent;
         border-bottom-color: transparent;
@@ -171,26 +208,30 @@ body {
         background-color: rgba(255,255,255,0.05);
     }
 
+    /* nasconde divisorio in mobile */
     .sidebar-divider {
         display: none; 
     }
 
-    /* Content Area */
+    /* aggiustamenti area contenuto per mobile */
     .admin-content {
-        margin-left: 0;
+        margin-left: 0; /* rimuove margine sinistro sidebar */
         width: 100%;
         padding: 1.5rem; 
         padding-bottom: 80px; /* Spazio per la barra in basso */
     }
 
+    /* riduce margini header */
     .admin-header {
         margin-top: 0; /* Header top margin non serve più se la barra è giù */
     }
 
+    /* riduce dimensione font titolo */
     .admin-header h1 {
         font-size: 1.8rem;
     }
     
+    /* form diventa a colonna singola */
     .form-row {
         display: flex;
         flex-direction: column;

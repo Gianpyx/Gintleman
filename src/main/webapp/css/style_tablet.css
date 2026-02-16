@@ -1,6 +1,10 @@
-/* =============================
-   Responsive: Small laptops & tablets (≤ 13")
-   ============================= */
+/* =========================================
+   Gintleman - Stili Tablet (style_tablet.css)
+   ========================================= */
+
+/* =========================================
+   Responsive: Laptop Piccoli & Tablet (≤ 13")
+   ========================================= */
 @media (min-width: 768px) and (max-width: 1250px) {
     :root { --container: min(95vw, 100%); }
 
@@ -18,14 +22,12 @@
         font-size: 16px;
     }
 
-
     p {
         font-size: 3rem; /* 1 × 16px = 16px */
     }
 
-
     /* ====================
-         Prima sezione
+         Prima Sezione
     ==================== */
     #hero {
         min-height: 100vh;
@@ -36,7 +38,6 @@
         padding: 1rem;
         box-sizing: border-box;
 
-
         background-image: url("../img/hero_background.png");
         background-size: cover;
         background-position: center;
@@ -45,8 +46,7 @@
         position: relative;
     }
 
-
-    /* zona con le scritte */
+    /* Zona con le scritte */
     #zona_centrale {
         display: inline-flex; /**/
         flex-direction: column;
@@ -75,8 +75,7 @@
         color: #000000;
     }
 
-
-    /* pulsante scopri di più */
+    /* Pulsante Scopri di Più */
     .scopri_di_piu {
         display: inline-flex;
         align-items: center;
@@ -88,7 +87,7 @@
         text-decoration: none;
     }
 
-    /*testo del pulsante*/
+    /* Testo del pulsante */
     .scopri_di_piu .sdp_text {
         font-family: 'SF Pro', sans-serif;
         font-size: 1em; /* 16px */
@@ -97,20 +96,20 @@
         margin-right: 0.5em;
     }
 
-    /*freccia del pulsante*/
+    /* Freccia del pulsante */
     .scopri_di_piu .sdp_icon {
         font-size: 1.5em; /* regola la dimensione della freccia */
         line-height: 1;
     }
 
-    /*stato hover*/
+    /* Stato hover */
     .scopri_di_piu:hover {
         background-color: #d4d4d4;
     }
 
 
     /* ====================
-        Seconda sezione
+        Seconda Sezione
     ==================== */
     #title_2 {
         font-size: 5em;
@@ -153,7 +152,7 @@
         z-index: 1;
     }
 
-    #partner { /*spazio tra i rettangoli*/
+    #partner { /* spazio tra i rettangoli */
         display: flex;
         justify-content: flex-start;
         gap: 5.5em;
@@ -162,9 +161,8 @@
         margin-bottom: 10.25em;
     }
 
-
     /* ====================
-         Terza sezione
+         Terza Sezione
     ==================== */
     #general {
         display: flex;

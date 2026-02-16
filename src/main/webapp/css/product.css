@@ -5,7 +5,7 @@
 /* --- Layout Generale --- */
 .product-page-container {
     max-width: 1300px;
-    margin: 1rem auto 4rem; /* Further reduced to ensure top content visibility */
+    margin: 1rem auto 4rem; /* Ridotto ulteriormente per assicurare visibilità contenuto in alto */
     padding: 0 2rem;
     font-family: var(--font-main, 'DM Sans', sans-serif);
     color: #000;
@@ -13,7 +13,7 @@
 }
 
 .product-header-group {
-    margin-bottom: 2rem; /* Reduced gap between title and grid */
+    margin-bottom: 2rem; /* Gap ridotto tra titolo e griglia */
 }
 
 .product-title-main {
@@ -31,12 +31,14 @@
     margin-top: 0.5rem;
 }
 
-/* --- Griglia 3 Colonne --- */
+/* =========================================
+   Griglia 3 Colonne
+   ========================================= */
 .product-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr 320px;
     gap: 3rem;
-    align-items: start; /* Changed back to start as requested */
+    align-items: start; /* Riportato a start come richiesto */
 }
 
 /* 1. Colonna Immagine */
@@ -48,13 +50,13 @@
     justify-content: center;
     align-items: center;
     background: #fff;
-    height: 420px; /* Slightly shorter to ensure it fits in viewport */
+    height: 420px; /* Leggermente più basso per adattarsi al viewport */
     position: relative;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .product-image-box img {
-    max-width: 80%; /* Smaller image */
+    max-width: 80%; /* Immagine più piccola */
     max-height: 80%;
     object-fit: contain;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
@@ -62,7 +64,7 @@
 
 /* 2. Colonna Descrizione */
 .product-description-box {
-    padding-top: 0; /* Absolute top as requested */
+    padding-top: 0; /* Allineamento assoluto in alto come richiesto */
 }
 
 .desc-title {
@@ -82,11 +84,11 @@
 .product-buy-box {
     border: 1.5px solid #33729E;
     border-radius: 20px;
-    padding: 1.5rem; /* Reduced padding */
+    padding: 1.5rem; /* Padding ridotto */
     background: #fff;
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Slightly reduced gap */
+    gap: 1rem; /* Gap leggermente ridotto */
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
@@ -150,7 +152,7 @@
     background-repeat: no-repeat;
     background-position: right 1.5rem center;
     background-size: 0.8rem;
-    margin-bottom: 0.4rem; /* Tighten distance to Buy Now button */
+    margin-bottom: 0.4rem; /* Avvicina al bottone Acquista Ora */
 }
 
 .qty-selector:disabled {
@@ -163,7 +165,7 @@
 .buy-form {
     display: flex;
     flex-direction: column;
-    gap: 0.7rem; /* Controlled gap between buttons */
+    gap: 0.7rem; /* Gap controllato tra i bottoni */
 }
 
 /* Bottoni CTA */
@@ -180,7 +182,7 @@
     text-align: center;
     text-decoration: none;
     transition: all 0.2s;
-    box-sizing: border-box; /* Ensures padding+border don't expand width */
+    box-sizing: border-box; /* Assicura che padding+border non espandano la larghezza */
 }
 
 .btn-buy-outline:hover {
@@ -200,7 +202,7 @@
     width: 100%;
     padding: 1rem;
     background: #33729E;
-    border: 2px solid transparent; /* Match border width of btn-buy-outline */
+    border: 2px solid transparent; /* Match larghezza bordo di btn-buy-outline */
     color: #fff;
     border-radius: 30px;
     font-size: 1.2rem;
@@ -223,7 +225,9 @@
     opacity: 0.8;
 }
 
-/* Responsività */
+/* =========================================
+   Responsività
+   ========================================= */
 @media (max-width: 1024px) {
     .product-grid {
         grid-template-columns: 1fr;

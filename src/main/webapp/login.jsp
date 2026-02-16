@@ -3,13 +3,20 @@
 <head>
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="stylesheet" href="css/login.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 </head>
 
 <body>
+
 <main class="login">
-    <!-- Colonna sinistra -->
+    <!-- ==================== 
+         COLONNA SINISTRA 
+         ==================== -->
     <div class="login_sx">
         <div class="login_in">
             <h1 class="login_title">Sign In</h1>
@@ -21,6 +28,7 @@
                 <label for="password" class="visually-hidden">password</label>
                 <input id="password" name="password" type="password" placeholder="password" required class="login_input">
 
+                <!-- Messaggio di errore (Logica Java) -->
                 <% if (request.getAttribute("error") != null) { %>
                     <div style="color: red; margin-bottom: 10px;">
                         <%= request.getAttribute("error") %>
@@ -36,10 +44,13 @@
         </div>
     </div>
 
-    <!-- Colonna destra -->
+    <!-- ==================== 
+         COLONNA DESTRA 
+         ==================== -->
     <div class="login_rx">
         <img src="img/bottiglia_login.png" alt="Decorazione login" />
     </div>
 </main>
+
 </body>
 </html>

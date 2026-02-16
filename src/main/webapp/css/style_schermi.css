@@ -1,6 +1,10 @@
+/* =========================================
+   Gintleman - Stili Schermi Extra Large (style_schermi.css)
+   ========================================= */
+
 @media (min-width: 2000px) and (max-width: 2560px) {
 
-    /*Questa prima parte è per lo stile in generale*/
+    /* Questa prima parte è per lo stile in generale */
     html, body {
         margin: 0;
         padding: 0;
@@ -10,14 +14,12 @@
         font-size: 16px;
     }
 
-
     p {
         font-size: 3rem; /* 1 × 16px = 16px */
     }
 
-
     /* ====================
-         Prima sezione
+         Prima Sezione
     ==================== */
     #hero {
         min-height: 100vh;
@@ -28,7 +30,6 @@
         padding: 1rem;
         box-sizing: border-box;
 
-
         background-image: url("../img/hero_background.png");
         background-size: cover;
         background-position: center;
@@ -37,8 +38,7 @@
         position: relative;
     }
 
-
-    /* zona con le scritte */
+    /* Zona con le scritte */
     #zona_centrale {
         display: inline-flex; /**/
         flex-direction: column;
@@ -67,8 +67,7 @@
         color: #000000;
     }
 
-
-    /* pulsante scopri di più */
+    /* Pulsante Scopri di Più */
     .scopri_di_piu {
         display: inline-flex;
         align-items: center;
@@ -80,7 +79,7 @@
         text-decoration: none;
     }
 
-    /*testo del pulsante*/
+    /* Testo del pulsante */
     .scopri_di_piu .sdp_text {
         font-family: 'SF Pro', sans-serif;
         font-size: 2em; /* 16px */
@@ -89,21 +88,20 @@
         margin-right: 0.5em;
     }
 
-    /*freccia del pulsante*/
+    /* Freccia del pulsante */
     .scopri_di_piu .sdp_icon {
         font-size: 2em; /* regola la dimensione della freccia */
         line-height: 1;
         color: #ffffff;
     }
 
-    /*stato hover*/
+    /* Stato hover */
     .scopri_di_piu:hover {
         background-color: #47a9ed;
     }
 
-
     /* ====================
-        Seconda sezione
+        Seconda Sezione
     ==================== */
     #title_2 {
         font-size: 5em;
@@ -147,7 +145,7 @@
         z-index: 1;
     }
 
-    #partner { /*spazio tra i rettangoli*/
+    #partner { /* spazio tra i rettangoli */
         display: flex;
         justify-content: flex-start;
         gap: 6.5em;
@@ -156,9 +154,8 @@
         margin-bottom: 10.25em;
     }
 
-
     /* ====================
-         Terza sezione
+         Terza Sezione
     ==================== */
     #general {
         display: flex;
@@ -168,7 +165,6 @@
         gap: 1.3em;
         margin-bottom: 4em;
     }
-
 
     #scopri_di_più {
         position: relative;

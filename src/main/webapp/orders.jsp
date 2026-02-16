@@ -8,10 +8,15 @@
 <html>
 <head>
     <title>Gintleman - I tuoi ordini</title>
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
+    
     <style>
         .orders-container {
             max-width: 1000px;
@@ -45,11 +50,15 @@
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="orders-container">
     <h1>I tuoi Ordini</h1>
     
+    <!-- ==================== 
+         LOGICA GESTIONE ORDINI 
+         ==================== -->
     <%
         UserBean currentUser = (UserBean) session.getAttribute("user");
         if (currentUser == null) {
@@ -62,6 +71,7 @@
         
         if (orders.isEmpty()) {
     %>
+        <!-- Caso: Storico Vuoto -->
         <div class="empty-history">
             <h3>Non hai ancora effettuato ordini.</h3>
             <a href="catalog.jsp" class="scopri_di_piu" style="display:inline-block; font-size: 1rem; margin-top: 20px;">Vai allo Shopping</a>
@@ -69,6 +79,9 @@
     <%
         } else {
     %>
+        <!-- ==================== 
+             TABELLA ORDINI 
+             ==================== -->
         <table class="orders-table">
             <thead>
                 <tr>
@@ -95,6 +108,7 @@
     <% } %>
 </div>
 
+<!-- Footer Gintleman -->
 <%@ include file="footer.jsp" %>
 
 </body>

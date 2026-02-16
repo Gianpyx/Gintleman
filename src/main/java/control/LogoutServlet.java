@@ -10,11 +10,12 @@ import java.io.IOException;
 
 @WebServlet(name = "LogoutServlet", value = "/logout")
 public class LogoutServlet extends HttpServlet {
+    // Gestione della disconnessione utente
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate(); // Destroy session
+            session.invalidate(); // Invalidazione e distruzione sessione attiva
         }
         response.sendRedirect("index.jsp");
     }

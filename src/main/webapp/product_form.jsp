@@ -4,9 +4,14 @@
 <html>
 <head>
     <title>Form Prodotto - Admin</title>
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
+    
     <style>
         .form-container {
             max-width: 600px;
@@ -38,7 +43,7 @@
         .error-msg {
             color: red;
             font-size: 0.85em;
-            display: none; /* Hidden by default */
+            display: none; /* Nascosto di default */
             margin-top: 5px;
         }
         .btn-submit {
@@ -59,8 +64,12 @@
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <jsp:include page="/header.jsp" />
 
+<!-- ==================== 
+     LOGICA DI ACCESSO 
+     ==================== -->
 <%
     UserBean user = (UserBean) session.getAttribute("user");
     if (user == null || !user.isAdmin()) {
@@ -75,6 +84,9 @@
 <div class="form-container">
     <h1><%= isEdit ? "Modifica Prodotto" : "Nuovo Prodotto" %></h1>
 
+    <!-- ==================== 
+         FORM PRODOTTO 
+         ==================== -->
     <form action="${pageContext.request.contextPath}/admin/products" method="post" id="productForm" novalidate>
         <% if(isEdit) { %>
             <input type="hidden" name="id" value="<%= product.getId() %>">
@@ -131,10 +143,13 @@
     </form>
 </div>
 
+<!-- Footer Gintleman -->
 <jsp:include page="/footer.jsp" />
 
+<!-- ==================== 
+     VALIDAZIONE JS CLIENT-SIDE 
+     ==================== -->
 <script>
-    // Validation Logic (Req #13, #15, #16, #17)
     document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById("productForm");
         const inputs = form.querySelectorAll("input, textarea");
@@ -149,13 +164,13 @@
             alcoholContent: (val) => /^\d+(\.\d{1})?$/.test(val) && parseFloat(val) > 0 && parseFloat(val) <= 100
         };
 
-        // Validate single field
+        // Funzione per validare un singolo campo
         function validateField(input) {
             const name = input.name;
-            if (!validators[name]) return true; // Skip fields without validators (e.g. imageUrl)
+            if (!validators[name]) return true; // Salta campi senza validatore (es. imageUrl)
             
             const isValid = validators[name](input.value.trim());
-            const errorMsg = input.nextElementSibling; // The <span> with class error-msg
+            const errorMsg = input.nextElementSibling; // Lo span con classe error-msg
 
             if (!isValid) {
                 input.classList.add("error");
@@ -171,18 +186,18 @@
             return isValid;
         }
 
-        // Event Listener: 'input' for immediate feedback (Req #16)
+        // Listener: 'input' per feedback immediato
         inputs.forEach(input => {
             input.addEventListener("input", function() {
                 validateField(this);
             });
-            // Also validate on blur
+            // Valida anche su blur
             input.addEventListener("blur", function() {
                 validateField(this);
             });
         });
 
-        // Event Listener: 'submit' (Req #14)
+        // Listener: 'submit' per blocco invio se invalido
         form.addEventListener("submit", function(event) {
             let isFormValid = true;
             inputs.forEach(input => {
@@ -192,8 +207,7 @@
             });
 
             if (!isFormValid) {
-                event.preventDefault(); // Block submission
-                // No alert(), visual cues are already shown via validateField specific logic
+                event.preventDefault(); // Blocca invio
             }
         });
     });

@@ -1,4 +1,8 @@
-/* === Global layout tokens (validi a tutte le larghezze) === */
+/* =========================================
+   Gintleman - Stili "Scopri di Più" (scopri_di_piu.css)
+   ========================================= */
+
+/* === Token Layout Globali (validi a tutte le larghezze) === */
 :root{
     --container-max: 1200px;   /* larghezza fissa desiderata del contenuto */
     --container-gutter: 4rem;  /* margini minimi laterali */
@@ -7,8 +11,11 @@
 /* Assicura che le immagini non escano dal contenitore su schermi larghi */
 img{ max-width: 100%; height: auto; }
 
+/* =========================================
+   Desktop (min-width: 1251px)
+   ========================================= */
 @media (min-width: 1251px) {
-    /*Questa prima parte è per lo stile in generale*/
+    /* Stile generale */
     html, body {
         margin: 0;
         padding: 0;
@@ -17,24 +24,21 @@ img{ max-width: 100%; height: auto; }
         font-size: 16px;
     }
 
-
     p {
         font-size: 3rem; /* 1 × 16px = 16px */
     }
 
-
     /* ====================
-         Prima sezione
+         Prima Sezione (Hero)
     ==================== */
     #hero {
         min-height: 100vh;
-        display: flex; /**/
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 1rem;
         box-sizing: border-box;
-
 
         background-image: url("../img/scopri_di_piu_sfondo.png");
         background-size: cover;
@@ -44,10 +48,9 @@ img{ max-width: 100%; height: auto; }
         position: relative;
     }
 
-
-    /* zona con le scritte */
+    /* Zona con le scritte */
     #zona_centrale {
-        display: inline-flex; /**/
+        display: inline-flex;
         flex-direction: column;
         align-items: center;
         gap: 0.5em;
@@ -55,7 +58,6 @@ img{ max-width: 100%; height: auto; }
         border-radius: 1em;
         background-color: rgba(255, 255, 255, 0.4);
         width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
-
     }
 
     #zona_centrale h1, #zona_centrale p {
@@ -70,7 +72,7 @@ img{ max-width: 100%; height: auto; }
         line-height: 1.1;
         text-transform: uppercase;
         text-align: center;
-        color: #000000
+        color: #000000;
     }
 
     #zona_centrale p {
@@ -79,10 +81,8 @@ img{ max-width: 100%; height: auto; }
         color: #000000;
     }
 
-
-
     /* ====================
-        Seconda sezione
+        Seconda Sezione
     ==================== */
     #title_2 {
         font-size: 2em;
@@ -97,14 +97,13 @@ img{ max-width: 100%; height: auto; }
         text-align: center;
     }
 
-    #partner { /*spazio tra i rettangoli*/
+    #partner { /* spazio tra i rettangoli */
         display: flex;
         justify-content: flex-start;
         gap: 5.5em;
         width: min(var(--container-max), calc(100% - 2 * var(--container-gutter)));
         margin: 0 auto 10.25em;
     }
-
 
     /* Contenitore principale */
     .rettangolo_bt_1 {
@@ -159,7 +158,6 @@ img{ max-width: 100%; height: auto; }
         padding: 1em;
     }
 
-
     .rettangolo-bottom p {
         margin: 0;
         font-size: 1.1em;
@@ -170,7 +168,7 @@ img{ max-width: 100%; height: auto; }
 }
 
 /* =========================================
-   TABLET / LAPTOP PICCOLI (768px - 1250px)
+   Tablet / Laptop Piccoli (768px - 1250px)
    ========================================= */
 @media (min-width: 768px) and (max-width: 1250px) {
 
@@ -179,7 +177,7 @@ img{ max-width: 100%; height: auto; }
         padding: 0;
         overflow-x: hidden;
         font-family: 'SF Pro', sans-serif;
-        font-size: 14px; /* Base font size slightly smaller */
+        font-size: 14px; /* Font size base leggermente più piccolo */
     }
 
     p {
@@ -188,7 +186,7 @@ img{ max-width: 100%; height: auto; }
 
     /* --- Prima Sezione (Hero) --- */
     #hero {
-        min-height: 60vh; /* Allow it to shrink */
+        min-height: 60vh; /* Permette restringimento */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -209,7 +207,7 @@ img{ max-width: 100%; height: auto; }
         gap: 0.5em;
         padding: 1.5em 2em;
         border-radius: 1em;
-        background-color: rgba(255, 255, 255, 0.6); /* More opacity for readability */
+        background-color: rgba(255, 255, 255, 0.6); /* Maggiore opacità per leggibilità */
         width: 80%;
         text-align: center;
     }
@@ -236,7 +234,7 @@ img{ max-width: 100%; height: auto; }
     }
 
     #sub_title2 {
-        font-size: 2.5em; /* Smaller than desktop */
+        font-size: 2.5em; /* Più piccolo del desktop */
         width: 90%;
         margin: 0.5em auto 1.5em;
         text-align: center;
@@ -245,7 +243,7 @@ img{ max-width: 100%; height: auto; }
 
     #partner {
         display: flex;
-        flex-wrap: wrap; /* Allow wrapping if needed */
+        flex-wrap: wrap; /* Permette a capo se necessario */
         justify-content: center;
         gap: 2em;
         width: 95%;
@@ -256,9 +254,9 @@ img{ max-width: 100%; height: auto; }
     .rettangolo_bt_1,
     .rettangolo_bt_2,
     .rettangolo_bt_3 {
-        width: 45%; /* 2 per row roughly */
+        width: 45%; /* Circa 2 per riga */
         height: auto;
-        min-height: 25em; /* Ensure some height */
+        min-height: 25em; /* Altezza minima assicurata */
         border-radius: 8px;
         overflow: hidden;
         display: flex;
@@ -268,11 +266,10 @@ img{ max-width: 100%; height: auto; }
     }
     
     .rettangolo_bt_2 { background-color: #CDDCAE; }
-    .rettangolo_bt_3 { background-color: #D7EEFE; width: 60%; /* Center the last one if 3 items */ }
-
+    .rettangolo_bt_3 { background-color: #D7EEFE; width: 60%; /* Centra l'ultimo se sono 3 */ }
 
     .rettangolo-top {
-        height: 200px; /* Fixed height for image part */
+        height: 200px; /* Altezza fissa per parte immagine */
         width: 100%;
     }
 
@@ -300,9 +297,8 @@ img{ max-width: 100%; height: auto; }
     }
 }
 
-
 /* =========================================
-   MOBILE (max-width: 767px)
+   Mobile (max-width: 767px)
    ========================================= */
 @media (max-width: 767px) {
 
@@ -318,7 +314,7 @@ img{ max-width: 100%; height: auto; }
         font-size: 1.2rem;
     }
 
-    /* --- Hero Section --- */
+    /* --- Prima Sezione (Hero) --- */
     #hero {
         min-height: 50vh;
         display: flex;
@@ -347,14 +343,14 @@ img{ max-width: 100%; height: auto; }
 
     #zona_centrale h1 {
         margin: 0;
-        font-size: 2em; /* Much smaller */
+        font-size: 2em; /* Molto più piccolo */
         font-weight: 600;
         line-height: 1.2;
         text-transform: uppercase;
         color: #000;
     }
 
-    /* --- Second Section --- */
+    /* --- Seconda Sezione --- */
     #second_section {
         padding: 2em 0.5em;
     }
@@ -376,14 +372,14 @@ img{ max-width: 100%; height: auto; }
 
     #partner {
         display: flex;
-        flex-direction: column; /* Stack vertically */
+        flex-direction: column; /* Impila verticalmente */
         align-items: center;
         gap: 1.5em;
         width: 100%;
         margin: 0 auto;
     }
 
-    /* Cards - Full width on mobile */
+    /* Cards - Larghezza piena su mobile */
     .rettangolo_bt_1,
     .rettangolo_bt_2,
     .rettangolo_bt_3 {

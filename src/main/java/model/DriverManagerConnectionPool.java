@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+// Gestisce la connessione al database MySQL
 public class DriverManagerConnectionPool {
 
     private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
     private static String DB_URL = "jdbc:mysql://localhost:3306/gintleman_db";
     private static String USER = "root";
-    private static String PASSWORD = "admin123"; /* Change this in production or use env vars */
+    private static String PASSWORD = "admin123";
 
+    // Caricamento statico del driver JDBC all'avvio dell'applicazione
     static {
         try {
             Class.forName(DRIVER_CLASS_NAME);
@@ -20,6 +22,7 @@ public class DriverManagerConnectionPool {
         }
     }
 
+    // Restituisce una nuova connessione attiva al database
     public static Connection getConnection() throws SQLException {
         try {
             System.out.println("DEBUG: Tentativo connessione DB...");

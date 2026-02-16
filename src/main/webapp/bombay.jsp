@@ -4,22 +4,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bombay Sapphire</title>
     <link rel = "icon" sizes = "16x16" href = "img/Logo_nero.png" type = "image/png">
-    <link rel="stylesheet" href="css/index.css"> <!-- Base Globale -->
-    <link rel="stylesheet" href="css/header.css"> <!-- Header Standard -->
-    <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
-    <link rel="stylesheet" href="css/bombay.css"> <!-- Stile specifico Bombay -->
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
+    <!-- Base Globale -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Header Standard -->
+    <link rel="stylesheet" href="css/header.css">
+    <!-- Footer -->
+    <link rel="stylesheet" href="css/footer.css">
+    <!-- Stile Specifico Bombay -->
+    <link rel="stylesheet" href="css/bombay.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     
-    <!-- Font Google: DM Sans + Serif font per eleganza se serve -->
+    <!-- Font Google: DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
-<!-- 1. HERO SECTION -->
+<!-- ==================== 
+     1. SEZIONE HERO 
+     ==================== -->
 <section class="hero-section">
     <div class="hero-content">
         <h1 class="hero-title">Bombay Sapphire</h1>
@@ -31,7 +42,7 @@
     </div>
     
     <div class="hero-image-container">
-        <!-- Usa l'immagine della bottiglia scontornata se possibile, altrimenti quella disponibile -->
+        <!-- Usa l'immagine della bottiglia scontornata -->
         <img src="img/prodotto_bombay.png" alt="Bombay Sapphire Bottle" class="hero-bottle">
     </div>
 
@@ -41,7 +52,9 @@
     </div>
 </section>
 
-<!-- 2. ABOUT SECTION -->
+<!-- ==================== 
+     2. SEZIONE ABOUT 
+     ==================== -->
 <section class="about-section">
     <div class="about-container">
         <div class="about-left">
@@ -84,7 +97,9 @@
     </div>
 </section>
 
-<!-- 3. PARTNER PRODUCT SECTION -->
+<!-- ==================== 
+     3. SEZIONE PRODOTTI PARTNER 
+     ==================== -->
 <section class="partner-product-section">
     <div class="partner-container">
         <h2 class="section-title-white">Partner Product</h2>
@@ -127,7 +142,7 @@
                 </div>
             </div>
 
-            <!-- Navigation Arrow -->
+            <!-- Freccia di Navigazione -->
              <button class="nav-arrow-btn" id="carouselNext">&gt;</button>
         </div>
     </div>
@@ -147,30 +162,27 @@
                 const scrollAmount = cardWidth + gap;
 
                 if (!isAtEnd) {
-                    // Scroll to the right (next item)
+                    // Scroll a destra (elemento successivo)
                     carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                    // Trust the scroll listener to update state when end is reached
                 } else {
-                    // Scroll back to the start (left)
+                    // Scroll all'inizio (sinistra)
                     carousel.scrollTo({ left: 0, behavior: 'smooth' });
-                    // Reset rotation handled by scroll listener, but force it for immediate feedback just in case
-                    isAtEnd = false; // Optimistic update
+                    isAtEnd = false; 
                     nextBtn.classList.remove('rotated');
                 }
             });
 
-            // Detect scroll position to update arrow
+            // Rileva posizione scroll per aggiornare la freccia
             carousel.addEventListener('scroll', () => {
                 const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-                // If close to end (tolerance 10px)
+                // Se vicino alla fine (tolleranza 10px)
                 if (carousel.scrollLeft >= maxScrollLeft - 10) {
                     if (!isAtEnd) {
                         nextBtn.classList.add('rotated');
                         isAtEnd = true;
                     }
                 } else {
-                    // If not at end, we allow going back to normal state
-                    // BUT only if we were at end? Actually, if user scrolls back manually, we should reset.
+                    // Se l'utente torna indietro manualmente
                     if (isAtEnd && carousel.scrollLeft < maxScrollLeft - 10) {
                         nextBtn.classList.remove('rotated');
                         isAtEnd = false;

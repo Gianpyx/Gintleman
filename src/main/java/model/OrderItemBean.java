@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+// Bean che rappresenta una singola riga di un ordine (prodotto acquistato, quantità e prezzo storico)
 public class OrderItemBean implements Serializable {
     private int id;
     private int orderId;
@@ -10,7 +11,8 @@ public class OrderItemBean implements Serializable {
     private int quantity;
     private BigDecimal priceAtPurchase;
 
-    // Optional: Full product details for display
+    // Opzionale: Dettagli completi del prodotto per la visualizzazione nello
+    // storico
     private ProductBean product;
 
     public OrderItemBean() {

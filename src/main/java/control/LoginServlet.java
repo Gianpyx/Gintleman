@@ -15,6 +15,7 @@ import java.sql.SQLException;
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
 
+    // Gestione dell'autenticazione utente
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -38,13 +39,13 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (user != null) {
-            // Login Success
+            // Login Success: Creazione sessione
             HttpSession session = request.getSession();
-            session.setAttribute("user", user); // Store user in session
-            session.setMaxInactiveInterval(60 * 60); // 1 hour session
+            session.setAttribute("user", user); // Memorizza utente in sessione
+            session.setMaxInactiveInterval(60 * 60); // Durata sessione: 1 ora
             response.sendRedirect("index.jsp");
         } else {
-            // Login Failed
+            // Login Failed: Credenziali errate
             request.setAttribute("error", "Email o Password errati");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

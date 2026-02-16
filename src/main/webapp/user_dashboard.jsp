@@ -3,6 +3,10 @@
 <%@ page import="model.OrderBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+
+<!-- ==================== 
+     LOGICA DI CONTROLLO 
+     ==================== -->
 <%
     UserBean user = (UserBean) session.getAttribute("user");
     if (user == null) {
@@ -16,15 +20,20 @@
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     String success = request.getParameter("success");
 %>
+
 <html>
 <head>
     <title>Il Mio Account - Gintleman</title>
-    <!-- Common Styles -->
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
-    <!-- Reuse Admin CSS for shared layout -->
+    
+    <!-- Riutilizzo CSS Admin per layout condiviso -->
     <link rel="stylesheet" href="css/admin.css">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -114,9 +123,11 @@
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="admin-wrapper">
+    <!-- Sidebar Utente -->
     <jsp:include page="user_sidebar.jsp" />
 
     <main class="admin-content">
@@ -129,7 +140,9 @@
             <div class="success-msg">Profilo aggiornato con successo!</div>
         <% } %>
 
-        <!-- PROFILE SECTION -->
+        <!-- ==================== 
+             SEZIONE PROFILO 
+             ==================== -->
         <section id="section-profile" class="admin-card profile-container">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
                 <h2 style="margin:0;">Informazioni Account</h2>
@@ -166,7 +179,9 @@
             </form>
         </section>
 
-        <!-- ORDERS SECTION -->
+        <!-- ==================== 
+             SEZIONE ORDINI 
+             ==================== -->
         <section id="section-orders" class="admin-card hidden-section">
             <h2 style="margin-bottom: 2rem;">Cronologia Ordini</h2>
             <div class="table-responsive">
@@ -213,7 +228,9 @@
     </main>
 </div>
 
-<!-- MODAL DETAILS (Only if authorized) -->
+<!-- ==================== 
+     MODAL DETTAGLI (Solo se richiesto) 
+     ==================== -->
 <% if (selectedOrder != null) { %>
     <div id="orderModal" class="admin-card" style="position: fixed; top: 10%; left: 10%; width: 80%; height: 80%; z-index: 1000; overflow-y: auto; box-shadow: 0 0 50px rgba(0,0,0,0.5);">
          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 1rem; margin-bottom: 2rem;">
@@ -267,8 +284,11 @@
     <script>alert('<%= orderError %>');</script>
 <% } %>
 
+<!-- ==================== 
+     LOGICA CLIENT-SIDE 
+     ==================== -->
 <script>
-    // If we land on the page with a selected order, show the orders section
+    // Se atterriamo sulla pagina con un ordine selezionato, mostriamo la sezione ordini
     var autoShowOrders = "<%= (selectedOrder != null || orderError != null) %>" === "true";
     if (autoShowOrders) {
         window.onload = function() {
@@ -292,7 +312,7 @@
         
         document.getElementById('section-' + sectionId).classList.remove('hidden-section');
         
-        // Update sidebar active state
+        // Aggiorna stato attivo sidebar
         document.getElementById('link-profile').classList.remove('active');
         document.getElementById('link-orders').classList.remove('active');
         document.getElementById('link-' + sectionId).classList.add('active');

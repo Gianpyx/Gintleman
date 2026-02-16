@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// Classe DAO per la gestione delle operazioni CRUD relative agli Utenti nel database
 public class UserDAO {
 
+    // Autenticazione utente tramite email e password
     public synchronized UserBean doRetrieveByEmailPassword(String email, String password) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -46,6 +48,7 @@ public class UserDAO {
         return bean;
     }
 
+    // Aggiorna le informazioni del profilo utente (Nome, Cognome, Password)
     public synchronized void doUpdate(UserBean user) throws SQLException {
         Connection connection = null;
         PreparedStatement ps = null;
@@ -72,6 +75,7 @@ public class UserDAO {
         }
     }
 
+    // Recupera un utente in base al suo ID
     public synchronized UserBean doRetrieveByKey(int id) throws SQLException {
         Connection connection = null;
         PreparedStatement ps = null;

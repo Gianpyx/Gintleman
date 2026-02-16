@@ -153,9 +153,9 @@ body {
 }
 
 .user-welcome-link:hover {
-    transform: scale(1.1); /* Zoom effect */
+    transform: scale(1.1); /* Effetto zoom */
     text-decoration: underline;
-    color: #fff; /* Ensure it stays white or whatever login-scritta color is */
+    color: #fff; /* Assicura che rimanga bianco */
 }
 
 .login-scritta:hover {

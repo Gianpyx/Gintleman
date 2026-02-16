@@ -4,6 +4,9 @@
 <%@ page import="model.OrderItemBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<!-- ==================== 
+     LOGICA GESTIONE ORDINI 
+     ==================== -->
 <%
     UserBean adminUser = (UserBean) session.getAttribute("user");
     if (adminUser == null || !"ADMIN".equalsIgnoreCase(adminUser.getRole())) {
@@ -11,6 +14,7 @@
         return;
     }
     
+    // Recupero lista ordini e dettaglio ordine selezionato
     List<OrderBean> orders = (List<OrderBean>) request.getAttribute("orders");
     OrderBean selectedOrder = (OrderBean) request.getAttribute("order");
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -18,23 +22,30 @@
 <html>
 <head>
     <title>Gestione Ordini - Gintleman Admin</title>
-    <!-- Common Styles -->
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
+    <!-- Stili Comuni -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <!-- Admin Specific Style -->
+    
+    <!-- Stile Specifico Admin -->
     <link rel="stylesheet" href="css/admin.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 
-    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Fonts -->
+    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* ==================== 
+           STILI TABELLA ORDINI 
+           ==================== */
         .order-table {
             width: 100%;
             border-collapse: collapse;
@@ -61,6 +72,7 @@
             cursor: pointer;
         }
 
+        /* Bottoni Azione */
         .btn-action {
             padding: 0.4rem 0.8rem;
             border-radius: 4px;
@@ -84,6 +96,7 @@
             cursor: pointer;
         }
         
+        /* Badge Stato */
         .status-badge {
             padding: 4px 8px;
             border-radius: 12px;
@@ -95,7 +108,9 @@
         .status-pending { background: #fff3cd; color: #856404; }
         .status-canceled { background: #f8d7da; color: #721c24; }
 
-        /* Modal/Overlay for Details */
+        /* ==================== 
+           MODAL DETTAGLI 
+           ==================== */
         .modal-overlay {
             display: flex;
             position: fixed;
@@ -157,9 +172,11 @@
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="admin-wrapper">
+    <!-- Sidebar Laterale -->
     <jsp:include page="admin_sidebar.jsp" />
 
     <main class="admin-content">
@@ -168,7 +185,9 @@
             <p>Visualizza e gestisci tutti gli ordini dei clienti.</p>
         </div>
 
-        <!-- ORDER LIST -->
+        <!-- ==================== 
+             LISTA ORDINI 
+             ==================== -->
         <div class="admin-card" style="padding: 0;">
             <table class="order-table">
                 <thead>
@@ -218,7 +237,9 @@
     </main>
 </div>
 
-<!-- MODAL DETAILS -->
+<!-- ==================== 
+     MODAL DETTAGLI ORDINE 
+     ==================== -->
 <% if (selectedOrder != null) { %>
 <div id="orderModal" class="modal-overlay">
     <div class="modal-content">
@@ -278,7 +299,7 @@
 </div>
 
 <script>
-    // Close modal if clicking outside
+    // Chiudi modale se si clicca fuori
     window.onclick = function(event) {
         if (event.target == document.getElementById('orderModal')) {
             window.location.href = 'admin_orders';

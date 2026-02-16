@@ -2,10 +2,16 @@
 <html>
 <head>
     <title>Grazie - Gintleman</title>
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
+    
+    <!-- Stili inline per pagina di ringraziamento -->
     <style>
         .thankyou-container {
             max-width: 600px;
@@ -55,6 +61,7 @@
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="thankyou-container">

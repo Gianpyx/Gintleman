@@ -4,11 +4,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Classe DAO per la gestione delle operazioni CRUD relative agli Ordini nel database
 public class OrderDAO {
 
     /**
-     * Saves an Order and its items in a transaction.
-     * Captures current product prices for history (Req #20).
+     * Salva un ordine e i suoi dettagli in un'unica transazione.
+     * Cattura i prezzi correnti dei prodotti per lo storico (Req #20).
      */
     public synchronized int doSave(OrderBean order, Cart cart) throws SQLException, OutOfStockException {
         Connection connection = null;
@@ -21,9 +22,9 @@ public class OrderDAO {
 
         try {
             connection = DriverManagerConnectionPool.getConnection();
-            connection.setAutoCommit(false); // Start Transaction
+            connection.setAutoCommit(false); // Inizio Transazione
 
-            // 1. Insert Order
+            // 1. Inserimento dell'Ordine principale
             psOrder = connection.prepareStatement(insertOrderSQL, Statement.RETURN_GENERATED_KEYS);
             psOrder.setInt(1, order.getUserId());
             psOrder.setBigDecimal(2, order.getTotalAmount());
@@ -46,28 +47,28 @@ public class OrderDAO {
                 }
             }
 
-            // 2. Insert Order Items and Decrement Stock
+            // 2. Inserimento dei Dettagli Ordine (Righe) e Decremento Stock
             psItem = connection.prepareStatement(insertItemSQL);
             ProductDAO productDAO = new ProductDAO();
             for (CartItem item : cart.getItems()) {
                 psItem.setInt(1, orderId);
                 psItem.setInt(2, item.getProduct().getId());
                 psItem.setInt(3, item.getQuantity());
-                // CRITICAL REQ #20: Save valid price at this moment
+                // IMPORTANTE: Salvataggio del prezzo valido al momento dell'acquisto
                 psItem.setBigDecimal(4, item.getProduct().getPrice());
                 psItem.addBatch();
 
-                // DECREMENT STOCK
+                // DECREMENTO STOCK
                 productDAO.decrementStock(item.getProduct().getId(), item.getQuantity(), connection);
             }
             psItem.executeBatch();
 
-            connection.commit(); // Commit Transaction
+            connection.commit(); // Commit della Transazione
 
         } catch (SQLException | OutOfStockException e) {
             if (connection != null) {
                 try {
-                    connection.rollback();
+                    connection.rollback(); // Rollback in caso di errore
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -87,6 +88,7 @@ public class OrderDAO {
         return orderId;
     }
 
+    // Recupera lo storico degli ordini effettuati da un utente specifico
     public synchronized List<OrderBean> doRetrieveByUser(int userId) throws SQLException {
         Connection connection = null;
         PreparedStatement ps = null;
@@ -124,6 +126,7 @@ public class OrderDAO {
         return orders;
     }
 
+    // Recupera tutti gli ordini presenti nel sistema (Funzionalità Admin)
     public synchronized List<OrderBean> doRetrieveAll() throws SQLException {
         Connection connection = null;
         PreparedStatement ps = null;
@@ -160,6 +163,8 @@ public class OrderDAO {
         return orders;
     }
 
+    // Recupera i dettagli completi di un singolo ordine tramite ID, inclusi i
+    // prodotti
     public synchronized OrderBean doRetrieveByKey(int id) throws SQLException {
         Connection connection = null;
         PreparedStatement psOrder = null;

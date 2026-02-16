@@ -3,11 +3,12 @@ package model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+// Bean che rappresenta un prodotto in vendita nel catalogo
 public class ProductBean implements Serializable {
     private int id;
     private String name;
     private String description;
-    private BigDecimal price; // Using BigDecimal for currency
+    private BigDecimal price; // BigDecimal per gestire correttamente la valuta
     private int stock;
     private String imageUrl;
     private String category;

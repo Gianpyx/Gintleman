@@ -1,3 +1,7 @@
+/* =========================================
+   Stili Registrazione
+   ========================================= */
+
 :root{
     --container-max: 1200px;    /* larghezza massima del blocco registration */
     --container-gutter: 4rem;   /* margini laterali minimi */
@@ -7,6 +11,7 @@
 /* Reset utili */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+
 body {
     min-height: 100dvh;
     margin: 0;
@@ -14,11 +19,11 @@ body {
     place-items: center;   /* centra verticalmente e orizzontalmente il main.registration */
     background: #191919;      /* opzionale */
 }
+
 img {
     max-width: 100%;
     height: auto;
 }
-
 
 /* Contenitore principale (usa direttamente .registration che hai già in HTML) */
 .registration{
@@ -36,7 +41,9 @@ img {
     }
 }
 
-/*Colonna di sinistra*/
+/* =========================================
+   Colonna Sinistra
+   ========================================= */
 
 .registration_sx{
     background: #191919;
@@ -57,7 +64,9 @@ img {
 }
 
 
-/*Colonna di destra*/
+/* =========================================
+   Colonna Destra
+   ========================================= */
 
 .registration_rx{
     display: grid;
@@ -84,10 +93,11 @@ img {
     margin-bottom: 1.5em;
     color: #ffffff;
     text-align: center;
-
 }
 
-/* FORM */
+/* =========================================
+   Form Registrazione
+   ========================================= */
 .registration_form{
     display: grid;
     gap: 18px;
@@ -155,9 +165,11 @@ img {
 }
 .registration_hint a{ color: inherit; text-decoration: underline; }
 
-/* Responsive adjustments */
+/* =========================================
+   Responsive
+   ========================================= */
 
-/* Tablet and Mobile Landscape */
+/* Tablet e Mobile Landscape */
 @media (max-width: 1250px) {
     :root {
         --container-gutter: 2rem;
@@ -166,12 +178,6 @@ img {
     
     .registration {
         width: 90%;
-        /* Keep 2 columns if space allows, or switch to 1 earlier if needed.
-           The existing code doesn't switch to 1 column until < 900px (desktop media query reversed).
-           Actually existing code has @media (min-width: 900px) { grid-template-columns: 1fr 1fr; }
-           So below 900px it is already 1 column. This is good.
-           We just ensure width and padding are better.
-        */
     }
 }
 
@@ -184,12 +190,12 @@ img {
 
     .registration {
         width: 92%;
-        /* Ensure 1 column layout */
+        /* Assicura layout a 1 colonna */
         grid-template-columns: 1fr;
     }
     
     .registration_sx {
-        /* Hide decorative image on mobile to focus on the form */
+        /* Nascondi immagine decorativa su mobile per focus sul form */
         display: none;
     }
 
@@ -198,7 +204,7 @@ img {
     }
     
     .registration_title {
-        font-size: 32px; /* Reduce from 50px */
+        font-size: 32px; /* Riduci da 50px */
         margin-bottom: 0.5rem;
     }
     
@@ -208,7 +214,7 @@ img {
     }
 
     .registration_row {
-        /* Stack first name and last name vertically on small mobile screens */
+        /* Impila nome e cognome verticalmente su schermi piccoli */
         grid-template-columns: 1fr; 
         gap: 1rem;
     }

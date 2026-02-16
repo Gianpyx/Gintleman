@@ -17,19 +17,22 @@ import java.util.List;
 @WebServlet(name = "CatalogServlet", value = "/catalog")
 public class CatalogServlet extends HttpServlet {
 
+    // Gestione della visualizzazione del catalogo e caricamento dati dinamici
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
 
+        // Richiesta AJAX per ottenere i dati dei prodotti in formato JSON
         if ("load".equals(action)) {
-            // AJAX Request for JSON data
             loadProductsJson(request, response);
-        } else {
-            // Normal Request -> Forward to catalog.jsp
+        }
+        // Richiesta standard che mostra la pagina HTML del catalogo
+        else {
             request.getRequestDispatcher("catalog.jsp").forward(request, response);
         }
     }
 
+    // Caricamento filtrato dei prodotti e risposta in formato JSON
     private void loadProductsJson(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -37,7 +40,7 @@ public class CatalogServlet extends HttpServlet {
         String minPriceStr = request.getParameter("minPrice");
         String maxPriceStr = request.getParameter("maxPrice");
 
-        // Handle multiple nationality parameters
+        // Estrazione dei parametri multipli per il filtraggio per nazionalità
         String[] nationalityArray = request.getParameterValues("nationality");
         List<String> nationalities = new ArrayList<>();
         if (nationalityArray != null) {
@@ -55,7 +58,8 @@ public class CatalogServlet extends HttpServlet {
         try {
             List<ProductBean> products = productDAO.doRetrieveAll(minPrice, maxPrice, nationalities);
 
-            // Manual JSON construction to avoid Gson dependency for now
+            // Costruzione manuale della stringa JSON per evitare dipendenze esterne (es.
+            // Gson)
             PrintWriter out = response.getWriter();
             out.print("[");
             for (int i = 0; i < products.size(); i++) {
@@ -79,6 +83,7 @@ public class CatalogServlet extends HttpServlet {
         }
     }
 
+    // Metodo di utility per sanificare le stringhe prima dell'inserimento nel JSON
     private String escapeJson(String s) {
         if (s == null)
             return "";

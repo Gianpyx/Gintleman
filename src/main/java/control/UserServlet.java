@@ -18,6 +18,7 @@ import java.util.List;
 @WebServlet(name = "UserServlet", value = "/dashboard")
 public class UserServlet extends HttpServlet {
 
+    // Visualizzazione dashboard utente e storico ordini
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -31,21 +32,22 @@ public class UserServlet extends HttpServlet {
 
         OrderDAO orderDAO = new OrderDAO();
         try {
-            // Retrieve Order History
+            // Recupero storico ordini completo per l'utente corrente
             List<OrderBean> orders = orderDAO.doRetrieveByUser(user.getId());
             request.setAttribute("orders", orders);
 
-            // OPTIONAL: Retrieve specific order details if requested
+            // OPZIONALE: Recupero dettagli specifico ordine se richiesto
             String orderIdStr = request.getParameter("orderId");
             if (orderIdStr != null && !orderIdStr.isEmpty()) {
                 int orderId = Integer.parseInt(orderIdStr);
                 OrderBean order = orderDAO.doRetrieveByKey(orderId);
 
-                // SECURITY CONTROL: Only allow viewing if the order belongs to the session user
+                // CONTROLLO SICUREZZA: Accesso consentito solo se l'ordine appartiene
+                // all'utente
                 if (order != null && order.getUserId() == user.getId()) {
                     request.setAttribute("selectedOrder", order);
                 } else {
-                    // Unauthorized or not found
+                    // Non autorizzato o non trovato
                     request.setAttribute("orderError", "Ordine non trovato o accesso non autorizzato.");
                 }
             }
@@ -57,6 +59,7 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    // Gestione aggiornamento profilo utente
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -83,7 +86,7 @@ public class UserServlet extends HttpServlet {
             UserDAO userDAO = new UserDAO();
             try {
                 userDAO.doUpdate(user);
-                session.setAttribute("user", user); // Update session object
+                session.setAttribute("user", user); // Aggiornamento oggetto in sessione
                 response.sendRedirect("dashboard?success=1");
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -3,13 +3,16 @@
     <title>Footer</title>
 </head>
 <body>
+<!-- ==================== 
+     FOOTER PRINCIPALE 
+     ==================== -->
 <footer id="footer">
     <div class="footer_container">
         
-        <!-- TOP SECTION: Contact & Actions -->
+        <!-- SEZIONE SUPERIORE: Contatti e Azioni -->
         <div class="footer_top">
             
-            <!-- LEFT: Contacts -->
+            <!-- SINISTRA: Contatti -->
             <div class="footer_contacts">
                 <div class="contact_item">
                     <div class="square_icon">
@@ -26,7 +29,7 @@
                 </div>
             </div>
 
-            <!-- RIGHT: Actions & Social -->
+            <!-- DESTRA: Azioni e Social -->
             <div class="footer_actions">
                 <a href="registration.jsp" class="btn_registrati">REGISTRATI</a>
                 
@@ -42,7 +45,7 @@
 
         </div>
 
-        <!-- BOTTOM SECTION: Line & Credits -->
+        <!-- SEZIONE INFERIORE: Linea e Crediti -->
         <div class="footer_bottom">
             <hr class="simple_line">
             <p class="credits">made with &#128154; by Gianpaolo</p>

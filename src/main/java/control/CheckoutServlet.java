@@ -19,6 +19,7 @@ import java.sql.SQLException;
 
 @WebServlet(name = "CheckoutServlet", value = "/checkout")
 public class CheckoutServlet extends HttpServlet {
+    // Gestione del processo di acquisto (checkout)
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -26,47 +27,50 @@ public class CheckoutServlet extends HttpServlet {
         UserBean user = (UserBean) session.getAttribute("user");
         Cart cart = (Cart) session.getAttribute("cart");
 
+        // Controllo di sicurezza: l'utente deve essere loggato
         if (user == null) {
             response.sendRedirect("login.jsp");
             return;
         }
+        // Controllo validità carrello: deve esistere e non essere vuoto
         if (cart == null || cart.isEmpty()) {
             response.sendRedirect("catalog.jsp");
             return;
         }
 
-        // Retrieve form data
+        // Recupero dati del modulo di spedizione
         String address = request.getParameter("address");
         String city = request.getParameter("city");
         String zipCode = request.getParameter("zipCode");
 
-        // Create Order Object
+        // Creazione dell'oggetto Ordine con i dati dell'utente e il totale
         OrderBean order = new OrderBean();
         order.setUserId(user.getId());
         order.setTotalAmount(cart.getTotalAmount());
         order.setStatus("COMPLETED");
 
-        // Set Shipping Info
+        // Impostazione informazioni di spedizione
         order.setAddress(address);
         order.setCity(city);
         order.setZipCode(zipCode);
 
-        // Save to DB
+        // Salvataggio su DB
         OrderDAO orderDAO = new OrderDAO();
         ProductDAO productDAO = new ProductDAO();
         try {
-            // Bulk check stock before starting transaction
+            // Controllo massivo della disponibilità prodotti (Check Stock Bulk)
             productDAO.checkStockBulk(cart);
 
             orderDAO.doSave(order, cart);
 
-            // Clear Cart on success
+            // Svuotamento carrello dopo successo ordine
             session.removeAttribute("cart");
 
-            // Redirect to Confirmation Page
+            // Redirect alla pagina di conferma
             response.sendRedirect("thankyou.jsp");
 
         } catch (OutOfStockException e) {
+            // Gestione errore stock insufficiente: ritorno al checkout con dettagli
             Map<String, Integer> unavailable = e.getUnavailableProducts();
             StringBuilder sb = new StringBuilder(
                     "I seguenti prodotti non sono disponibili nelle quantità richieste:<br>");
@@ -84,7 +88,7 @@ public class CheckoutServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Direct access to checkout -> show form
+        // Accesso diretto alla pagina di checkout per mostrare il form
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
 }

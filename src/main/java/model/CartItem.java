@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+// Rappresenta una singola riga (prodotto + quantità) all'interno del carrello
 public class CartItem implements Serializable {
     private ProductBean product;
     private int quantity;
@@ -38,6 +39,7 @@ public class CartItem implements Serializable {
         }
     }
 
+    // Calcola il prezzo totale per questa riga (Prezzo Unitario * Quantità)
     public BigDecimal getTotalPrice() {
         return product.getPrice().multiply(new BigDecimal(quantity));
     }

@@ -3,18 +3,27 @@
 <head>
     <title>Registration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="stylesheet" href="css/registration.css">
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
 </head>
 
 <body>
 <main class="registration">
-    <!-- Colonna sinistra -->
+    
+    <!-- ==================== 
+         COLONNA SINISTRA 
+         ==================== -->
     <div class="registration_sx">
         <img src="img/bottiglia_registrazione.png" alt="Decorazione login" />
     </div>
 
-    <!-- Colonna destra-->
+    <!-- ==================== 
+         COLONNA DESTRA 
+         ==================== -->
     <div class="registration_rx">
         <div class="registration_in">
             <h1 class="registration_title">Create an account</h1>
@@ -39,7 +48,6 @@
             </form>
         </div>
     </div>
-
 
 </main>
 </body>

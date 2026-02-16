@@ -6,38 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${product.name} - Gintleman</title>
     
-    <!-- Favicon -->
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     
-    <!-- Font Google: DM Sans -->
+    <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Fogli di stile -->
-    <link rel="stylesheet" href="css/index.css"> <!-- Base Globale (include variabili per header) -->
+    <link rel="stylesheet" href="css/index.css"> <!-- Base Globale -->
     <link rel="stylesheet" href="css/header.css"> <!-- Header -->
     <link rel="stylesheet" href="css/footer.css"> <!-- Footer -->
-    <link rel="stylesheet" href="css/product.css"> <!-- SPECIFICO PAGINA PRODOTTO -->
+    <link rel="stylesheet" href="css/product.css"> <!-- Stile Pagina Prodotto -->
 </head>
 
 <body>
 
+    <!-- Header Gintleman -->
     <%@ include file="header.jsp" %>
 
-    <!-- PRODUCT DETAIL SECTION -->
+    <!-- ==================== 
+         DETTAGLIO PRODOTTO 
+         ==================== -->
     <main class="product-page-container">
         
-        <!-- Header: Titolo e Sottotitolo -->
+        <!-- Intestazione: Titolo e Sottotitolo -->
         <div class="product-header-group">
             <h1 class="product-title-main">${product.name}</h1>
             <p class="product-subtitle-main">${product.subtitle}</p>
         </div>
 
-        <!-- Grid: 3 Columns -->
+        <!-- Griglia Layout: 3 Colonne -->
         <div class="product-grid">
             
-            <!-- 1. Immagine (Box Blu) -->
+            <!-- 1. Immagine Prodotto -->
             <div class="product-image-box">
                 <img src="${product.imageUrl != null ? product.imageUrl : 'img/default-bottle.png'}" alt="${product.name}">
             </div>
@@ -48,41 +53,45 @@
                 <p class="desc-text">${product.description}</p>
             </div>
 
-            <!-- 3. Colonna Buy Box -->
-        <div class="product-buy-box">
-            <h2 class="product-price">€ ${product.price}</h2>
-            
-            <div class="availability-badge ${product.stock <= 0 ? 'out-of-stock' : ''}">
-                ${product.stock <= 0 ? 'Esaurito' : 'Disponibilità immediata'}
-            </div>
-            <p class="shipping-info">
-                ${product.stock <= 0 ? 'questo prodotto non è attualmente disponibile' : 'consegna prevista entro <strong>5 giorni</strong> dall\'acquisto'}
-            </p>
-            
-            <form action="cart" method="get" class="buy-form">
-                <input type="hidden" name="action" value="add">
-                <input type="hidden" name="productId" value="${product.id}">
+            <!-- 3. Box Acquisto -->
+            <div class="product-buy-box">
+                <h2 class="product-price">€ ${product.price}</h2>
                 
-                <select name="quantity" class="qty-selector" id="product-quantity" ${product.stock <= 0 ? 'disabled' : ''}>
-                    <option value="1">Quantità: 1</option>
-                    <option value="2">Quantità: 2</option>
-                    <option value="3">Quantità: 3</option>
-                    <option value="4">Quantità: 4</option>
-                    <option value="5">Quantità: 5</option>
-                </select>
+                <div class="availability-badge ${product.stock <= 0 ? 'out-of-stock' : ''}">
+                    ${product.stock <= 0 ? 'Esaurito' : 'Disponibilità immediata'}
+                </div>
+                <p class="shipping-info">
+                    ${product.stock <= 0 ? 'questo prodotto non è attualmente disponibile' : 'consegna prevista entro <strong>5 giorni</strong> dall\'acquisto'}
+                </p>
+                
+                <form action="cart" method="get" class="buy-form">
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="productId" value="${product.id}">
+                    
+                    <select name="quantity" class="qty-selector" id="product-quantity" ${product.stock <= 0 ? 'disabled' : ''}>
+                        <option value="1">Quantità: 1</option>
+                        <option value="2">Quantità: 2</option>
+                        <option value="3">Quantità: 3</option>
+                        <option value="4">Quantità: 4</option>
+                        <option value="5">Quantità: 5</option>
+                    </select>
 
-                <button type="submit" name="redirect" value="cart" class="btn-buy-outline" ${product.stock <= 0 ? 'disabled' : ''}>Acquista ora</button>
-                <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}')" ${product.stock <= 0 ? 'disabled' : ''}>Aggiungi al carrello</button>
-            </form>
+                    <button type="submit" name="redirect" value="cart" class="btn-buy-outline" ${product.stock <= 0 ? 'disabled' : ''}>Acquista ora</button>
+                    <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}')" ${product.stock <= 0 ? 'disabled' : ''}>Aggiungi al carrello</button>
+                </form>
+            </div>
         </div>
 
     </main>
 
+    <!-- Footer Gintleman -->
     <%@ include file="footer.jsp" %>
 
-    <script src="js/index.js"></script> <!-- O script specifico se serve -->
+    <script src="js/index.js"></script>
 
-    <!-- Toast Notification -->
+    <!-- ==================== 
+         NOTIFICHE TOAST 
+         ==================== -->
     <style>
         #toast-notification {
             visibility: hidden;
@@ -119,6 +128,9 @@
     </style>
     <div id="toast-notification">Prodotto aggiunto al carrello!</div>
 
+    <!-- ==================== 
+         LOGICA JS CARRELLO 
+         ==================== -->
     <script>
         function addToCart(productId) {
             if (!productId) {

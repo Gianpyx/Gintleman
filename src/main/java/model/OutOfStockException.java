@@ -2,6 +2,7 @@ package model;
 
 import java.util.Map;
 
+// Eccezione personalizzata per gestire i casi di stock insufficiente durante il checkout
 public class OutOfStockException extends Exception {
     private Map<String, Integer> unavailableProducts;
 

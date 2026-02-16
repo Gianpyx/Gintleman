@@ -1,6 +1,10 @@
-/* =============================
+/* =========================================
+   Gintleman - Stili Mobile (style_mobile.css)
+   ========================================= */
+
+/* =========================================
    Mobile (≤ 768px)
-   ============================= */
+   ========================================= */
 @media (max-width: 767px) {
   :root {
     --container: 92vw;
@@ -21,7 +25,9 @@
     padding: 0;
   }
 
-  /* Hero */
+  /* ====================
+       Sezione Hero
+  ==================== */
   #hero {
     min-height: 80vh;
     padding: 1rem;
@@ -60,7 +66,9 @@
     font-size: 1.25em;
   }
 
-  /* Titolo sezione 2 */
+  /* ====================
+       Sezione 2
+  ==================== */
   #title_2 {
     font-size: clamp(1.5rem, 6vw, 2.25rem);
     margin: 0 0 1em 0;
@@ -96,7 +104,9 @@
     max-width: 78%;
   }
 
-  /* Terza sezione: blocchi a tutta larghezza */
+  /* ====================
+       Sezione 3
+  ==================== */
   #scopri_di_più,
   #go_shopping {
     width: 100%;
@@ -133,7 +143,7 @@
        Header Mobile Overrides
        ============================= */
   .header {
-    height: 6em; /* Reduced from 14em */
+    height: 6em; /* Ridotto da 14em */
   }
 
   #logo_header {
@@ -209,9 +219,9 @@
   }
 }
 
-/* =============================
+/* =========================================
    Extra-small phones (≤ 480px)
-   ============================= */
+   ========================================= */
 @media (max-width: 480px) {
   html,
   body {

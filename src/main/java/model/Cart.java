@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// Classe per la gestione del carrello della spesa virtuale
 public class Cart implements Serializable {
     private List<CartItem> items;
 
@@ -21,6 +22,7 @@ public class Cart implements Serializable {
         addItem(product, 1);
     }
 
+    // Aggiunge un prodotto al carrello o ne incrementa la quantità se già presente
     public void addItem(ProductBean product, int quantity) {
         Optional<CartItem> existingItem = items.stream()
                 .filter(i -> i.getProduct().getId() == product.getId())
@@ -33,10 +35,12 @@ public class Cart implements Serializable {
         }
     }
 
+    // Rimuove completamente un articolo dal carrello
     public void removeItem(int productId) {
         items.removeIf(i -> i.getProduct().getId() == productId);
     }
 
+    // Aggiorna la quantità di uno specifico prodotto nel carrello
     public void updateQuantity(int productId, int quantity) {
         for (CartItem item : items) {
             if (item.getProduct().getId() == productId) {
@@ -50,12 +54,14 @@ public class Cart implements Serializable {
         }
     }
 
+    // Calcola il prezzo totale di tutti gli articoli nel carrello
     public BigDecimal getTotalAmount() {
         return items.stream()
                 .map(CartItem::getTotalPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    // Restituisce il numero totale di pezzi presenti nel carrello
     public int getTotalItemsCount() {
         return items.stream().mapToInt(CartItem::getQuantity).sum();
     }

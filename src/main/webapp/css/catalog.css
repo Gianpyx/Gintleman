@@ -1,4 +1,8 @@
-/* Catalog Layout */
+/* ==================== 
+Layout Catalogo 
+==================== */
+
+/* impostazioni corpo pagina catalogo */
 body {
     display: flex;
     flex-direction: column;
@@ -6,16 +10,21 @@ body {
     margin: 0;
 }
 
+/* contenitore principale catalogo */
 .catalog-container {
     display: flex;
     max-width: 1200px;
-    margin: 20px auto 40px; /* Reduced since body padding handles header */
+    margin: 20px auto 40px; /* ridotto poiché il padding del body gestisce l'header */
     padding: 0 20px;
     gap: 30px;
     flex: 1;
 }
 
-/* Sidebar Filters */
+/* ==================== 
+Filtri Sidebar 
+==================== */
+
+/* colonna laterale filtri */
 .catalog-sidebar {
     width: 250px;
     flex-shrink: 0;
@@ -25,10 +34,12 @@ body {
     height: fit-content;
 }
 
+/* gruppo di filtri */
 .filter-group {
     margin-bottom: 20px;
 }
 
+/* titolo del gruppo filtri */
 .filter-group h3 {
     font-size: 1.1em;
     margin-bottom: 10px;
@@ -36,6 +47,7 @@ body {
     padding-bottom: 5px;
 }
 
+/* controllo filtro (input text, select, etc.) */
 .filter-control {
     display: block;
     width: 100%;
@@ -45,6 +57,7 @@ body {
     border-radius: 4px;
 }
 
+/* bottone applica filtri */
 .btn-filter {
     width: 100%;
     padding: 10px;
@@ -56,19 +69,25 @@ body {
     transition: background 0.3s;
 }
 
+/* hover bottone filtri */
 .btn-filter:hover {
     background-color: #555;
 }
 
-/* Product Grid */
+/* ==================== 
+Griglia Prodotti 
+==================== */
+
+/* griglia principale prodotti */
 .catalog-grid {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Force 4 columns on desktop */
+    grid-template-columns: repeat(4, 1fr); /* 4 colonne su desktop */
     gap: 20px;
-    min-width: 0; /* Fix for flex item overflow */
+    min-width: 0; /* fix per overflow flex item */
 }
 
+/* carta prodotto singola */
 .product-card {
     border: 1px solid #eee;
     border-radius: 8px;
@@ -78,11 +97,13 @@ body {
     background: white;
 }
 
+/* hover carta prodotto */
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* immagine prodotto */
 .product-image {
     max-width: 100%;
     height: 200px;
@@ -90,24 +111,28 @@ body {
     margin-bottom: 15px;
 }
 
+/* nome prodotto */
 .product-name {
     font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
+/* prezzo prodotto */
 .product-price {
     color: #b12704;
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
+/* nazionalità prodotto */
 .product-nationality {
     font-size: 0.9em;
     color: #777;
     margin-bottom: 15px;
 }
 
+/* bottone aggiungi al carrello */
 .btn-add-cart {
     background-color: #ffd814;
     border: 1px solid #fcd200;
@@ -117,10 +142,12 @@ body {
     font-weight: bold;
 }
 
+/* hover bottone carrello */
 .btn-add-cart:hover {
     background-color: #f7ca00;
 }
 
+/* stato disabilitato bottone carrello */
 .btn-add-cart:disabled {
     background-color: #000 !important;
     color: #fff !important;
@@ -129,32 +156,44 @@ body {
     opacity: 0.8;
 }
 
+/* ==================== 
+Responsive 
+==================== */
+
 @media (max-width: 1100px) {
+    /* 3 colonne su schermi medi */
     .catalog-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 900px) {
+    /* 2 colonne su tablet */
     .catalog-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    /* layout a colonna unica su mobile */
     .catalog-container {
         flex-direction: column;
         margin-top: 80px;
     }
+    
+    /* sidebar occupa tutta la larghezza */
     .catalog-sidebar {
         width: 100%;
     }
+    
+    /* griglia prodotti responsive */
     .catalog-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
+    /* 1 colonna su schermi molto piccoli */
     .catalog-grid {
         grid-template-columns: 1fr;
     }

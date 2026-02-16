@@ -9,11 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Classe DAO per la gestione delle operazioni CRUD relative ai Prodotti nel database
 public class ProductDAO {
 
     /**
-     * Retrieves all active products, optionally filtered by min/max price and
-     * nationality.
+     * Recupera tutti i prodotti attivi, con filtri opzionali per range di prezzo e
+     * nazionalità.
      */
     public synchronized List<ProductBean> doRetrieveAll(Double minPrice, Double maxPrice, List<String> nationalities)
             throws SQLException {
@@ -86,6 +87,7 @@ public class ProductDAO {
         return products;
     }
 
+    // Recupera un singolo prodotto attivo tramite la sua Primary Key (ID)
     public synchronized ProductBean doRetrieveByKey(int id) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -127,6 +129,7 @@ public class ProductDAO {
         return bean;
     }
 
+    // Inserisce un nuovo prodotto nel database
     public synchronized void doSave(ProductBean product) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -160,6 +163,7 @@ public class ProductDAO {
         }
     }
 
+    // Aggiorna i dati di un prodotto esistente
     public synchronized void doUpdate(ProductBean product) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -194,6 +198,7 @@ public class ProductDAO {
         }
     }
 
+    // Effettua una eliminazione logica del prodotto (Soft Delete)
     public synchronized void doDelete(int id) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -218,6 +223,7 @@ public class ProductDAO {
         }
     }
 
+    // Verifica la disponibilità (stock) di tutti i prodotti presenti nel carrello
     public synchronized void checkStockBulk(Cart cart) throws SQLException, OutOfStockException {
         Connection connection = null;
         PreparedStatement ps = null;
@@ -252,6 +258,8 @@ public class ProductDAO {
         }
     }
 
+    // Decrementa la quantità disponibile di uno specifico prodotto (Gestion
+    // concorrenza DB)
     public synchronized void decrementStock(int productId, int quantity, Connection connection)
             throws SQLException, OutOfStockException {
         PreparedStatement ps = null;
@@ -265,7 +273,7 @@ public class ProductDAO {
 
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0) {
-                // This shouldn't happen if checkStockBulk was called, but for safety:
+                // Se nessuna riga è stata aggiornata, significa che lo stock era insufficiente
                 String checkSql = "SELECT name, stock FROM Product WHERE id = ?";
                 try (PreparedStatement psCheck = connection.prepareStatement(checkSql)) {
                     psCheck.setInt(1, productId);
@@ -286,6 +294,7 @@ public class ProductDAO {
         }
     }
 
+    // Azzera immediatamente lo stock di un prodotto (Funzionalità Admin)
     public synchronized void zeroStock(int productId) throws SQLException {
         Connection connection = null;
         PreparedStatement ps = null;

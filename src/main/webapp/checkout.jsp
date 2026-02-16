@@ -3,15 +3,18 @@
 <%@ page import="model.UserBean" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
+<!-- ==================== 
+     LOGICA DI CONTROLLO 
+     ==================== -->
 <%
-    // Ensure user is logged in
+    // Verifica se l'utente è loggato
     UserBean currentUser = (UserBean) session.getAttribute("user");
     if (currentUser == null) {
         response.sendRedirect("login.jsp");
         return;
     }
     
-    // Ensure cart is not empty
+    // Verifica se il carrello non è vuoto
     Cart cart = (Cart) session.getAttribute("cart");
     if (cart == null || cart.isEmpty()) {
         response.sendRedirect("catalog.jsp");
@@ -22,10 +25,16 @@
 <html>
 <head>
     <title>Checkout - Gintleman</title>
+    
+    <!-- ==================== 
+         STILI E RISORSE 
+         ==================== -->
     <link rel="icon" sizes="16x16" href="img/Logo_nero.png" type="image/png">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    
+    <!-- Stili specifici checkout inline -->
     <style>
         .checkout-container {
             max-width: 600px;
@@ -112,11 +121,13 @@
 </head>
 <body>
 
+<!-- Header Gintleman -->
 <%@ include file="header.jsp" %>
 
 <div class="checkout-container">
     <h1>Checkout Spedizione</h1>
     
+    <!-- GESTIONE MESSAGGI ERRORE -->
     <%
         String errorMsg = (String) session.getAttribute("errorMessage");
         if (errorMsg != null) {
@@ -130,14 +141,15 @@
         }
     %>
     
+    <!-- RIEPILOGO -->
     <div class="summary-box">
         <h3>Riepilogo Ordine</h3>
         <p>Totale Articoli: <strong><%= cart.getTotalItemsCount() %></strong></p>
         <p>Totale da Pagare: <strong>€ <%= cart.getTotalAmount() %></strong></p>
     </div>
 
+    <!-- FORM DATI SPEDIZIONE -->
     <form action="checkout" method="post">
-        <!-- User Identity (Hidden or Pre-filled) -->
         
         <div class="form-section">
             <h3 style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Dati Spedizione</h3>
